@@ -9,7 +9,6 @@
 [Quickstart](#quickstart) ·
 [Architecture](#architecture) ·
 [Roadmap](#roadmap) ·
-[PRD](PRD.md) ·
 [Русский](README.ru.md)
 
 <br>
@@ -145,21 +144,17 @@ xdg-open http://127.0.0.1:8181/
 
 ```
 arc-computer/
-├── PRD.md                       master product requirements (read first)
 ├── README.md                    you are here
 │
 ├── product/
-│   ├── server/                  FastAPI runtime
-│   │   ├── main.py
-│   │   ├── api/routes.py        / · /app · /solve · /health · /kb/stats
-│   │   ├── vision/client.py     Replicate + OpenAI fallback
-│   │   ├── solver/engine.py     Anthropic-compatible client + RAG
-│   │   ├── kb/                  CDPO loaders + indices
-│   │   ├── templates/           Jinja2 (landing + solver UI)
-│   │   └── tests/               pytest
-│   ├── landing/                 marketing site (HTML)
-│   ├── hardware/                BOM, KiCad refs, STL refs
-│   └── firmware-templates/
+│   └── server/                  FastAPI runtime
+│       ├── main.py
+│       ├── api/routes.py        / · /app · /solve · /health · /kb/stats
+│       ├── vision/client.py     Replicate + OpenAI fallback
+│       ├── solver/engine.py     Anthropic-compatible client + RAG
+│       ├── kb/                  CDPO loaders + indices
+│       ├── templates/           Jinja2 (landing + solver UI)
+│       └── tests/               pytest
 │
 ├── kb/
 │   ├── STRATEGY.md              two-zone storage plan
@@ -167,47 +162,27 @@ arc-computer/
 │   │   ├── schemas/cdpo.py      canonical Pydantic data model
 │   │   ├── extractors/          LLM extraction adapters + prompts
 │   │   └── scripts/             scrapers, validators, packagers
-│   └── output/                  generated KB (gitignored, ~50 MB via Releases)
+│   └── output/                  generated KB (gitignored, distributed via Releases)
 │
-├── agents/                      per-AI agent assignments
-│   ├── kimi/                    curation tasks (Kimi K2)
-│   ├── deepseek/                bulk extraction (DeepSeek V4)
-│   └── claude/                  production code (Claude Sonnet)
-│
-├── marketing/                   launch assets (Twitter thread, video script, pitch)
-├── brand/                       naming, palette, voice
-└── docs/                        deployment, firmware validation guides
+├── docs/                        deployment + firmware validation guides
+└── scripts/                     bootstrap + dev + deploy helpers
 ```
 
 ## Documentation
 
 | Document | What |
 |---|---|
-| [`PRD.md`](PRD.md) | Master product requirements — start here |
-| [`brand/BRAND.md`](brand/BRAND.md) | Naming, palette, founder narrative |
 | [`kb/STRATEGY.md`](kb/STRATEGY.md) | KB storage tiering (hot zone on device, cold on dev disk) |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Fly.io setup, deploy script, rollback |
 | [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | `simavr` / `qemu` / `avr-gcc` setup |
-| [`marketing/video/DEMO-SCRIPT.md`](marketing/video/DEMO-SCRIPT.md) | Launch video shot list |
 
 ## Roadmap
 
-- [x] **v0.1 alpha** — server scaffold, 78k KB records, validation pipeline, OSS artifacts
-- [ ] **v0.1 launch** — domain registration, Fly.io deploy, public launch (Hacker News + Twitter)
-- [ ] **v0.2** — SD-card pre-loaded "ARC Starter" $99, premium content packs (Marine / HAM / Homestead / 3D-printer salvage)
-- [ ] **v0.3** — Pi 5 hardware kit $499 with pre-loaded KB, mesh federation, vision inventory v2
-- [ ] **v1.0** — multi-language KB, premium hardware tier, B2B licensing for NGO field operations
-
-## Three-agent bootstrap
-
-ARC's knowledge base and codebase were assembled in a single weekend using
-three AI agents in parallel — see [`agents/`](agents/) for each agent's brief.
-
-| Agent | Role | Output |
-|---|---|---|
-| **Kimi K2** (subscription) | KB curation | 73,500+ records (phenomena · materials · tools · components · devices · substitutions · safety · firmware-genome) |
-| **DeepSeek V4 Pro** (~$4 API) | Bulk extraction | 2,340+ records from iFixit · Instructables · Hackaday |
-| **Claude Sonnet 4.5** (subscription) | Production code | Server · vision client · KB integration · validation pipeline · OSS artifacts · firmware emulator · e2e tests · deploy automation |
+- [x] **v0.1 alpha** — server scaffold, KB validation pipeline, OSS artefacts
+- [ ] **v0.1 launch** — Fly.io deploy, public release
+- [ ] **v0.2** — premium content packs (Marine, HAM, Homestead, 3D-printer salvage)
+- [ ] **v0.3** — Raspberry Pi 5 hardware kit with pre-loaded KB, mesh federation, vision inventory v2
+- [ ] **v1.0** — multi-language KB, mesh between devices
 
 ## Audience
 
@@ -247,10 +222,8 @@ the upstream licence when redistributing.
 
 ## Stay in touch
 
-- **Domain** — `arc.computer` *(registration in progress)*
-- **Twitter** — `@arccomputer` *(registration in progress)*
-- **Discord** — *planned post-launch*
-- **Email** — `founder@arc.computer` *(placeholder)*
+- **Issues** — open one on [GitHub](https://github.com/ORTODOX1/arc-computer/issues)
+- **Discussions** — [GitHub Discussions](https://github.com/ORTODOX1/arc-computer/discussions)
 
 ## Star history
 
@@ -262,6 +235,6 @@ the upstream licence when redistributing.
 
 **Built for people who build, fix, and grow things — anywhere, anytime.**
 
-[Read the PRD](PRD.md) · [Get involved](CONTRIBUTING.md) · [Report a security issue](SECURITY.md)
+[Get involved](CONTRIBUTING.md) · [Report a security issue](SECURITY.md)
 
 </div>

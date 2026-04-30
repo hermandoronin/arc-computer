@@ -130,7 +130,6 @@ tar --use-compress-program=zstd -xf /tmp/kb.tar.zst -C kb/output/
 
 ```
 arc-computer/
-├── PRD.md                  ← master product requirements
 ├── README.md
 │
 ├── product/server/         ← FastAPI runtime
@@ -148,50 +147,27 @@ arc-computer/
 │   │   ├── schemas/cdpo.py ← canonical Pydantic data model
 │   │   ├── extractors/     ← LLM extraction adapters + 4 prompts
 │   │   └── scripts/        ← scrapers, validators, packagers
-│   └── output/             ← .gitignore'd (300 MB KB content via Releases)
+│   └── output/             ← .gitignore'd (KB content via GitHub Releases)
 │
-├── product/landing/        ← marketing site (HTML)
-├── product/hardware/       ← BOM, KiCad refs, STL refs
-├── product/firmware-templates/
-│
-├── agents/                 ← per-AI agent assignments
-│   ├── kimi/               ← curation tasks (Kimi K2 subscription)
-│   ├── deepseek/           ← bulk extraction (DeepSeek V4)
-│   └── claude/             ← production code (Claude Sonnet)
-│
-├── marketing/              ← Twitter thread, video script, pitch
-├── brand/                  ← naming, palette, voice
-└── docs/                   ← deployment, firmware validation guides
+├── docs/                   ← deployment, firmware validation guides
+└── scripts/                ← bootstrap, dev, deploy helpers
 ```
-
-## Three-agent build strategy
-
-ARC's KB and infrastructure были собраны за один день через **трёх AI-агентов параллельно**:
-
-1. **Kimi K2** (subscription) — top-quality curation: 73,500+ records (phenomena, materials, tools, components, devices, substitutions, safety, firmware-genome)
-2. **DeepSeek V4 Pro** (~$3 API) — bulk extraction из iFixit/Instructables/Hackaday: 2,340+ records
-3. **Claude Sonnet 4.5** (subscription) — production code (8 tracks: server, vision client, KB integration, validation pipeline, OSS artifacts, firmware emulator, e2e tests, deploy automation)
-
-См. [`agents/`](agents/) для конкретных задач каждого.
 
 ## Roadmap
 
-- [x] **v0.1 alpha** — server scaffold, 78k records KB, validation pipeline, OSS artifacts
-- [ ] **v0.1 launch** — domain registration, Fly.io deploy, viral launch (Twitter + HN)
-- [ ] **v0.2** — SD-card $99 product, premium content packs (Soviet/Marine/HAM/Homestead)
-- [ ] **v0.3** — Pi 5 hardware kit $499 with pre-loaded KB, mesh federation, vision inventory v2
-- [ ] **v1.0** — multi-language KB, Tier 3 premium hardware, B2B licensing for NGOs
+- [x] **v0.1 alpha** — server scaffold, KB validation pipeline, OSS artifacts
+- [ ] **v0.1 launch** — Fly.io deploy, public release
+- [ ] **v0.2** — premium content packs (Marine, HAM, Homestead, 3D-printer salvage)
+- [ ] **v0.3** — Raspberry Pi 5 hardware kit with pre-loaded KB, mesh federation, vision inventory v2
+- [ ] **v1.0** — multi-language KB, mesh between devices
 
 ## Documentation
 
 | Document | What |
 |---|---|
-| [`PRD.md`](PRD.md) | Master product requirements — read first |
-| [`brand/BRAND.md`](brand/BRAND.md) | Naming, palette, founder narrative |
 | [`kb/STRATEGY.md`](kb/STRATEGY.md) | Storage tiering (hot zone on device, cold on dev disk) |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Fly.io setup, deploy script, rollback |
 | [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | simavr/qemu/avr-gcc setup |
-| [`marketing/video/DEMO-SCRIPT.md`](marketing/video/DEMO-SCRIPT.md) | Viral launch video shot list |
 
 ## Contributing
 
@@ -216,17 +192,10 @@ Community standards: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) (Contributor Cov
 
 Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit content under CC-BY-NC-SA, manufacturer datasheets, etc) — respect upstream licenses when redistributing.
 
-## Sponsors / Funding
-
-- GitHub Sponsors: planned
-- One-time funding: BTC / ETH (post-launch)
-
 ## Stay in touch
 
-- Domain: `arc.computer` (registration in progress)
-- Twitter: `@arccomputer` (registration in progress)
-- Discord: planned post-launch
-- Email: founder@arc.computer (placeholder)
+- Issues — открыть [на GitHub](https://github.com/ORTODOX1/arc-computer/issues)
+- Discussions — [GitHub Discussions](https://github.com/ORTODOX1/arc-computer/discussions)
 
 ---
 
@@ -234,6 +203,6 @@ Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit
 
 **Built for people who build, fix, and grow things — anywhere, anytime.**
 
-[Read PRD](PRD.md) · [Get involved](CONTRIBUTING.md) · [Report security issue](SECURITY.md)
+[Get involved](CONTRIBUTING.md) · [Report security issue](SECURITY.md)
 
 </div>

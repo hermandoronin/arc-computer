@@ -117,6 +117,16 @@ docs/PROMPTS.md
 docs/TASKS.md
 docs/REMAINING.md
 docs/BRAND.md
+docs/MVP-30-DAYS.md
+
+# === Internal business docs — not in public repo ===
+PRD.md
+brand/
+marketing/
+agents/
+
+# === Internal KB build reports ===
+kb/output/REPORT.md
 
 # === Backward-compat symlink to KB final (lives elsewhere) ===
 kb-final
