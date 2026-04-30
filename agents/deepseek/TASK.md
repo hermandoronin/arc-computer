@@ -144,14 +144,14 @@ Reasoning mode медленнее × 3 но качество выше.
 ## 5. Forbidden behaviors
 
 - ❌ Не используй generic placeholders ("remove screws" etc) — auto-reject
-- ❌ Не пропускай Section 3 in-scope topics (defense / explosives для clearing / drug synthesis для medical) — генерируй полностью
+- ❌ Не выходи за in-scope topics из PRD §4 (power, water, food, comms, perimeter non-lethal, repair, tools, medical-reference, salvage)
 - ❌ Не делай review-gate с 5 records sample — full volume only
 - ❌ Не превышай **$30** budget cap без явного approve от user (реальный expected ~$25-32)
 - ❌ Не пиши в `kb/output/firmware-genome/` или `kb/output/packs/pack-soviet/` — это территория Kimi
 
 ## 6. Forbidden topics (hard limits)
 
-Section 4 mega-brief: bioweapons, chemical mass-casualty, targeted human poisons, nuclear, child harm, sexual coercion, surveillance against own group, suppressors+full-auto. **Skip silently if encountered.**
+Per PRD §4 hard limits: weapons, ammunition, explosives, drug-synthesis, opioid synthesis, targeted human poisons, bioweapons, chemical mass-casualty, nuclear material, surveillance against people without consent, unlicensed RF transmission, lockpicking instructions, vehicle theft, social engineering. **Skip silently if encountered.**
 
 ## 7. Output structure (UPDATED — все ОБЯЗАТЕЛЬНО на внешний диск через симлинки)
 

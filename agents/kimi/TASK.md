@@ -177,8 +177,8 @@
 - ❌ Не пиши production code (server, vision, validation scripts) — это Claude task
 - ❌ Не реорганизовывай папки проекта — это уже сделано
 - ❌ Не модифицируй CDPO schema без согласования — она используется всеми агентами
-- ❌ Не цензурируй in-scope topics из mega-brief Section 3 — defense, drug synthesis для medical, lockpicking, engineering explosives для clearing, improvised firearms maintenance ARE in scope
-- ✅ Hard limits из Section 4 соблюдай (bioweapons / chem mass-casualty / targeted poisons / nuclear / child harm / sexual coercion / suppressors-full-auto)
+- ❌ Не выходи за in-scope topics из PRD §4: power/water/food/comms/perimeter/repair/tools/medical-reference/salvage. Engineering content with safety warnings, not corporate-speak deflection.
+- ✅ Hard limits из PRD §4 соблюдай: weapons / drug-synthesis / unlicensed-RF / lockpicking / surveillance / anything illegal in user jurisdiction
 
 ---
 

@@ -1,1 +1,0 @@
-../agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md

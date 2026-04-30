@@ -1,1 +1,0 @@
-../agents/kimi/briefs/KIMI-MEGA-BRIEF.md

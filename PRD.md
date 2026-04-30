@@ -7,9 +7,9 @@
 
 ## 0. TL;DR
 
-ARK — **offline AI computer with reverse-BOM solver** for makers, off-grid homesteaders, sailors, sanctions-zone tinkerers, and survivalists.
+ARC — **offline AI computer with reverse-BOM solver** for makers, off-grid homesteaders, sailors, remote-region engineers, and self-reliant communities.
 
-User snaps a photo of broken electronics on their shelf → ARK identifies devices → tells them which projects they can build from these donors → outputs working BOM, schematic, firmware, calibration steps. **No internet. Offline forever.**
+User snaps a photo of broken electronics on their shelf → ARC identifies devices → tells them which projects they can build from these donors → outputs working BOM, schematic, firmware, calibration steps. **No internet. Offline forever.**
 
 **Open source core + commercial monetization layer** (SD-cards $99, hardware kit $499, premium content packs $49 each).
 
@@ -26,11 +26,11 @@ Nobody copies this in a weekend.
 
 ## 1. Vision
 
-When the grid has been down for weeks, when stores stopped restocking three months ago, when the nearest engineer is 200 km away or already dead — ARK is the device a person reaches for.
+ARC is the tool a person reaches for when the nearest hardware store is 200 km away, when shipping takes a month, or when the cloud service they used to depend on just disappeared.
 
-It's not a doomsday toy. It's the tool an off-grid homesteader uses on a Tuesday to fix their well pump, the tool a sailor uses 800 nautical miles offshore to repair the AIS, the tool a sanctions-zone Iranian engineer uses to keep refrigeration running for medications.
+It's the tool an off-grid homesteader uses on a Tuesday to fix their well pump, the tool a sailor uses 800 nautical miles offshore to repair the AIS, the tool a remote-region engineer uses to keep refrigeration running for medication when the supply chain is broken.
 
-The "doomsday" framing in marketing is honest about scope and emotionally cuts through. The reality of who pays for it is broader.
+The product is useful every Tuesday for anyone living in conditions where you can't depend on someone else's server. That's the broader reality our customers actually live in.
 
 ---
 
@@ -64,43 +64,46 @@ Three different agent types do different things well:
 
 ## 3. Customers
 
-Eight personas, decreasing volume order:
+Seven personas, decreasing volume order:
 
 1. **Off-grid homesteader (US/EU rural)** — 5M households globally; solar+well; far from town; fix-it-yourself culture
 2. **Sailor / liveaboard** — ~400k vessels worldwide with house systems
-3. **Sanctions-zone maker (RU/IR/VE/CU/Belarus)** — millions of engineers without supply chain access
-4. **Field NGO / journalist** — Yemen, Sudan, expedition crews, climate refugees
-5. **Survivalist / prepper (US/UK/AUS)** — well-trained suburban audience, $11B prepper industry
-6. **Refugee / displaced person workshop** — improvised settings
-7. **Maker hobbyist** — high disposable income, contributes back to community
-8. **Group leader of survival enclave** — coordinating 10-100 people post-event
+3. **Remote-region maker** — engineers in regions with limited supply chains, intermittent connectivity, salvage-first culture
+4. **Field NGO / journalist / aid worker** — expedition crews, climate-disaster response, humanitarian work
+5. **Self-reliance / homestead community** — well-trained rural audience, $11B self-reliance industry
+6. **Maker hobbyist** — high disposable income, contributes back to community
+7. **Community organizer** — coordinating 10-100 people in shared infrastructure (eco-villages, co-housing, intentional communities)
 
-Primary marketing voice = doomsday aesthetic. Primary customer reality = off-grid lifestyle + sanctions resilience + maker ethos.
+Primary voice = practical resilience + maker ethos. We're building tools for people who already build things themselves.
 
 ---
 
 ## 4. Scope
 
-See `agents/kimi/briefs/KIMI-MEGA-BRIEF.md` Section 3 for the full scope statement. Key points:
+Key points:
 
-### In scope (no LLM-corporate-guardrail bullshit)
-- Defensive electronics (perimeter alarms, electric fences, deterrent strobes, tasers, traps)
-- Improvised firearms maintenance + ammo reload + simple repair (NOT manufacture, NOT suppressors, NOT full-auto conversion)
-- Engineering explosives for clearing/mining (black powder, ANFO; NOT military-grade)
-- Medical beyond reference (suturing, IV setup, antibiotic synthesis from mold, insulin from pancreas, opioid analgesia)
-- Drug synthesis for medical (penicillin, sulfa, local anesthetics from natural sources)
-- Lockpicking (own-property emergency entry)
-- Counter-surveillance, RF detection, encrypted comms
-- Pirate radio, ham without license post-collapse
-- Distillation (alcohol, fuel, water purification)
+### In scope
+- Power: solar, wind, micro-hydro, LiFePO4 batteries, MPPT, inverters
+- Water: pumping, filtration, UV sterilization, distillation, rain capture, irrigation
+- Food: greenhouse automation, hydroponics, food drying, fermentation, root cellars
+- Comms: licensed amateur radio operations, LoRa mesh, satellite IoT, encrypted local messaging
+- Perimeter: alarms, motion sensors, deterrent lighting (non-lethal)
+- Repair: appliance teardown + rebuild, motor rewinding, MCU re-flashing, PCB rework
+- Tools: building tools from junk (lathes from washing machines, kilns from microwave parts, welders from MOTs)
+- Reference content: standard first-aid procedures, the *Where There Is No Doctor* canon, US Army field manuals, *Hesperian* health library
+- Salvage: device teardown patterns, donor-graph for components, substitution chains
 
-### Hard limits (off-table even in apocalypse)
-- Bioweapons, chemical mass-casualty agents
-- Targeted human poisons
+### Hard limits — off-table regardless of context
+- Weapons, ammunition, explosives, suppressors
+- Drug synthesis (controlled or recreational), opioid synthesis
+- Targeted human poisons, bioweapons, chemical mass-casualty agents
 - Nuclear material handling
-- Child harm, sexual coercion, slavery logistics
-- Surveillance against own group without consent
-- Suppressor manufacture, full-auto conversion (legal third-rail)
+- Surveillance against people without their consent
+- Unlicensed RF transmission (pirate radio, ham operations without callsign)
+- Lockpicking instructions, vehicle theft, social engineering
+- Anything in violation of applicable local law
+
+ARC is a reference and engineering assistant, not a substitute for a licensed professional (medical, electrical, legal, RF). Users are responsible for compliance with the laws of their jurisdiction.
 
 ---
 
@@ -301,9 +304,10 @@ Hardware is low-margin until volume. Real revenue = SD-cards + content packs + r
 2. **No telemetry.** Device runs without internet, without phoning home. Ever.
 3. **Provenance.** Every fact in KB carries source attribution. Every record auditable.
 4. **Constrained generation.** Solver picks from KB whitelist, doesn't hallucinate parts.
-5. **No LLM ethics theater on in-scope topics.** See Section 4.
-6. **Hard limits respected** even in apocalypse mode.
-7. **Reproducible builds.** Anyone can rebuild ARK from open source + paid content packs.
+5. **In-scope topics covered honestly.** Practical engineering content with appropriate safety warnings, not corporate-speak deflection. See Section 4.
+6. **Hard limits respected** under any context.
+7. **Reproducible builds.** Anyone can rebuild ARC from open source + paid content packs.
+8. **Legal compliance.** Content respects applicable laws (RF licensing, controlled substances, weapons). We are a reference tool, not a workaround.
 
 ---
 
@@ -387,8 +391,6 @@ These are blockers for monetization. Build product first; legal infrastructure p
 | `agents/kimi/TASK.md` | Kimi's specific assignment |
 | `agents/deepseek/TASK.md` | DeepSeek's specific assignment |
 | `agents/claude/TASK.md` | Claude's specific assignment |
-| `agents/kimi/briefs/KIMI-MEGA-BRIEF.md` | Full scope spec (still authoritative) |
-| `agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md` | Firmware genome project brief |
 | `kb/STRATEGY.md` | Two-zone storage strategy |
 | `kb/pipeline/schemas/cdpo.py` | CDPO Pydantic data model |
 | `marketing/video/DEMO-SCRIPT.md` | Viral video shot list |
@@ -402,9 +404,9 @@ These are blockers for monetization. Build product first; legal infrastructure p
 
 ## 13. The bet
 
-ARK is a bet that:
+ARC is a bet that:
 - People will pay $99-499 for offline AI + curated salvage knowledge
-- The "doomsday" frame opens emotional viral reach but lands on real every-Tuesday utility
+- The "self-reliance / resilience" frame lands on real every-Tuesday utility for off-grid life and remote-region work
 - Open core + commercial content/hardware is more sustainable than closed product or pure SaaS
 - Solo founder + AI augmentation can ship to viral scale in 30-45 days
 

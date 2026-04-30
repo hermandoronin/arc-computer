@@ -16,14 +16,14 @@
 
 ```
 [00:00–00:03] HOOK
-  CU on hands holding a brick of melted electronics, ash, broken plastic
-  V/O whisper: "When the internet dies..."
-  CUT to slate: "When the internet dies."
+  CU on hands holding broken electronics, dust, scattered components
+  V/O whisper: "When the network goes silent..."
+  CUT to slate: "When the network goes silent."
   
 [00:03–00:08] PROBLEM
   Wide: cluttered workshop, late dusk, flickering fluorescent
   Hands placing 4-5 broken devices on a workbench: HP printer, microwave, dead laptop, monitor, ATX PSU
-  V/O: "...everyone with a question becomes a person without an answer."
+  V/O: "...the people with knowledge are 200km away."
   
 [00:08–00:14] PRODUCT REVEAL
   Macro: ARK device on the bench, e-ink screen comes alive, copper-mesh on case glints
@@ -56,17 +56,17 @@
   
 [00:50–00:58] CTA
   Black screen
-  Type appears: "ARK"
-  Below: "When the internet dies, this remembers."
-  Below: "ark.computer · Kickstarter in 3 weeks"
+  Type appears: "ARC"
+  Below: "Knowledge that works anywhere."
+  Below: "arc.computer"
   
 [00:58–01:00] LOGO STING
-  Triangular △ ARK mark, single warm pulse, cut to black
+  Triangular △ ARC mark, single warm pulse, cut to black
 ```
 
 ### V/O script verbatim (under 60 words for 60 seconds)
 
-> "When the internet dies — *(beat)* — everyone with a question becomes a person without an answer.
+> "When the network goes silent — *(beat)* — the nearest person with the answer is 200 km away.
 >
 > I built a computer that remembers when nothing else can.
 >
@@ -76,7 +76,7 @@
 >
 > *(beat)*
 >
-> ARK. When the internet dies, this remembers."
+> ARC. Knowledge that works anywhere."
 
 ### V/O direction notes
 - Voice: low, dry, faintly tired. Not hype. Not announcer. Think Werner Herzog meets a midnight ham radio op.
@@ -137,6 +137,12 @@ Recommend (1). One cue, used in all derivatives.
 | TikTok | 60s 9:16 | Drop 12h after Twitter to let momentum build |
 | YouTube Shorts | 60s 9:16 | + full 90s as regular video |
 | Hackaday tip | Email with 90s link | Subject: "Offline AI computer for reverse-engineering broken electronics" |
+
+---
+
+## Editorial note
+
+The demo focuses on **practical resilience** — building working tools from available parts, helping people who live and work in conditions where they can't depend on someone else's server. We avoid apocalyptic / paranoid framing: this is about every-Tuesday utility for off-grid life, not crisis marketing.
 | Landing page hero | 90s 16:9 with subtitles ON | Auto-play muted, click for audio |
 | Kickstarter video | 2-3 min cut combining demo + founder talk | Build during pre-launch period |
 

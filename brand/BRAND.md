@@ -20,14 +20,14 @@
 
 ## Tagline (primary)
 
-> **«When the internet dies, this remembers.»**
+> **«Knowledge that works anywhere.»**
 
 Эмоция, конкретика, контраст. Цитируется 1:1 в любом review.
 
 ### Secondary taglines
 - «Knowledge, hardened.»
-- «Your last computer.»
-- «AI for after.»
+- «Your most independent computer.»
+- «AI that doesn't depend on someone else's server.»
 
 ## One-liner pitch (для журналистов)
 
@@ -53,9 +53,9 @@
 
 ## Founder narrative (для media + Kickstarter)
 
-> «I spent years working on submarine and underwater electronics. POSEIDON-DIAG diagnostic systems, TRITON-ML for sonar. Then the world started shaking — Ukraine, COVID lockdowns, infrastructure failures, climate disasters. I left Russia. I started thinking: all this knowledge — schematics, troubleshooting, decades of engineering judgment — sits behind APIs that can vanish overnight. So I built ARK. The computer that remembers when the internet doesn't.»
+> *Реальный личный story founder'а пишется здесь — должен опираться на факты, верифицируемые публичные ссылки (LinkedIn, GitHub history, прошлые проекты). Не выдумывать. 10× credibility = 10× проверки журналистов.*
 
-Реальная личная история = 10x credibility. Не выдумывать, опираться на факты.
+Tone: спокойный, инженерный. Почему я делаю это → real personal motivation → реальный customer-pain → product. Без apocalyptic нагнетания.
 
 ## Audience hierarchy
 

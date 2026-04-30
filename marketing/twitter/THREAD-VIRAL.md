@@ -116,10 +116,10 @@
 > ✅ Off-grid families
 > ✅ Homesteaders
 > ✅ Sailors & overlanders
-> ✅ Field journalists in conflict zones
+> ✅ Field journalists, NGO staff, expedition crews
 > ✅ Anyone who's had to fix something far from a hardware store
 >
-> The "doomsday" version is a clean narrative. The product is useful every Tuesday.
+> Every-Tuesday utility for people who already build, fix, and grow things themselves.
 
 ---
 
@@ -167,9 +167,8 @@
 | «What's actually in the KB» | "Top-5000 curated devices, 50k canonical components from KiCad+Wikidata, 5k verified projects. Full sourcing list at ark.computer/sources." |
 | «Pi 5 isn't fast enough» | "It's enough for 14B Q4 at 5-10 t/s. We benchmark on every batch. If we need to upgrade, RK3588 (Orange Pi 5+) is the qualified alternative — same software stack." |
 | «Hallucinations» | "Constrained to KB whitelist + post-gen physics check. Hallucinated parts can't pass the solver. Detail thread soon." |
-| «How is this not a scam» | "Working prototype demo'd in pinned tweet. Hardware fully open-source post-ship. Zero pre-orders before working firmware. No founder mystery — full bio at ark.computer/about." |
-| «Russian founder = sus» | "Anti-war, left Russia 2022. Marine electronics background (POSEIDON-DIAG, TRITON-ML — public references). Happy to verify identity to any journalist DM." |
-| «$1500 too expensive» | "BOM is ~$650, manual assembly + curated KB + 2yr warranty. Compare: PrepperDisk $300-500 (no AI, no solver), commercial alternatives don't exist. Open-source DIY path = $899 kit (or $149 just-the-CODEX for your own SBC)." |
+| «How is this not a scam» | "Working prototype demo'd in pinned tweet. Hardware fully open-source post-ship. Zero pre-orders before working firmware. Founder bio at arc.computer/about." |
+| «$1500 too expensive» | "BOM is ~$650, manual assembly + curated KB + 2yr warranty. Compare: PrepperDisk $300-500 (no AI, no solver), commercial alternatives don't exist. Open-source DIY path = $899 kit (or $149 just-the-KB for your own SBC)." |
 
 ---
 

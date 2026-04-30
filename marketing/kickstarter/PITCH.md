@@ -1,6 +1,6 @@
-# ARK — Kickstarter Pitch
+# ARC — Kickstarter Pitch
 
-> **The offline AI computer that helps you rebuild civilization from scratch.**
+> **The offline AI computer that helps you build, fix, and grow things — anywhere, anytime.**
 
 ---
 
@@ -10,7 +10,7 @@
 
 **Hero video:** 60-second cut (see `marketing/video/demo-script.md`).
 
-**One-liner:** When the internet dies, this remembers.
+**One-liner:** Knowledge that works anywhere — without depending on someone else's server.
 
 **CTA buttons:** `Back this project` · `Watch demo` · `How it works`
 
@@ -175,7 +175,7 @@ A: ARK has three "user modes" — Beginner explains every step like you've never
 A: Ships in English. v2 adds Russian, German, Spanish, Italian, French — running through the local model, no cloud.
 
 **Q: Is this just for "doomers"?**
-A: Honestly? Most of our customers will probably be homesteaders, off-grid families, journalists in conflict zones, sailors, expedition crews, and anyone who's ever had to fix something far from a hardware store. Doomsday is a clean narrative. The product is useful every Tuesday.
+A: No. Most of our customers will probably be homesteaders, off-grid families, journalists, NGO staff, expedition crews, sailors, and anyone who's ever had to fix something far from a hardware store. Every-Tuesday utility for people who already build, fix, and grow things themselves.
 
 **Q: Can ARK help me build weapons?**
 A: No. Our CODEX is curated to exclude weapons and surveillance-against-people content. We have a hard line.

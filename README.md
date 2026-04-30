@@ -2,9 +2,9 @@
 
 # ARC.computer
 
-### Компьютер судного дня. Offline AI который превращает мусор в работающие инструменты.
+### Автономный AI-инженер. Помогает людям делать рабочие инструменты из того, что уже есть под рукой.
 
-> *When the internet dies, this remembers.*
+> *Knowledge that works anywhere — without depending on someone else's server.*
 
 [![License: Apache 2.0](https://img.shields.io/badge/Code-Apache%202.0-blue.svg)](LICENSE)
 [![License: CC-BY 4.0](https://img.shields.io/badge/KB-CC--BY--4.0-green.svg)](LICENSE-KB)
@@ -19,9 +19,9 @@
 
 ## Что это
 
-ARC — **автономный AI-ассистент для off-grid / postapoc / sanctions-zone сценариев**. Юзер описывает что у него есть из электроники и что хочет собрать — система выдаёт **готовый план**: BOM из имеющихся доноров, схему, прошивку, шаги сборки, safety warnings.
+ARC — **автономный AI-ассистент для людей и сообществ, которые строят сами**: off-grid фермы, удалённые регионы с нестабильным интернетом, makers, ремонтники, инженеры в дороге. Юзер описывает что у него есть из электроники и что хочет собрать — система выдаёт **готовый план**: BOM из имеющихся доноров, схему, прошивку, шаги сборки, safety warnings.
 
-Без интернета. Без облака. Без подписок.
+Без интернета. Без облака. Без подписок. Помогает людям, не зависит ни от кого.
 
 ```
                 ┌─────────────────────────┐
@@ -191,8 +191,6 @@ ARC's KB and infrastructure были собраны за один день че�
 | [`kb/STRATEGY.md`](kb/STRATEGY.md) | Storage tiering (hot zone on device, cold on dev disk) |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Fly.io setup, deploy script, rollback |
 | [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | simavr/qemu/avr-gcc setup |
-| [`agents/kimi/briefs/KIMI-MEGA-BRIEF.md`](agents/kimi/briefs/KIMI-MEGA-BRIEF.md) | Full KB scope spec (32 collections) |
-| [`agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md`](agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md) | Firmware genome project brief |
 | [`marketing/video/DEMO-SCRIPT.md`](marketing/video/DEMO-SCRIPT.md) | Viral launch video shot list |
 
 ## Contributing
@@ -234,7 +232,7 @@ Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit
 
 <div align="center">
 
-**Built for the Tuesday after the lights go out.**
+**Built for people who build, fix, and grow things — anywhere, anytime.**
 
 [Read PRD](PRD.md) · [Get involved](CONTRIBUTING.md) · [Report security issue](SECURITY.md)
 

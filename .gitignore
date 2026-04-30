@@ -103,5 +103,20 @@ tmp/
 # === Archive directory (kept locally, не пушим) ===
 archive/
 
+# === Internal agent briefs — kept locally, not in public repo ===
+# These are AI prompt scaffolds with experimental scope notes.
+# Public-facing scope lives in PRD.md and README.md.
+agents/kimi/briefs/
+agents/deepseek/briefs/
+agents/claude/briefs/
+agents/*/budget*.json
+
+# === docs/ — legacy AI scaffolds, replaced by PRD.md + README.md ===
+docs/KIMI-*.md
+docs/PROMPTS.md
+docs/TASKS.md
+docs/REMAINING.md
+docs/BRAND.md
+
 # === Backward-compat symlink to KB final (lives elsewhere) ===
 kb-final
