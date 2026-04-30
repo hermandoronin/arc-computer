@@ -1,0 +1,34 @@
+# ARK Knowledge Base Pipeline — Configuration
+# All paths are absolute or relative to working directory.
+
+[paths]
+raw = "/mnt/staging/ark-kb/raw"
+extracted = "/mnt/staging/ark-kb/extracted"
+linked = "/mnt/staging/ark-kb/linked"
+substitutions = "/mnt/staging/ark-kb/substitutions"
+final = "/mnt/staging/ark-kb/final"
+
+[anthropic]
+# Updated pricing + model — 2026-04-29
+model = "claude-sonnet-4-5-20250929"
+max_tokens_device = 8192
+max_tokens_project = 8192
+max_tokens_linker = 8192
+max_tokens_substitution = 8192
+batch_size = 10000
+batch_discount = 0.50  # 50% off via Message Batches API
+
+[processing]
+workers = 4
+retry_attempts = 5
+timeout_seconds = 120
+
+[cost]
+# Claude Sonnet 4.5 pricing (per 1k tokens) as of 2026-04-29
+input_price_per_1k = 3.00
+output_price_per_1k = 15.00
+# With batch API: input becomes 1.50, output becomes 7.50
+
+[logging]
+level = "INFO"
+format = "json"

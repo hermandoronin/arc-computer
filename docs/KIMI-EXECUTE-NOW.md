@@ -1,0 +1,1 @@
+../agents/kimi/briefs/KIMI-EXECUTE-NOW.md

@@ -1,0 +1,1 @@
+../agents/kimi/briefs/KIMI-USE-SUBSCRIPTION.md

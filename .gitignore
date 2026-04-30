@@ -1,0 +1,107 @@
+# =====================================================
+# ARK / ARC.computer — .gitignore
+# =====================================================
+
+# === Secrets & API keys ===
+.env
+.env.local
+.env.*.local
+*.key
+*secret*
+**/agents/*/budget*.json
+**/agents/*/*.private.*
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+.eggs/
+build/
+dist/
+*.egg
+
+# === Node ===
+node_modules/
+package-lock.json
+*.tgz
+
+# === IDE / Editor ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# === OS ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Knowledge base content (too large for git, distribute via Releases) ===
+# Generated KB content goes via GitHub Releases as ark-kb-vX.Y.tar.zst
+kb/output/extracted/
+kb/output/extracted-bulk/
+kb/output/raw/
+kb/output/packs/
+kb/output/firmware-genome/
+kb/output-wip/
+kb/output/staging/
+kb/output/logs/
+kb/output/validation-reports/
+kb/output/INDEX.json
+kb/output/final/
+kb/output/scripts/
+
+# Symlinks pointing to external disk (machine-specific)
+kb-final
+kb-pipeline
+server
+landing
+hardware
+firmware-templates
+
+# === Logs ===
+*.log
+logs/
+/tmp/*
+
+# === Build artifacts ===
+*.tar.gz
+*.tar.zst
+*.zip
+*.7z
+*.bin
+*.hex
+*.elf
+*.o
+
+# === Pytest artifacts ===
+.pytest_cache/
+
+# === Backups ===
+*.bak
+*~
+
+# === Temp / scratch ===
+scratch/
+tmp/
+.scratch/
+
+# === Archive directory (kept locally, не пушим) ===
+archive/
+
+# === Backward-compat symlink to KB final (lives elsewhere) ===
+kb-final
