@@ -1,104 +1,113 @@
 <div align="center">
 
-# ARC.computer
+# `ARC.computer`
 
-### Автономный AI-инженер. Помогает людям делать рабочие инструменты из того, что уже есть под рукой.
+### Offline AI engineer. Turns scrap electronics into working tools.
 
-> *Knowledge that works anywhere — without depending on someone else's server.*
+**No internet. No cloud. No subscription.**
+
+[Quickstart](#quickstart) ·
+[Architecture](#architecture) ·
+[Roadmap](#roadmap) ·
+[PRD](PRD.md) ·
+[Русский](README.ru.md)
+
+<br>
 
 [![License: Apache 2.0](https://img.shields.io/badge/Code-Apache%202.0-blue.svg)](LICENSE)
-[![License: CC-BY 4.0](https://img.shields.io/badge/KB-CC--BY--4.0-green.svg)](LICENSE-KB)
+[![License: CC BY 4.0](https://img.shields.io/badge/KB-CC--BY--4.0-green.svg)](LICENSE-KB)
 [![License: MIT](https://img.shields.io/badge/Adapters-MIT-orange.svg)](LICENSE-ADAPTERS)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com/)
 [![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)]()
+[![GitHub stars](https://img.shields.io/github/stars/ORTODOX1/arc-computer?style=flat&color=yellow)](https://github.com/ORTODOX1/arc-computer/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/ORTODOX1/arc-computer)](https://github.com/ORTODOX1/arc-computer/issues)
 
 </div>
 
 ---
 
-## Что это
+## The problem
 
-ARC — **автономный AI-ассистент для людей и сообществ, которые строят сами**: off-grid фермы, удалённые регионы с нестабильным интернетом, makers, ремонтники, инженеры в дороге. Юзер описывает что у него есть из электроники и что хочет собрать — система выдаёт **готовый план**: BOM из имеющихся доноров, схему, прошивку, шаги сборки, safety warnings.
+Every "AI for hardware" tool tells you what to **buy**. ChatGPT will hallucinate
+parts. Wikipedia is offline-capable but doesn't reason. Your old electrical
+engineering books don't fit in a backpack.
 
-Без интернета. Без облака. Без подписок. Помогает людям, не зависит ни от кого.
+Nothing tells you what you can **build** from what you **already have**.
+
+## How it works
 
 ```
-                ┌─────────────────────────┐
-                │  «У меня 3 принтера HP, │
-                │   микроволновка, ATX    │
-                │   PSU. Хочу автополив   │
-                │   на 10 зон.»           │
-                └────────────┬────────────┘
+                ┌──────────────────────────┐
+                │  "I have 3 broken HP     │
+                │   printers, a microwave, │
+                │   an ATX PSU. I want a   │
+                │   10-zone irrigation."   │
+                └────────────┬─────────────┘
                              │
                              ▼
-                ┌─────────────────────────┐
-                │   ARC Reverse-BOM AI    │
-                │   ┌──────────────────┐  │
-                │   │ 78,869 records   │  │
-                │   │ KB (offline)     │  │
-                │   └──────────────────┘  │
-                └────────────┬────────────┘
+                ┌──────────────────────────┐
+                │     ARC reverse-BOM      │
+                │   ┌────────────────────┐ │
+                │   │  78,869 records    │ │
+                │   │  KB (offline)      │ │
+                │   └────────────────────┘ │
+                └────────────┬─────────────┘
                              │
                              ▼
-                ┌─────────────────────────┐
-                │ Готовый план:           │
-                │ • BOM с источниками     │
-                │ • Teardown checklist    │
-                │ • Schematic ASCII       │
-                │ • Firmware (.ino)       │
-                │ • Calibration steps     │
-                │ • Safety warnings       │
-                └─────────────────────────┘
+                ┌──────────────────────────┐
+                │ Working plan:            │
+                │ • BOM with sources       │
+                │ • Teardown checklist     │
+                │ • Schematic (ASCII)      │
+                │ • Firmware (.ino)        │
+                │ • Calibration steps      │
+                │ • Safety warnings        │
+                └──────────────────────────┘
 ```
 
-## Чем отличается от ChatGPT / Wikipedia / NOMAD
+## Three modes
 
-| | ChatGPT | NOMAD / Kiwix offline | **ARC** |
-|---|---|---|---|
-| Offline | ❌ | ✓ | ✓ |
-| Reverse-BOM (junk → project) | hallucinate | ❌ | ✓ |
+1. **Reverse-BOM** — *"I have X, want Y"* → solver picks components from your
+   scrap pile and returns a complete build plan.
+2. **Forward-BOM** — *"I want Y"* → solver returns the BOM and tells you which
+   household devices typically contain those parts.
+3. **Discovery** — *"I have X"* → solver returns 5 buildable projects sourced
+   from the inventory you described.
+
+## Compared to
+
+| | ChatGPT | Kiwix / NOMAD offline | **ARC** |
+|---|:---:|:---:|:---:|
+| Offline-first | ❌ | ✓ | ✓ |
+| Reverse-BOM (junk → project) | hallucinates | ❌ | ✓ |
 | Inventory matching | ❌ | ❌ | ✓ |
 | Constrained generation (no fake parts) | ❌ | ❌ | ✓ |
-| Configurable firmware genome (auto-Configuration.h) | ❌ | ❌ | ✓ |
+| Configurable firmware genome | ❌ | ❌ | ✓ |
 | Substitution graph (no part X → use Y) | ❌ | ❌ | ✓ |
-| Vision inventory (фото полки → список) | partial | ❌ | ✓ |
+| Vision inventory (photo → list) | partial | ❌ | ✓ |
 
-## Возможности
+## Knowledge base
 
-### Три режима использования
+Structured offline knowledge graph, ~78k records, ~50 MB compressed.
 
-1. **Reverse-BOM** — «у меня X, хочу Y» → solver подберёт компоненты из имеющегося хлама и план сборки
-2. **Forward-BOM** — «хочу собрать Y» → solver выдаст BOM + где такие компоненты обычно найти в бытовой технике
-3. **Discovery** — «у меня X» → solver покажет 5 проектов которые из этого собираются
-
-### Структурированная knowledge base
-
-| Категория | Записей |
-|---|--:|
-| **Components** (canonical) | 55,414 |
-| **Substitutions** (chains) | 10,000 |
-| **Devices** (teardown patterns) | 5,000+ |
-| **Materials** (DIY recipes) | 1,242 |
-| **Tools** (with build-from-junk paths) | 716 |
-| **Safety** (hazard profiles) | 500 |
-| **Phenomena** (physics for solver) | 301 |
-| **Skills** (with prerequisites) | 203 |
-| **Goals** (top-level survival) | 50 |
-| **Regional profiles** (mains/radio/etc) | 50 |
-| **Firmware genome** (configurable templates) | 40 |
-| **Projects** (recipes) | 1,225+ |
+| Collection | Records |
+|---|---:|
+| Components (canonical) | 55,414 |
+| Substitutions (chains) | 10,000 |
+| Devices (teardown patterns) | 5,000+ |
+| Materials (DIY recipes) | 1,242 |
+| Tools (with build-from-scrap paths) | 716 |
+| Safety profiles | 500 |
+| Phenomena (physics for solver) | 301 |
+| Skills (with prerequisites) | 203 |
+| Goals (top-level objectives) | 50 |
+| Regional profiles (mains / radio bands / etc.) | 50 |
+| Firmware genome (configurable templates) | 40 |
+| Projects (recipes) | 1,225+ |
 | **Total** | **~78,869** |
 
-### Stack
-
-- **Backend:** FastAPI + Pydantic + httpx async
-- **Frontend:** htmx + минимум JS
-- **AI runtime:** DeepSeek V4 Pro (через Anthropic-compatible endpoint) или OpenAI/Anthropic
-- **Vision:** Replicate Qwen2-VL-7B (primary) + OpenAI GPT vision (fallback)
-- **KB:** in-memory CDPO Pydantic models, JSON-on-disk, Qdrant deferred to v2
-- **Validation:** schema + cross-reference + anti-laziness regex + firmware compile via simavr/avr-gcc/arm-none-eabi
-- **Deploy:** Docker → Fly.io
+The KB is **distributed via GitHub Releases**, not git — see [Quickstart](#quickstart).
 
 ## Quickstart
 
@@ -106,105 +115,123 @@ ARC — **автономный AI-ассистент для людей и соо
 git clone https://github.com/ORTODOX1/arc-computer.git
 cd arc-computer
 
-# Bootstrap server
+# 1. Bootstrap the dev server
 bash scripts/local_dev.sh
 
-# В другом терминале:
+# 2. Pull the KB tarball (~50 MB)
+curl -fsSL https://github.com/ORTODOX1/arc-computer/releases/latest/download/arc-kb.tar.zst -o /tmp/kb.tar.zst
+mkdir -p kb/output
+tar --use-compress-program=zstd -xf /tmp/kb.tar.zst -C kb/output/
+
+# 3. Verify
 curl http://127.0.0.1:8181/health
 curl http://127.0.0.1:8181/kb/stats | jq
 
-# Открыть в браузере
+# 4. Open the UI
 xdg-open http://127.0.0.1:8181/
 ```
 
-Knowledge base **не лежит в этом репо** — слишком большая (300 MB). Скачивается отдельно через GitHub Releases:
+## Stack
 
-```bash
-# Скачать последний KB-snapshot
-curl -fsSL https://github.com/ORTODOX1/arc-computer/releases/latest/download/ark-kb.tar.zst -o /tmp/kb.tar.zst
-mkdir -p kb/output
-tar --use-compress-program=zstd -xf /tmp/kb.tar.zst -C kb/output/
-```
+- **Backend** — FastAPI · Pydantic v2 · httpx async
+- **Frontend** — htmx · Jinja2 · minimal JS
+- **AI runtime** — DeepSeek V4 Pro (Anthropic-compatible endpoint) · OpenAI · Anthropic
+- **Vision** — Replicate Qwen2-VL-7B (primary) + OpenAI GPT vision (fallback)
+- **KB** — in-memory CDPO Pydantic models · JSON-on-disk · Qdrant deferred to v2
+- **Validation** — schema · cross-reference · anti-laziness regex · firmware compile via `simavr` / `avr-gcc` / `arm-none-eabi-gcc`
+- **Deploy** — Docker → Fly.io
 
-## Архитектура
+## Architecture
 
 ```
 arc-computer/
-├── PRD.md                  ← master product requirements
-├── README.md
+├── PRD.md                       master product requirements (read first)
+├── README.md                    you are here
 │
-├── product/server/         ← FastAPI runtime
-│   ├── main.py             ← app factory
-│   ├── api/routes.py       ← /, /app, /solve, /health, /kb/stats
-│   ├── vision/client.py    ← Replicate + OpenAI fallback
-│   ├── solver/engine.py    ← Anthropic-compat client + RAG
-│   ├── kb/                 ← CDPO loaders + indices
-│   ├── templates/          ← Jinja2 (landing + solver UI)
-│   └── tests/              ← pytest
+├── product/
+│   ├── server/                  FastAPI runtime
+│   │   ├── main.py
+│   │   ├── api/routes.py        / · /app · /solve · /health · /kb/stats
+│   │   ├── vision/client.py     Replicate + OpenAI fallback
+│   │   ├── solver/engine.py     Anthropic-compatible client + RAG
+│   │   ├── kb/                  CDPO loaders + indices
+│   │   ├── templates/           Jinja2 (landing + solver UI)
+│   │   └── tests/               pytest
+│   ├── landing/                 marketing site (HTML)
+│   ├── hardware/                BOM, KiCad refs, STL refs
+│   └── firmware-templates/
 │
 ├── kb/
-│   ├── STRATEGY.md         ← two-zone storage plan
+│   ├── STRATEGY.md              two-zone storage plan
 │   ├── pipeline/
-│   │   ├── schemas/cdpo.py ← canonical Pydantic data model
-│   │   ├── extractors/     ← LLM extraction adapters + 4 prompts
-│   │   └── scripts/        ← scrapers, validators, packagers
-│   └── output/             ← .gitignore'd (300 MB KB content via Releases)
+│   │   ├── schemas/cdpo.py      canonical Pydantic data model
+│   │   ├── extractors/          LLM extraction adapters + prompts
+│   │   └── scripts/             scrapers, validators, packagers
+│   └── output/                  generated KB (gitignored, ~50 MB via Releases)
 │
-├── product/landing/        ← marketing site (HTML)
-├── product/hardware/       ← BOM, KiCad refs, STL refs
-├── product/firmware-templates/
+├── agents/                      per-AI agent assignments
+│   ├── kimi/                    curation tasks (Kimi K2)
+│   ├── deepseek/                bulk extraction (DeepSeek V4)
+│   └── claude/                  production code (Claude Sonnet)
 │
-├── agents/                 ← per-AI agent assignments
-│   ├── kimi/               ← curation tasks (Kimi K2 subscription)
-│   ├── deepseek/           ← bulk extraction (DeepSeek V4)
-│   └── claude/             ← production code (Claude Sonnet)
-│
-├── marketing/              ← Twitter thread, video script, pitch
-├── brand/                  ← naming, palette, voice
-└── docs/                   ← deployment, firmware validation guides
+├── marketing/                   launch assets (Twitter thread, video script, pitch)
+├── brand/                       naming, palette, voice
+└── docs/                        deployment, firmware validation guides
 ```
-
-## Three-agent build strategy
-
-ARC's KB and infrastructure были собраны за один день через **трёх AI-агентов параллельно**:
-
-1. **Kimi K2** (subscription) — top-quality curation: 73,500+ records (phenomena, materials, tools, components, devices, substitutions, safety, firmware-genome)
-2. **DeepSeek V4 Pro** (~$3 API) — bulk extraction из iFixit/Instructables/Hackaday: 2,340+ records
-3. **Claude Sonnet 4.5** (subscription) — production code (8 tracks: server, vision client, KB integration, validation pipeline, OSS artifacts, firmware emulator, e2e tests, deploy automation)
-
-См. [`agents/`](agents/) для конкретных задач каждого.
-
-## Roadmap
-
-- [x] **v0.1 alpha** — server scaffold, 78k records KB, validation pipeline, OSS artifacts
-- [ ] **v0.1 launch** — domain registration, Fly.io deploy, viral launch (Twitter + HN)
-- [ ] **v0.2** — SD-card $99 product, premium content packs (Soviet/Marine/HAM/Homestead)
-- [ ] **v0.3** — Pi 5 hardware kit $499 with pre-loaded KB, mesh federation, vision inventory v2
-- [ ] **v1.0** — multi-language KB, Tier 3 premium hardware, B2B licensing for NGOs
 
 ## Documentation
 
 | Document | What |
 |---|---|
-| [`PRD.md`](PRD.md) | Master product requirements — read first |
+| [`PRD.md`](PRD.md) | Master product requirements — start here |
 | [`brand/BRAND.md`](brand/BRAND.md) | Naming, palette, founder narrative |
-| [`kb/STRATEGY.md`](kb/STRATEGY.md) | Storage tiering (hot zone on device, cold on dev disk) |
+| [`kb/STRATEGY.md`](kb/STRATEGY.md) | KB storage tiering (hot zone on device, cold on dev disk) |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Fly.io setup, deploy script, rollback |
-| [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | simavr/qemu/avr-gcc setup |
-| [`marketing/video/DEMO-SCRIPT.md`](marketing/video/DEMO-SCRIPT.md) | Viral launch video shot list |
+| [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | `simavr` / `qemu` / `avr-gcc` setup |
+| [`marketing/video/DEMO-SCRIPT.md`](marketing/video/DEMO-SCRIPT.md) | Launch video shot list |
+
+## Roadmap
+
+- [x] **v0.1 alpha** — server scaffold, 78k KB records, validation pipeline, OSS artifacts
+- [ ] **v0.1 launch** — domain registration, Fly.io deploy, public launch (Hacker News + Twitter)
+- [ ] **v0.2** — SD-card pre-loaded "ARC Starter" $99, premium content packs (Marine / HAM / Homestead / 3D-printer salvage)
+- [ ] **v0.3** — Pi 5 hardware kit $499 with pre-loaded KB, mesh federation, vision inventory v2
+- [ ] **v1.0** — multi-language KB, premium hardware tier, B2B licensing for NGO field operations
+
+## Three-agent bootstrap
+
+ARC's knowledge base and codebase were assembled in a single weekend using
+three AI agents in parallel — see [`agents/`](agents/) for each agent's brief.
+
+| Agent | Role | Output |
+|---|---|---|
+| **Kimi K2** (subscription) | KB curation | 73,500+ records (phenomena · materials · tools · components · devices · substitutions · safety · firmware-genome) |
+| **DeepSeek V4 Pro** (~$4 API) | Bulk extraction | 2,340+ records from iFixit · Instructables · Hackaday |
+| **Claude Sonnet 4.5** (subscription) | Production code | Server · vision client · KB integration · validation pipeline · OSS artifacts · firmware emulator · e2e tests · deploy automation |
+
+## Audience
+
+ARC is built for people who already build things themselves:
+
+- 🏡 Off-grid homesteaders (US / EU / AU / CA rural)
+- ⛵ Sailors and liveaboards
+- 🛠️ Remote-region engineers and repair shops
+- 📰 Field NGO staff, journalists, expedition crews
+- 🌱 Self-reliance / homestead communities
+- 🔌 Maker hobbyists and hardware tinkerers
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Key points:
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Highlights:
 
-- **Code style:** ruff (Python 3.13+)
+- **Code style** — `ruff` (Python 3.13+)
 - **Tests required** for new features
 - **KB entries** follow [`kb/pipeline/schemas/cdpo.py`](kb/pipeline/schemas/cdpo.py) (Component-Device-Project Ontology)
 - **Conventional Commits**
 
-Issue templates: [bug](.github/ISSUE_TEMPLATE/bug.md) · [feature](.github/ISSUE_TEMPLATE/feature.md) · [knowledge-base entry](.github/ISSUE_TEMPLATE/kb-entry.md).
+Issue templates: [bug](.github/ISSUE_TEMPLATE/bug.md) · [feature](.github/ISSUE_TEMPLATE/feature.md) · [knowledge-base entry](.github/ISSUE_TEMPLATE/kb-entry.md)
 
-Community standards: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) (Contributor Covenant 2.1). Security disclosures: [`SECURITY.md`](SECURITY.md).
+Community standards: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) (Contributor Covenant 2.1) · Security disclosures: [`SECURITY.md`](SECURITY.md)
 
 ## License
 
@@ -214,19 +241,20 @@ Community standards: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) (Contributor Cov
 | Knowledge-base content | CC-BY-4.0 | [`LICENSE-KB`](LICENSE-KB) |
 | Adapters and scrapers | MIT | [`LICENSE-ADAPTERS`](LICENSE-ADAPTERS) |
 
-Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit content under CC-BY-NC-SA, manufacturer datasheets, etc) — respect upstream licenses when redistributing.
-
-## Sponsors / Funding
-
-- GitHub Sponsors: planned
-- One-time funding: BTC / ETH (post-launch)
+Per-record provenance metadata in the KB JSON files indicates upstream sources
+(iFixit content under CC-BY-NC-SA, manufacturer datasheets, etc.) — respect
+the upstream licence when redistributing.
 
 ## Stay in touch
 
-- Domain: `arc.computer` (registration in progress)
-- Twitter: `@arccomputer` (registration in progress)
-- Discord: planned post-launch
-- Email: founder@arc.computer (placeholder)
+- **Domain** — `arc.computer` *(registration in progress)*
+- **Twitter** — `@arccomputer` *(registration in progress)*
+- **Discord** — *planned post-launch*
+- **Email** — `founder@arc.computer` *(placeholder)*
+
+## Star history
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ORTODOX1/arc-computer&type=Date)](https://star-history.com/#ORTODOX1/arc-computer&Date)
 
 ---
 
@@ -234,6 +262,6 @@ Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit
 
 **Built for people who build, fix, and grow things — anywhere, anytime.**
 
-[Read PRD](PRD.md) · [Get involved](CONTRIBUTING.md) · [Report security issue](SECURITY.md)
+[Read the PRD](PRD.md) · [Get involved](CONTRIBUTING.md) · [Report a security issue](SECURITY.md)
 
 </div>

@@ -158,7 +158,7 @@
 
 ---
 
-## Reply-templates для типичных комментариев
+## Reply templates for common comments
 
 | Comment type | Reply |
 |---|---|

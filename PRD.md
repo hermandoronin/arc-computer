@@ -1,4 +1,4 @@
-# ARK — Product Requirements Document
+# ARC.computer — Product Requirements Document
 
 > **Master document.** Everything else (briefs, plans, tasks) derives from here.
 > Last updated: 2026-04-29.
@@ -40,7 +40,7 @@ The product is useful every Tuesday for anyone living in conditions where you ca
 
 Project NOMAD released as free, open-source, comprehensive offline AI server (Wikipedia + Ollama + Kolibri + Qdrant + RAG). 2,294 GitHub stars in one day, #1 trending. **Free knowledge-box-with-AI is solved.** Charging $1500 for ours-but-prettier is dead.
 
-**Implication:** ARK competes by **doing what NOMAD does NOT** — reverse BOM solver, configurable firmware genome, vision inventory, substitution graph. NOMAD = static knowledge + chat. ARK = dynamic builder.
+**Implication:** ARC competes by **doing what NOMAD does NOT** — reverse BOM solver, configurable firmware genome, vision inventory, substitution graph. NOMAD = static knowledge + chat. ARC = dynamic builder.
 
 ### 2.2 80,000 records in v0.1 was overscoping
 
@@ -170,44 +170,32 @@ Photo upload  ───────────▶ /api/solve
 USER  ◀───────── htmx HTML response (BOM, teardown, code, schematic)
 ```
 
-### 5.3 Folder structure (after 2026-04-29 reorg)
+### 5.3 Folder structure
 
 ```
-/home/user/aisurvive/
-├── PRD.md                           ← this file
-├── README.md                        ← public-facing
+arc-computer/
+├── PRD.md                           this file
+├── README.md                        public-facing
 ├── agents/
-│   ├── kimi/
-│   │   ├── TASK.md                  ← what Kimi does
-│   │   └── briefs/                  ← all Kimi briefs (mega/firmware/etc)
-│   ├── deepseek/
-│   │   ├── TASK.md                  ← what DeepSeek does
-│   │   └── briefs/
-│   ├── claude/
-│   │   ├── TASK.md                  ← what Claude does (production code)
-│   │   └── briefs/
-│   └── shared/                      ← schemas, prompts shared by all agents
+│   ├── kimi/TASK.md                 Kimi's assignment
+│   ├── deepseek/TASK.md             DeepSeek's assignment
+│   └── claude/TASK.md               Claude's assignment
 ├── kb/
-│   ├── STRATEGY.md                  ← KB storage + tiering strategy
-│   ├── pipeline/                    ← extractors, schemas (was kb-pipeline/)
-│   ├── output/                      ← generated KB (was kb-final/)
-│   └── output-wip/                  ← work-in-progress
+│   ├── STRATEGY.md                  KB storage + tiering strategy
+│   ├── pipeline/                    extractors, schemas
+│   └── output/                      generated KB (gitignored, distributed via Releases)
 ├── product/
-│   ├── server/                      ← FastAPI runtime
-│   ├── landing/                     ← marketing site
-│   ├── hardware/                    ← BOM, KiCad, STL
+│   ├── server/                      FastAPI runtime
+│   ├── landing/                     marketing site
+│   ├── hardware/                    BOM, KiCad, STL
 │   └── firmware-templates/
 ├── marketing/
-│   ├── kickstarter/                 ← pitch (legacy, may not Kickstarter anymore)
+│   ├── kickstarter/
 │   ├── twitter/
 │   └── video/
-├── brand/
-│   └── BRAND.md
-└── archive/
-    └── docs-v1/                     ← old planning docs preserved
+└── brand/
+    └── BRAND.md
 ```
-
-**Backward-compat symlinks** at root (`kb-pipeline → kb/pipeline`, `server → product/server`, `docs/ → links`, etc.) so existing code keeps working.
 
 ---
 
@@ -235,7 +223,7 @@ Goal: ship working demo on `ark.computer` + viral video + public open-source Git
 
 Goal: monetize attention.
 
-- SD-card pre-loaded "ARK Starter" $99 → 100-200 sold
+- SD-card pre-loaded "ARC Starter" $99 → 100-200 sold
 - Premium content packs $49 each (Sailor, HAM, Soviet, Homestead, 3D-printer)
 - GitHub Sponsors / Patreon recurring
 
@@ -261,7 +249,7 @@ Goal: monetize attention.
 
 ## 7. Unit economics (v0.2 monetization)
 
-### SD-card "ARK Starter" $99
+### SD-card "ARC Starter" $99
 
 | Line | $ |
 |---|---|
@@ -356,16 +344,16 @@ Hardware is low-margin until volume. Real revenue = SD-cards + content packs + r
 
 ## 10. Open questions before launch
 
-- [ ] Domain registered? (`ark.computer` / `arkcodex.com` / `getark.io`)
-- [ ] Twitter handle? (`@arkcomputer` or alternative)
-- [ ] GitHub org public yet? (`ark-codex` or `getark`)
-- [ ] Estonia OÜ application status? (e-Residency)
-- [ ] Lemon Squeezy account ready for accept payments?
-- [ ] Trademark search done? ($300-1500)
-- [ ] Domain squatting protection? (Buy `.com / .io / .computer / .ai` all)
-- [ ] Founder identity verification — LinkedIn, GitHub history, public references
+- [ ] Domain registered (`arc.computer` / `arccomputer.io`)
+- [ ] Twitter / X handle (`@arccomputer` or alternative)
+- [x] GitHub repository public — `github.com/ORTODOX1/arc-computer`
+- [ ] Legal entity for monetization (Estonia OÜ via e-Residency or similar)
+- [ ] Payment processor — Lemon Squeezy / Stripe with Merchant of Record
+- [ ] Trademark search ($300–1,500)
+- [ ] Domain squatting protection — secure `.com / .io / .computer / .ai`
+- [ ] Founder identity — LinkedIn, GitHub history, public references
 
-These are blockers for monetization. Build product first; legal infrastructure parallel.
+Blockers for monetization, not for v0.1 product launch. Build product first; legal infrastructure runs in parallel.
 
 ---
 
@@ -373,14 +361,13 @@ These are blockers for monetization. Build product first; legal infrastructure p
 
 | Tool | Status | Notes |
 |---|---|---|
-| Kimi Code CLI | ✓ installed, ✓ logged in (Allegretto tier, K2.6 model) | Desktop launcher: `~/Desktop/Kimi CLI.desktop` |
-| DeepSeek (via Claude Code wrapper) | ✓ installed `~/.local/bin/deepseek-cli` | Desktop launcher: `~/Desktop/DeepSeek CLI.desktop` |
-| OpenRouter API key | ✓ in `~/.claude/mcp-servers/multi-ai/.env` | DeepSeek V4 Pro confirmed working |
-| Anthropic OAuth | ✓ this session | For Claude Code direct |
-| Replicate / OpenAI | ❌ not yet | For runtime vision endpoint |
-| Domain | ❌ not yet | Step 1 next week |
-| Lemon Squeezy | ❌ not yet | Step 2 |
-| Estonia OÜ | ❌ not yet | Background track 4 weeks |
+| Kimi K2 CLI | ✓ installed and logged in | KB curation |
+| DeepSeek V4 Pro CLI | ✓ installed (`~/.local/bin/deepseek-cli`) | Anthropic-compatible endpoint at `api.deepseek.com/anthropic` |
+| Claude Code | ✓ active | Production code authoring |
+| Replicate / OpenAI vision | ❌ pending | Runtime vision endpoint for `/solve` photo upload |
+| Domain `arc.computer` | ❌ pending | Pre-launch step 1 |
+| Payment processor | ❌ pending | Pre-launch step 2 |
+| Legal entity | ❌ pending | Background track, several weeks |
 
 ---
 
@@ -397,8 +384,7 @@ These are blockers for monetization. Build product first; legal infrastructure p
 | `marketing/twitter/THREAD-VIRAL.md` | Twitter launch thread |
 | `marketing/kickstarter/PITCH.md` | Kickstarter copy (probably won't use) |
 | `product/hardware/bom/PROTOTYPE-BOM.md` | Hardware BOM |
-| `brand/BRAND.md` | Naming, palette, founder story |
-| `archive/docs-v1/` | Historical planning docs (consult for context, don't trust as current) |
+| `brand/BRAND.md` | Naming, palette, voice |
 
 ---
 

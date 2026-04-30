@@ -1,128 +1,85 @@
-# KIMI — TASK ASSIGNMENT
+# Kimi — Task assignment
 
-> **Адресат:** Kimi K2 через подписку Allegretto на kimi.com. Запускается через рабочий стол `Kimi CLI`. Working dir: `/home/user/aisurvive/`.
->
-> **Роль:** master curator. Top-quality records которые нельзя получить через bulk batch.
->
-> **Единица успеха:** 200-300 записей **исключительного качества** уровня ARRL Handbook / Forrest Mims notebooks. Не объём — глубина.
-
----
-
-## 1. Что НЕ твоя задача
-
-Не пытайся сделать 80,000 records. У DeepSeek (через OpenRouter) другая task — bulk generation. Ты делаешь то что DeepSeek дешёвый не вытянет качественно.
-
-Не извлекай данные из iFixit guides — это работа DeepSeek extractor. Ты пишешь from-scratch.
-
-Не пиши production code (server, vision, packaging) — это Claude task.
-
-Не делай review-gate с 5 records → ждать → 5 records. Ты можешь работать **порциями по 20-50 records**, потом пользователь ревьюит. Внутри одной такой порции — full output.
+> **Recipient** — Kimi K2 (subscription tier).
+> **Working dir** — repository root.
+> **Role** — master curator. Top-quality records that can't be produced via bulk batch.
+> **Success metric** — 200–300 records of *exceptional* quality (Forrest Mims notebook level). Depth, not volume.
 
 ---
 
-## 2. Что твоя задача
+## 1. Out of scope
 
-### Tier 1 — Firmware-genome configurators (топ-30 fwgen templates)
+- Don't try to generate 80,000 records. DeepSeek handles bulk. Kimi handles what bulk can't deliver well.
+- Don't extract from iFixit guides — that's the DeepSeek extractor's job. Kimi writes from scratch.
+- Don't write production code (server, vision, packaging) — that's Claude's track.
+- Don't review-gate with 5-record samples. Work in batches of 20–50; the user reviews afterwards.
 
-Это **killer feature** ARK — solver авто-генерирует working Configuration.h / printer.cfg / device.yaml под user's specific hardware.
+## 2. In scope
 
-Подробная спецификация в `agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md` PART 3. Прочитай его полностью.
+### Tier 1 — Firmware-genome configurators (top-30 templates)
 
-**Объём:** 30 fwgen templates × 1-2 hours each = 30-60 hours work.
+The killer feature: ARC auto-generates a working `Configuration.h` / `printer.cfg` / `device.yaml` for the user's specific hardware.
 
-**Список:**
-1. fwgen:marlin-2x → Configuration.h + Configuration_adv.h + platformio.ini (priority 1)
-2. fwgen:klipper → printer.cfg + mcu.cfg (priority 1)
-3. fwgen:openwrt → /etc/config/wireless + network + dhcp (priority 1)
-4. fwgen:tasmota → Web UI export JSON (priority 1)
-5. fwgen:esphome → device.yaml (priority 1)
-6. fwgen:meshtastic → device.yaml + region.yaml (priority 1)
-7. fwgen:betaflight → CLI dump
-8. fwgen:inav → CLI dump
-9. fwgen:ardupilot → Parameters file
-10. fwgen:px4 → params YAML
-11. fwgen:vesc → vesc_config.xml
-12. fwgen:odrive → odrive_config.json
-13. fwgen:wled → cfg.json
-14. fwgen:retroarch → retroarch.cfg
-15. fwgen:openipc → system.bin config
-16. fwgen:grbl → config.h (compile-time)
-17. fwgen:openevse → wifi.json
-18. fwgen:diy-bms → user_config.h
-19. fwgen:tasmota-irhvac (sub-feature) → IR codes config
-20. fwgen:tasmota-zigbee → zigbee config
-21. fwgen:openplotter (marine) → boat configs
-22. fwgen:reach-rs (RTK GPS) → params
-23. fwgen:digitspider (security cam) → config
-24. fwgen:libreelec → kodi config
-25. fwgen:dietpi → automation script
-26. fwgen:armbian → board-tweaks
-27. fwgen:teensy-audio → DSP config
-28. fwgen:vesc-firmware-bldc-tool → motor config
-29. fwgen:openocd → debug config
-30. fwgen:platformio → custom board config
+**Volume:** 30 firmware-generator templates × 1–2 hours each.
 
-**Каждая запись:**
-- JSON по `FirmwareConfigGenerator` schema (см. KIMI-FIRMWARE-GENOME.md PART 4)
-- Полный Jinja2 template (200-500 lines content)
-- Полный `user_input_schema` (JSON Schema)
-- 2-3 testing examples (input → expected output hash)
-- Cross-link к существующему `fwo:` record
-- Provenance с git commit hash upstream repo
+**Targets** (priority 1 marked):
+1. `fwgen:marlin-2x` — `Configuration.h` + `Configuration_adv.h` + `platformio.ini` *(p1)*
+2. `fwgen:klipper` — `printer.cfg` + `mcu.cfg` *(p1)*
+3. `fwgen:openwrt` — wireless / network / dhcp *(p1)*
+4. `fwgen:tasmota` — Web UI export JSON *(p1)*
+5. `fwgen:esphome` — `device.yaml` *(p1)*
+6. `fwgen:meshtastic` — `device.yaml` + `region.yaml` *(p1)*
+7. `fwgen:betaflight` — CLI dump
+8. `fwgen:inav` — CLI dump
+9. `fwgen:ardupilot` — parameters file
+10. `fwgen:px4` — params YAML
+11. `fwgen:vesc` — `vesc_config.xml`
+12. `fwgen:odrive` — `odrive_config.json`
+13. `fwgen:wled` — `cfg.json`
+14. `fwgen:retroarch` — `retroarch.cfg`
+15. `fwgen:openipc` — `system.bin` config
+16. `fwgen:grbl` — `config.h` (compile-time)
+17. `fwgen:openevse` — `wifi.json`
+18. `fwgen:diy-bms` — `user_config.h`
+19. `fwgen:tasmota-irhvac` — IR codes config
+20. `fwgen:tasmota-zigbee` — zigbee config
+21. `fwgen:openplotter` (marine) — boat configs
+22. `fwgen:reach-rs` (RTK GPS) — params
+23. `fwgen:libreelec` — kodi config
+24. `fwgen:dietpi` — automation script
+25. `fwgen:armbian` — board tweaks
+26. `fwgen:teensy-audio` — DSP config
+27. `fwgen:platformio` — custom board config
 
-**Where to write:** `kb/output/firmware-genome/fwgen/fwgen_<id>.json`
+**Each record contains:**
+- JSON conforming to the `FirmwareConfigGenerator` schema
+- Full Jinja2 template (200–500 lines of content)
+- Full `user_input_schema` (JSON Schema)
+- 2–3 testing examples (input → expected output hash)
+- Cross-link to an existing `fwo:` record
+- Provenance with upstream-repo git commit hash
 
-### Tier 2 — Soviet/PostSoviet pack (300 records — наш unique moat)
+**Output location:** `kb/output/firmware-genome/fwgen/fwgen_<id>.json`
 
-Никто из конкурентов не имеет structured KB по советской технике. **Это наш moat в RU/CIS market**.
+### Tier 2 — Regional content packs (300 records)
 
-**Объём:** 300 records (100 devices + 100 projects + 100 components)
+Region-specific equipment, naming, and substitution chains for places where the global iFixit / Hackaday corpus is sparse — coastal hardware, regional manufacturer codes, local brand part numbers, climate-specific failure modes.
 
-**Девайсы (100):**
-- Телевизоры: Рубин-714, Электрон-451Д, Юность-Ц404, Радуга-715
-- Магнитофоны: Маяк-203, Электроника-302, Юпитер-203, Олимп-005, Ростов-101
-- Радиоприёмники: ВЭФ-202 (готов в seed), Океан-209, Спидола-230, Альпинист-321, Селена B-216, Меридиан-235
-- Осциллографы: С1-67, С1-94, С1-102, С1-65А
-- Измерительная техника: Ц43, Ц4315, В7-26, В3-38, Ч3-66, Г4-102
-- Станки и автоматика: МПК-1, СПУ-100, ЭВМ Электроника-60
-- Бытовая: ЗИЛ-Москва (холодильники), Вязьма (стиральные), Чайка (швейные с электроникой)
-- Связь: радиостанция Лен-В, военная Р-105
+**Volume:** 300 records (100 devices + 100 projects + 100 components).
 
-**Проекты (100) — restoration + modernization рецепты:**
-- Замена УНЧ ламповых на полупроводниковые с сохранением звука
-- Цифровая модернизация аналоговых стендов
-- Восстановление магнитофонных лентопротяжек
-- Conversion советских осциллографов в цифровые scope-as-DAQ
-- Использование МПК-1 как современного PLC
-- Самосборные ИБП на советских ферритовых сердечниках
-- Восстановление ЭЛТ-мониторов после высыхания электролитов
-- Перевод вентиляторных систем СССР на ШИМ-управление через ESP32
+**Output location:** `kb/output/packs/<region>/<devices|projects|components>/`
 
-**Компоненты (100) — советские → западные эквиваленты:**
-- Транзисторы: КТ315, КТ3107, КТ502, КТ503, КТ602, КТ805, КТ818, КТ819 (есть seed для KT315)
-- Микросхемы: К140УД6 (LM741), К140УД7, К155ЛА3 (7400), К155ЛА4, К561ИЕ8 (CD4017), К561ЛА7 (CD4011)
-- Лампы: 6П3С (6L6), 6Н2П (12AX7), 6Ж1П (6CB6), 6Н3П (12AX7-substitute), 6П14П (EL84 — done), Г807, ГУ-50
-- Диоды: Д9 (1N34A), Д18, Д814, Д226, КД105, КД201
-- Конденсаторы: К50-3, К50-6, К50-16, КМ-5, КМ-6, бумажные МБМ
-- Стабилитроны: Д814А-Д, КС147
+### Tier 3 — Safety database (200 hazard profiles)
 
-**Где писать:** `kb/output/packs/pack-soviet/<devices|projects|components>/`
+Five seed records exist (`b4-safety/`). Expand to 200 along the structure used in those seeds — real OSHA/NFPA/EU regulatory references, real fatality statistics, common misconceptions debunked.
 
-**Источники:** Старые «Радио» 1960-2000, «Радиолюбитель», «Моделист-конструктор», справочники «Транзисторы для бытовой аппаратуры», «Микросхемы серии К155», vrtp.ru forum threads.
+**Volume:** 200 hazard profiles × ~30 min each.
 
-### Tier 3 — Safety database deep (200 hazard profiles)
+**Output location:** `kb/output/extracted/safety/`
 
-Уже есть 5 в seed (`b4-safety/`). Расширь до 200 по mega-brief Section 11 Tier A структуре.
+### Tier 4 — Demo scenarios (20 end-to-end examples)
 
-**Объём:** 200 hazard profiles × ~30 min each = 100 hours.
-
-Каждый профиль уровня `haz:hv-capacitor-microwave.json` — с реальными OSHA/NFPA/EU/RU regulatory references, real fatality stats, common misconceptions debunked.
-
-**Где писать:** `kb/output/extracted/safety/`
-
-### Tier 4 — Killer demo scenarios (20 end-to-end examples)
-
-Это для виральности. Каждый scenario — полный flow юзер-input → ARK output:
+Each scenario is a complete user-input → ARC-output pair, used for the launch demo and as solver evaluation harness.
 
 ```yaml
 - id: scenario:irrigation-from-printers
@@ -138,67 +95,51 @@
     safety_warnings: [...]
 ```
 
-**Список 20 сценариев** см. в KIMI-MEGA-BRIEF.md или предложи свои на основе ARK use cases (3D-printer from broken Voron parts, wind generator from microwave magnets, IV from aquarium tubing, etc).
-
-**Где писать:** `kb/output/extracted/demo-scenarios/`
-
----
+**Output location:** `kb/output/extracted/demo-scenarios/`
 
 ## 3. Quality bar
 
-Каждая запись должна пройти все следующие gates:
+Every record passes all of these gates:
 
-✅ Schema validation через CDPO Pydantic (см. `kb/pipeline/schemas/cdpo.py`)
-✅ Никаких generic placeholders ("remove screws", "internal", "consult professional", "see datasheet" — auto-reject)
-✅ Numeric specs реальные (не "high voltage" → "~2100V DC", не "large capacitor" → "1.0-1.2µF, 2.1kV rated")
-✅ Provenance с реальным source citation
-✅ Cross-references к существующим ARK entities резолвятся
-✅ Минимальная длина soблюдена per type (см. mega-brief Section 8.2)
-✅ Real engineering — не Wikipedia summary
-
----
+- ✅ Schema validation against CDPO Pydantic models (`kb/pipeline/schemas/cdpo.py`)
+- ✅ No generic placeholders ("remove screws", "internal", "consult professional", "see datasheet" → auto-reject)
+- ✅ Numeric specs are concrete (not "high voltage" → "~2,100 V DC"; not "large capacitor" → "1.0–1.2 µF, 2.1 kV rated")
+- ✅ Provenance with a real source citation
+- ✅ Cross-references to existing entities resolve
+- ✅ Minimum length per record type met
+- ✅ Real engineering content — not a Wikipedia summary
 
 ## 4. Process
 
-1. Прочитай `agents/kimi/briefs/KIMI-MEGA-BRIEF.md` end-to-end (если ещё не читал).
-2. Прочитай `agents/kimi/briefs/KIMI-FIRMWARE-GENOME.md` end-to-end.
-3. Прочитай `kb/pipeline/schemas/cdpo.py` (data model — обязательно).
-4. Read `kb/STRATEGY.md` (output paths + storage strategy).
-5. Начни с **Tier 1 / Firmware Genome** — это самое импактфул для product.
-6. После каждых 20-50 records — пиши progress в `agents/kimi/PROGRESS.jsonl` (one line JSON per batch с timestamp + count + categories).
-7. Если упираешься в weekly subscription limit — сохрани WIP в `kb/output-wip/` и выйди gracefully.
-8. Когда хочешь продолжить после паузы — `cat agents/kimi/PROGRESS.jsonl` чтобы понять где остановился.
+1. Read `kb/pipeline/schemas/cdpo.py` (data model — required)
+2. Read `kb/STRATEGY.md` (output paths and storage strategy)
+3. Start with **Tier 1 / Firmware Genome** — highest impact for the product
+4. After each batch of 20–50 records, write progress to `agents/kimi/PROGRESS.jsonl` (one JSON line per batch with timestamp + count + categories)
+5. If you hit a weekly subscription limit, save WIP under `kb/output-wip/` and exit gracefully
+6. To resume after a pause, read `agents/kimi/PROGRESS.jsonl` to see where you stopped
 
----
+## 5. Forbidden behaviours
 
-## 5. Что НЕ работать (forbidden)
+- ❌ Don't write to `kb/output/extracted/devices/` or `extracted/projects/` — that's DeepSeek's territory
+- ❌ Don't write production code (server, vision, validation scripts) — Claude's track
+- ❌ Don't reorganise project folders — already finalised
+- ❌ Don't modify the CDPO schema without coordination — it's used by all agents
+- ❌ Don't go outside the in-scope topics in PRD §4 (power / water / food / comms / perimeter non-lethal / repair / tools / medical-reference / salvage)
+- ✅ Hard limits in PRD §4 are strict: weapons, drug synthesis, unlicensed RF transmission, lockpicking, surveillance, anything illegal in the user's jurisdiction
 
-- ❌ Не работай в `kb/output/extracted/devices/` или `extracted/projects/` — это территория DeepSeek для bulk extraction
-- ❌ Не пиши production code (server, vision, validation scripts) — это Claude task
-- ❌ Не реорганизовывай папки проекта — это уже сделано
-- ❌ Не модифицируй CDPO schema без согласования — она используется всеми агентами
-- ❌ Не выходи за in-scope topics из PRD §4: power/water/food/comms/perimeter/repair/tools/medical-reference/salvage. Engineering content with safety warnings, not corporate-speak deflection.
-- ✅ Hard limits из PRD §4 соблюдай: weapons / drug-synthesis / unlicensed-RF / lockpicking / surveillance / anything illegal in user jurisdiction
+## 6. Why this matters
 
----
+Each curated record directly increases the value of the premium-content layer:
 
-## 6. Что ты получаешь
+- Firmware-genome configurators → each one underpins a $49 content pack
+- Regional packs → standalone $49 product, regional users willing to pay
+- Safety database → legal protection + customer trust
+- Demo scenarios → launch-day demo material
 
-**Каждая записанная запись прямо повышает revenue потенциал ARK.**
-
-- Firmware-genome configurators → каждый = $49 premium content pack value
-- Soviet pack → $49 standalone product, ~1000 RU/CIS users готовы платить
-- Safety DB → legal protection + customer trust
-- Demo scenarios → виральный материал для Twitter/HN
-
-**Цель Kimi:** к моменту launch (D+30) выдать ~300 records которые solver использует для killer-demo flow + premium content pack groundwork.
-
----
+**Goal:** by the v0.1 launch, deliver ~300 records that the solver actively uses for the headline demo flow plus the premium-content groundwork.
 
 ## 7. Start
 
-Begin Tier 1 с fwgen:marlin-2x. Сделай **полный** template (~500 lines Jinja2) с обоими Configuration.h и Configuration_adv.h. Включи 3 test examples с реальными user_inputs.
+Begin Tier 1 with `fwgen:marlin-2x`. Produce the **full** template (~500 lines of Jinja2) covering both `Configuration.h` and `Configuration_adv.h`. Include three test examples with realistic `user_input` payloads.
 
-Не показывай мне sample прежде full template. Generate full. Save. Move to fwgen:klipper. Repeat.
-
-Поехали.
+Don't show samples before completing the full template. Generate full → save → move to `fwgen:klipper` → repeat.

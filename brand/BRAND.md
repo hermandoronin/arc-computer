@@ -1,83 +1,86 @@
-# BRAND
+# Brand
 
-## Имя продукта
+## Name
 
-**ARK** — главный продукт (устройство).
-**CODEX** — внутренняя knowledge engine (упоминается во всём marketing).
+**ARC** — primary product name (also the device).
+**CODEX** — internal knowledge engine name (referenced throughout marketing copy).
 
-> «ARK runs CODEX. CODEX remembers everything.»
+> *"ARC runs CODEX. CODEX remembers everything."*
 
-### Почему ARK
-- Универсально читается во всех языках, 3 буквы, эмоционально цепляет
-- Мифологический рефрен (Ноев ковчег) бесплатно даёт narrative
-- Совпадает с темой: «built your ARK before the flood»
-- Хорошо для logo (3 буквы — простая typography mark)
+### Why "ARC"
 
-### Почему CODEX
-- Передаёт «knowledge inside»
-- Mythical/scholarly связки — survivors уважают эстетику Codex Atlanticus, Voynich, etc
-- Удобно для вторичного маркетинга («the CODEX has 50 000 entries»)
+- Pronounceable in every language, three letters, emotionally resonant
+- Connotes preservation, archive, and continuity without being dramatic
+- Suits both software and hardware contexts ("ARC.computer", "ARC device")
+- Three-letter typography mark works at any scale
+
+### Why "CODEX"
+
+- Conveys "knowledge inside" without needing explanation
+- Scholarly / archival association — Codex Atlanticus, Codex Sinaiticus
+- Clean for secondary marketing copy ("the CODEX has 78,000+ entries")
 
 ## Tagline (primary)
 
-> **«Knowledge that works anywhere.»**
+> **"Knowledge that works anywhere."**
 
-Эмоция, конкретика, контраст. Цитируется 1:1 в любом review.
+Concrete, contrastive, quotable verbatim in any review.
 
 ### Secondary taglines
-- «Knowledge, hardened.»
-- «Your most independent computer.»
-- «AI that doesn't depend on someone else's server.»
 
-## One-liner pitch (для журналистов)
+- *"Knowledge, hardened."*
+- *"Your most independent computer."*
+- *"AI that doesn't depend on someone else's server."*
 
-> ARK is an offline AI computer that takes broken electronics and tells you how to turn them into something useful — water filters, wind turbines, irrigation systems, radios. No internet. No cloud. Just you, your scrap pile, and a mind that remembers a hundred years of engineering.
+## One-liner pitch (for journalists)
+
+> ARC is an offline AI computer that takes broken electronics and tells you how to turn them into something useful — water filters, irrigation systems, mesh radios, motor controllers. No internet. No cloud. Just you, your scrap pile, and a knowledge base that remembers a hundred years of engineering.
 
 ## Positioning
 
-| Не путать с | Чем отличается |
+| Don't confuse with | What's different |
 |---|---|
-| ChatGPT в коробке | Offline. Доменно-натаскана. Не галлюцинирует на электронике. |
-| PrepperDisk / IIAB | Интерактивная. Goal-driven. Решает задачи, не только «читать». |
-| Blueprint.am | Идёт от хлама к проекту, а не от проекта к закупке. |
-| Wikipedia offline | Синтезирует. Связывает источники. Генерирует код. |
-| Ham radio guidebook | Шире, и под reverse-direction задачу. |
+| ChatGPT in a box | Offline. Domain-trained. Won't hallucinate components. |
+| PrepperDisk / IIAB | Interactive. Goal-driven. Solves problems instead of just hosting reading material. |
+| Blueprint.am | Goes from scrap to project, not from project to shopping list. |
+| Wikipedia offline | Synthesises. Connects sources. Generates code. |
+| Ham radio guidebook | Broader scope, supports the reverse direction (goal → BOM). |
 
 ## Visual identity (concept)
 
-- **Цвета**: matte black + olive drab + signal orange (как survival-snap-light)
-- **Шрифт**: monospace (JetBrains Mono / Berkeley Mono) — терминальная эстетика
-- **Корпус**: Pelican-style, retro-military (думай Trinitron-meets-fieldphone)
-- **Дисплей**: e-ink (читается на солнце, выглядит как «настоящая бумага»)
-- **Логотип**: треугольная mark «△ ARK» — простая, печатается на чём угодно, виден на 50м
+- **Colours** — matte black + olive drab + signal amber (survival-snap-light feel)
+- **Type** — monospace (JetBrains Mono / Berkeley Mono) — terminal aesthetic
+- **Case** — Pelican-style, retro-instrument (Trinitron meets fieldphone)
+- **Display** — e-ink (sunlight-readable, paper-like)
+- **Mark** — triangular `△ ARC` — simple, prints on anything, readable at 50 m
 
-## Founder narrative (для media + Kickstarter)
+## Founder narrative
 
-> *Реальный личный story founder'а пишется здесь — должен опираться на факты, верифицируемые публичные ссылки (LinkedIn, GitHub history, прошлые проекты). Не выдумывать. 10× credibility = 10× проверки журналистов.*
+> *Real personal story to be written here — must rest on verifiable public references (LinkedIn, GitHub history, prior projects). Don't fabricate. 10× credibility = 10× journalistic verification.*
 
-Tone: спокойный, инженерный. Почему я делаю это → real personal motivation → реальный customer-pain → product. Без apocalyptic нагнетания.
+Tone: calm, engineering-first. Why I'm building this → real personal motivation → real customer pain → product. No apocalyptic framing.
 
 ## Audience hierarchy
 
-1. **Primary**: serious preppers с deep pockets (US/EU, $1500-3000 spending capacity)
-2. **Secondary**: homesteaders, off-grid families
-3. **Tertiary**: NGO field workers, journalists, expedition crews
-4. **Aspirational**: hackers/makers, tech-curious с disposable income
+1. **Primary** — off-grid homesteaders and self-reliance communities (US/EU rural, $1,500–3,000 spending capacity)
+2. **Secondary** — sailors, liveaboards, expedition crews
+3. **Tertiary** — NGO field staff, journalists, climate-disaster responders
+4. **Aspirational** — hardware makers and tech-curious hobbyists with disposable income
 
-> Маркетинг говорит к (1), но визуал и лор работают на (4) — они делают viral.
+> Marketing speaks to (1), but the visual language and lore work hard on (4) — they drive viral reach.
 
-## Forbidden territory (что НЕ делаем в публичном messaging)
+## Forbidden territory (not in public messaging)
 
-- ❌ Не торгуем страхом конкретных событий (войны, расы, политика)
-- ❌ Не позиционируем как «оружие против X»
-- ❌ Не обещаем medical/legal expertise — только reference
-- ❌ Не отдаём guidance по бомбам, ядам, illegal mods, surveillance людей без согласия
+- ❌ No fear-mongering about specific events (war, race, politics)
+- ❌ No "weapon-against-X" positioning
+- ❌ No medical / legal expertise claims — reference only
+- ❌ No guidance on weapons, controlled-substance synthesis, surveillance against people without consent, or anything illegal in the user's jurisdiction
 
-Тон: спокойный, инженерный, чуть пафосный. Не паникёрский, не милитаристский.
+Tone: calm, engineering-first, mildly poetic. Never panicked. Never militaristic.
 
 ## Decisions to confirm
 
-- [ ] Final naming: ARK ✅ (если не нравится — варианты в `BRAND-ALT.md`, попроси)
-- [ ] Domain: ark.computer / getark.io / ark-pc.com (проверить наличие)
-- [ ] Founder face — ты лично или анонимный story?
-- [ ] Логотип — заказать у дизайнера или AI-сгенерить базовый?
+- [ ] Final naming: **ARC** ✅
+- [ ] Domain — `arc.computer` (registration in progress)
+- [ ] Founder face — public identity vs. anonymous-narrative-based brand
+- [ ] Logo — commission designer or generate base mark with AI
