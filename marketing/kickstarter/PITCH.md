@@ -18,17 +18,17 @@
 
 ## THE STORY (above-the-fold long form)
 
-### What if Wikipedia, Stack Overflow, and the entire history of engineering all vanished tomorrow?
+### What if Wikipedia, Stack Overflow, and the entire history of engineering went unreachable tomorrow?
 
-That's not paranoia. That's a Tuesday.
+For a lot of people, that's not a hypothetical. That's a regular Tuesday on a remote farm, on a sailboat 800 nautical miles offshore, in a region with intermittent internet, or simply when a major service has an outage.
 
-In 2021, AWS went down and 30% of the web went with it. In 2024, CrowdStrike took out hospitals, airports, and emergency services in a single afternoon. Texas froze. Spain blacked out. Submarine cables get cut. Cloudflare reroutes the world six times a year. And every year more of human knowledge — schematics, troubleshooting guides, repair manuals, medical references — sits behind a single API call that depends on a server farm 3,000 miles away.
+In 2021, AWS went down and 30% of the web went with it. In 2024, CrowdStrike took out hospitals, airports, and emergency services in a single afternoon. Texas froze. Spain blacked out. Submarine cables get cut. Cloudflare reroutes the world several times a year. And every year more of human knowledge — schematics, troubleshooting guides, repair manuals, medical references — sits behind a single API call that depends on a server farm 3,000 miles away.
 
-**ARK is the answer to a simple question:** what would you want, sitting in your basement, when the internet goes dark and *stays* dark?
+**ARC is the answer to a simple question:** what tool would you want when you can't depend on someone else's server?
 
 You'd want a small, rugged, solar-charged computer that knows how to fix things. How to grow things. How to build things. From the broken machines you already have, with the tools you already own.
 
-That's ARK.
+That's ARC.
 
 ---
 
@@ -141,7 +141,7 @@ The CODEX format is open. The runtime is open-source. If we go under, **everythi
 
 [Founder bio — to be filled]
 
-A team of 1. Augmented by Claude/GPT for boilerplate and research. Hardware background: marine electronics (POSEIDON-DIAG, TRITON-ML sonar systems). Software: Rust, low-level firmware, embedded Linux. Why one person? Because focus beats team-size, and because every dollar we don't spend on payroll is a dollar that goes into the product you receive.
+A team of 1. Augmented by Claude/GPT for boilerplate and research. *(Real founder bio — verifiable hardware + software background — to be filled in before public launch.)* Why one person? Because focus beats team-size, and because every dollar we don't spend on payroll is a dollar that goes into the product you receive.
 
 ---
 
