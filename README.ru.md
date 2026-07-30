@@ -2,7 +2,7 @@
 
 # ARC.computer
 
-### Автономный AI-инженер. Помогает людям делать рабочие инструменты из того, что уже есть под рукой.
+### Офлайновая база знаний для сборки инструментов из бытового электронного хлама.
 
 > *Knowledge that works anywhere — without depending on someone else's server.*
 
@@ -10,121 +10,105 @@
 [![License: CC-BY 4.0](https://img.shields.io/badge/KB-CC--BY--4.0-green.svg)](LICENSE-KB)
 [![License: MIT](https://img.shields.io/badge/Adapters-MIT-orange.svg)](LICENSE-ADAPTERS)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com/)
-[![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)]()
+[![Status: pipeline only](https://img.shields.io/badge/status-pipeline%20only-orange.svg)]()
 
 </div>
 
 ---
 
-## Что это
+## Что лежит в этом репозитории
 
-ARC — **автономный AI-ассистент для людей и сообществ, которые строят сами**: off-grid фермы, удалённые регионы с нестабильным интернетом, makers, ремонтники, инженеры в дороге. Юзер описывает что у него есть из электроники и что хочет собрать — система выдаёт **готовый план**: BOM из имеющихся доноров, схему, прошивку, шаги сборки, safety warnings.
+**Только пайплайн извлечения базы знаний.**
 
-Без интернета. Без облака. Без подписок. Помогает людям, не зависит ни от кого.
+Приложение ARC — FastAPI-сервис с htmx-интерфейсом, reverse-BOM solver и
+vision-клиентом — **в этом репозитории не опубликовано**. Его нет ни в рабочем
+дереве, ни в одном коммите. Предыдущая версия README описывала его так, будто
+он поставляется вместе с репозиторием; это было неправдой.
 
-```
-                ┌─────────────────────────┐
-                │  «У меня 3 принтера HP, │
-                │   микроволновка, ATX    │
-                │   PSU. Хочу автополив   │
-                │   на 10 зон.»           │
-                └────────────┬────────────┘
-                             │
-                             ▼
-                ┌─────────────────────────┐
-                │   ARC Reverse-BOM AI    │
-                │   ┌──────────────────┐  │
-                │   │ 78,869 records   │  │
-                │   │ KB (offline)     │  │
-                │   └──────────────────┘  │
-                └────────────┬────────────┘
-                             │
-                             ▼
-                ┌─────────────────────────┐
-                │ Готовый план:           │
-                │ • BOM с источниками     │
-                │ • Teardown checklist    │
-                │ • Schematic ASCII       │
-                │ • Firmware (.ino)       │
-                │ • Calibration steps     │
-                │ • Safety warnings       │
-                └─────────────────────────┘
-```
+| Каталог | Что это | Состояние |
+|---|---|---|
+| `kb/pipeline/schemas/` | Онтология CDPO (Component–Device–Project) на Pydantic v2, включая модель firmware genome | работает, импортируется |
+| `kb/pipeline/extractors/` | LLM-адаптеры извлечения + промпты, оценка стоимости, сборщик финального пакета (tar + zstd) | запускается при наличии API-ключей и входных данных |
+| `kb/pipeline/scripts/` | Скрейперы (iFixit, Instructables, Hackaday, YouTube), валидаторы, построение индекса, упаковка | запускается |
+| `scripts/bootstrap-kb.sh` | Массовая загрузка корпусов (Kiwix ZIM, KiCad, archive.org, Appropedia, Wikidata, OpenRepair) | запускается |
+| `docs/` | Заметки по деплою и валидации прошивок | справочно |
 
-## Чем отличается от ChatGPT / Wikipedia / NOMAD
+Тестов в репозитории нет. Оба workflow GitHub Actions падают на каждом запуске:
+они ставят `product/server/requirements.txt`, которого здесь никогда не было.
+`kb/pipeline/scripts/validate_schema.py` по той же причине не запускается — он
+импортирует `product/server/kb/index.py`.
 
-| | ChatGPT | NOMAD / Kiwix offline | **ARC** |
-|---|---|---|---|
-| Offline | ❌ | ✓ | ✓ |
-| Reverse-BOM (junk → project) | hallucinate | ❌ | ✓ |
-| Inventory matching | ❌ | ❌ | ✓ |
-| Constrained generation (no fake parts) | ❌ | ❌ | ✓ |
-| Configurable firmware genome (auto-Configuration.h) | ❌ | ❌ | ✓ |
-| Substitution graph (no part X → use Y) | ❌ | ❌ | ✓ |
-| Vision inventory (фото полки → список) | partial | ❌ | ✓ |
+## Задача
 
-## Возможности
+Инструменты «AI для железа» говорят, что **купить**. Универсальная языковая
+модель придумывает несуществующие номиналы. Офлайновые энциклопедии ищут, но не
+рассуждают об инвентаре.
 
-### Три режима использования
+Цель ARC — машиночитаемый офлайновый корпус знаний, по которому можно ответить
+«что я могу собрать из того, что уже есть» без сети. Этот репозиторий содержит
+ту часть, которая этот корпус собирает.
 
-1. **Reverse-BOM** — «у меня X, хочу Y» → solver подберёт компоненты из имеющегося хлама и план сборки
-2. **Forward-BOM** — «хочу собрать Y» → solver выдаст BOM + где такие компоненты обычно найти в бытовой технике
-3. **Discovery** — «у меня X» → solver покажет 5 проектов которые из этого собираются
+## Три режима (замысел неопубликованного solver'а)
 
-### Структурированная knowledge base
+1. **Reverse-BOM** — «у меня X, хочу Y» → компоненты из имеющегося хлама и план сборки
+2. **Forward-BOM** — «хочу собрать Y» → BOM + где такие компоненты обычно найти
+3. **Discovery** — «у меня X» → проекты, которые из этого собираются
 
-| Категория | Записей |
+Ни один из режимов в этом репозитории не реализован.
+
+## База знаний
+
+KB собирается пайплайном из `kb/pipeline/`. **Она не опубликована**: ассетов у
+релиза нет, `kb/output/` в свежем клоне пуст. Цифры ниже — из локальной сборки
+автора, по этому репозиторию их проверить нельзя.
+
+| Категория | Записей (локальная сборка) |
 |---|--:|
 | **Components** (canonical) | 55,414 |
 | **Substitutions** (chains) | 10,000 |
 | **Devices** (teardown patterns) | 5,000+ |
 | **Materials** (DIY recipes) | 1,242 |
+| **Projects** (recipes) | 1,225+ |
 | **Tools** (with build-from-junk paths) | 716 |
 | **Safety** (hazard profiles) | 500 |
 | **Phenomena** (physics for solver) | 301 |
 | **Skills** (with prerequisites) | 203 |
-| **Goals** (top-level survival) | 50 |
+| **Goals** (top-level) | 50 |
 | **Regional profiles** (mains/radio/etc) | 50 |
 | **Firmware genome** (configurable templates) | 40 |
-| **Projects** (recipes) | 1,225+ |
 | **Total** | **~78,869** |
 
-### Stack
-
-- **Backend:** FastAPI + Pydantic + httpx async
-- **Frontend:** htmx + минимум JS
-- **AI runtime:** DeepSeek V4 Pro (через Anthropic-compatible endpoint) или OpenAI/Anthropic
-- **Vision:** Replicate Qwen2-VL-7B (primary) + OpenAI GPT vision (fallback)
-- **KB:** in-memory CDPO Pydantic models, JSON-on-disk, Qdrant deferred to v2
-- **Validation:** schema + cross-reference + anti-laziness regex + firmware compile via simavr/avr-gcc/arm-none-eabi
-- **Deploy:** Docker → Fly.io
+`kb/pipeline/scripts/package.sh` называет пакет `ark-kb-v0.1.tar.zst`. Старый
+README предлагал скачать `releases/latest/download/arc-kb.tar.zst` (в русской
+версии — `ark-kb.tar.zst`); ссылка отдаёт 404, у релиза `v0.1.0` нет ассетов,
+поэтому она удалена, а не переименована.
 
 ## Quickstart
 
 ```bash
-git clone https://github.com/ORTODOX1/arc-computer.git
+git clone https://github.com/hermandoronin/arc-computer.git
 cd arc-computer
 
-# Bootstrap server
-bash scripts/local_dev.sh
+pip install pydantic zstandard httpx
 
-# В другом терминале:
-curl http://127.0.0.1:8181/health
-curl http://127.0.0.1:8181/kb/stats | jq
+# Посмотреть модель данных
+python -c "from kb.pipeline.schemas.cdpo import *; print('CDPO models loaded')"
 
-# Открыть в браузере
-xdg-open http://127.0.0.1:8181/
+# Загрузить исходные корпуса (большие, нужно место на диске)
+bash scripts/bootstrap-kb.sh
+
+# Запустить экстрактор (нужен API-ключ LLM)
+python kb/pipeline/extractors/run_device_extractor.py --help
 ```
 
-Knowledge base **не лежит в этом репо** — слишком большая (300 MB). Скачивается отдельно через GitHub Releases:
+Сервера, который можно запустить, и интерфейса, который можно открыть, здесь нет.
 
-```bash
-# Скачать последний KB-snapshot
-curl -fsSL https://github.com/ORTODOX1/arc-computer/releases/latest/download/ark-kb.tar.zst -o /tmp/kb.tar.zst
-mkdir -p kb/output
-tar --use-compress-program=zstd -xf /tmp/kb.tar.zst -C kb/output/
-```
+## Stack
+
+- **Модель данных:** Pydantic v2 (`kb/pipeline/schemas/cdpo.py`)
+- **Извлечение:** LLM-адаптеры поверх скачанных корпусов, промпты в `kb/pipeline/extractors/prompts/`
+- **Упаковка:** tar + zstd (`kb/pipeline/scripts/package.sh`)
+- **Валидация:** cross-reference, coverage, anti-laziness regex, компиляция прошивок через simavr/avr-gcc/arm-none-eabi
 
 ## Архитектура
 
@@ -132,50 +116,42 @@ tar --use-compress-program=zstd -xf /tmp/kb.tar.zst -C kb/output/
 arc-computer/
 ├── README.md
 │
-├── product/server/         ← FastAPI runtime
-│   ├── main.py             ← app factory
-│   ├── api/routes.py       ← /, /app, /solve, /health, /kb/stats
-│   ├── vision/client.py    ← Replicate + OpenAI fallback
-│   ├── solver/engine.py    ← Anthropic-compat client + RAG
-│   ├── kb/                 ← CDPO loaders + indices
-│   ├── templates/          ← Jinja2 (landing + solver UI)
-│   └── tests/              ← pytest
-│
 ├── kb/
 │   ├── STRATEGY.md         ← two-zone storage plan
 │   ├── pipeline/
 │   │   ├── schemas/cdpo.py ← canonical Pydantic data model
-│   │   ├── extractors/     ← LLM extraction adapters + 4 prompts
+│   │   ├── extractors/     ← LLM extraction adapters + промпты
 │   │   └── scripts/        ← scrapers, validators, packagers
-│   └── output/             ← .gitignore'd (KB content via GitHub Releases)
+│   └── output/             ← .gitignore'd, не опубликовано
 │
-├── docs/                   ← deployment, firmware validation guides
-└── scripts/                ← bootstrap, dev, deploy helpers
+├── docs/                   ← deployment, firmware validation
+└── scripts/                ← bootstrap корпусов
 ```
 
 ## Roadmap
 
-- [x] **v0.1 alpha** — server scaffold, KB validation pipeline, OSS artifacts
-- [ ] **v0.1 launch** — Fly.io deploy, public release
-- [ ] **v0.2** — premium content packs (Marine, HAM, Homestead, 3D-printer salvage)
-- [ ] **v0.3** — Raspberry Pi 5 hardware kit with pre-loaded KB, mesh federation, vision inventory v2
-- [ ] **v1.0** — multi-language KB, mesh between devices
+- [x] **Модель данных CDPO** — Pydantic-схемы, включая firmware genome
+- [x] **Пайплайн извлечения** — скрейперы, LLM-экстракторы, валидаторы, упаковщик
+- [ ] **Опубликовать KB** — ассет релиза, воспроизводимая сборка
+- [ ] **Опубликовать solver** — FastAPI-сервис и интерфейс, описанные выше
+- [ ] **v0.2** — content packs (Marine, HAM, Homestead, 3D-printer salvage)
+- [ ] **v0.3** — Raspberry Pi 5 kit с предзагруженной KB, vision inventory
+- [ ] **v1.0** — многоязычная KB, mesh между устройствами
 
 ## Documentation
 
 | Document | What |
 |---|---|
 | [`kb/STRATEGY.md`](kb/STRATEGY.md) | Storage tiering (hot zone on device, cold on dev disk) |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Fly.io setup, deploy script, rollback |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Заметки по деплою неопубликованного сервера |
 | [`docs/FIRMWARE-VALIDATION.md`](docs/FIRMWARE-VALIDATION.md) | simavr/qemu/avr-gcc setup |
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Key points:
+See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 - **Code style:** ruff (Python 3.13+)
-- **Tests required** for new features
-- **KB entries** follow [`kb/pipeline/schemas/cdpo.py`](kb/pipeline/schemas/cdpo.py) (Component-Device-Project Ontology)
+- **KB entries** follow [`kb/pipeline/schemas/cdpo.py`](kb/pipeline/schemas/cdpo.py)
 - **Conventional Commits**
 
 Issue templates: [bug](.github/ISSUE_TEMPLATE/bug.md) · [feature](.github/ISSUE_TEMPLATE/feature.md) · [knowledge-base entry](.github/ISSUE_TEMPLATE/kb-entry.md).
@@ -186,7 +162,7 @@ Community standards: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) (Contributor Cov
 
 | Scope | License | File |
 |---|---|---|
-| Code (server, solver, validators) | Apache-2.0 | [`LICENSE`](LICENSE) |
+| Code (pipeline, extractors, validators) | Apache-2.0 | [`LICENSE`](LICENSE) |
 | Knowledge-base content | CC-BY-4.0 | [`LICENSE-KB`](LICENSE-KB) |
 | Adapters and scrapers | MIT | [`LICENSE-ADAPTERS`](LICENSE-ADAPTERS) |
 
@@ -194,8 +170,7 @@ Per-record provenance metadata in KB JSONs may indicate upstream sources (iFixit
 
 ## Stay in touch
 
-- Issues — открыть [на GitHub](https://github.com/ORTODOX1/arc-computer/issues)
-- Discussions — [GitHub Discussions](https://github.com/ORTODOX1/arc-computer/discussions)
+- Issues — открыть [на GitHub](https://github.com/hermandoronin/arc-computer/issues)
 
 ---
 

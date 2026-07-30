@@ -15,11 +15,9 @@ KB_ROOTS = (
 REPORTS_DIR = KB_OUTPUT / "validation-reports"
 FINAL_DIR = KB_OUTPUT / "final"
 
-# Make CDPO models + the server's permissive wrappers importable.
-for p in (REPO_ROOT, REPO_ROOT / "product" / "server"):
-    sp = str(p)
-    if sp not in sys.path:
-        sys.path.insert(0, sp)
+# Make the CDPO models importable.
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 CATEGORY_DIRS = (
     "devices",

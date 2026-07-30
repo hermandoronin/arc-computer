@@ -2,7 +2,8 @@
 
 ## Reporting
 
-Report security issues privately to security@ark.computer (placeholder until domain is registered).
+Report security issues privately to **herherman030303@gmail.com**. Do not open
+a public issue for a vulnerability.
 
 We aim to:
 - Acknowledge receipt within 5 business days.

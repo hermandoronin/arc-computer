@@ -1,3 +1,8 @@
+> **Note:** this document describes deploying the ARC solver service, which
+> is **not published in this repository**. `scripts/deploy.sh` and
+> `scripts/local_dev.sh` were removed for the same reason. The steps below are
+> kept as a record of the intended deployment.
+
 # Deployment
 
 ARK Solver targets Fly.io. The image is multi-stage `python:3.13-slim`, the

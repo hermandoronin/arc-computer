@@ -1,40 +1,37 @@
-# Contributing to ARK
+# Contributing to ARC.computer
 
 Thanks for your interest in contributing. This document describes how to get a development environment running, the rules for submitting changes, and the structure of the knowledge base so you can add or improve records.
 
 ## Quick start
 
+> This repository contains the knowledge-base extraction pipeline only. The
+> ARC solver service is not published here — see the README.
+
 ```bash
-git clone https://github.com/ark-codex/ark.git
-cd ark
+git clone https://github.com/hermandoronin/arc-computer.git
+cd arc-computer
 python3.13 -m venv .venv && source .venv/bin/activate
-pip install -r product/server/requirements.txt
-pip install ruff pytest
+pip install pydantic zstandard httpx ruff
 
-# Run the test suite
-pytest product/server/
-
-# Validate the knowledge base
-python3 kb/pipeline/scripts/validate_schema.py
+# Validate the knowledge base (needs KB records under kb/output/)
 python3 kb/pipeline/scripts/validate_xref.py
-
-# Start the server locally
-uvicorn product.server.main:app --reload
+python3 kb/pipeline/scripts/validate_coverage.py
 ```
+
+There is no test suite in this repository yet.
 
 ## Repository layout
 
 ```
-ark/
-├── product/server/        FastAPI runtime (vision + solver + RAG + htmx UI)
+arc-computer/
 ├── kb/
 │   ├── pipeline/
 │   │   ├── schemas/cdpo.py    Canonical data model — read this first
 │   │   ├── extractors/        LLM extraction adapters
 │   │   └── scripts/           Validation, packaging, helpers
-│   └── output/                Generated knowledge-base records (JSON)
-├── agents/                Per-agent task documents (Kimi, DeepSeek, Claude)
-└── docs/                  Symlinks to active documents
+│   └── output/                Generated knowledge-base records (JSON, gitignored)
+├── docs/                  Deployment and firmware-validation notes
+└── scripts/               Corpus bootstrap helper
 ```
 
 ## Coding standards
@@ -44,7 +41,7 @@ ark/
 - **Pydantic v2** for data models.
 - **Lint** with `ruff check .` before submitting a PR.
 - **Format** with `ruff format .`.
-- **Tests** required for new features and bug fixes (`pytest product/server/`).
+- **Tests**: there is no suite yet. If you add one, wire it into `.github/workflows/ci.yml` in the same PR.
 
 ## Knowledge-base contributions
 
@@ -56,7 +53,7 @@ To add a new record:
 2. Create a JSON file in the appropriate directory under `kb/output/extracted/<category>/`.
 3. Use the file naming convention `<id-prefix>_<kebab-name>.json` (for example `dev_microwave-typical.json`).
 4. Fill all required fields. Provide a `provenance` block with at least one source citation.
-5. Validate locally: `python3 kb/pipeline/scripts/validate_schema.py`.
+5. Validate locally: `python3 kb/pipeline/scripts/validate_xref.py`.
 6. Open a PR and use the **kb-entry** issue/PR template.
 
 Quality requirements for KB entries:
@@ -70,10 +67,10 @@ Quality requirements for KB entries:
 1. **Fork** the repository.
 2. **Create a branch** from `main`: `git checkout -b feature/short-description`.
 3. **Write the change**, including tests where applicable.
-4. **Run the suite** locally: `ruff check . && pytest product/server/`.
+4. **Lint** locally: `ruff check .`.
 5. **Commit** using Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
 6. **Push** and open a PR against `main`.
-7. The CI will run `ruff`, `pytest`, and `validate_schema.py`. All must pass.
+7. CI currently fails on every run: both workflows install `product/server/requirements.txt`, a path that does not exist in this repository. Fixing them requires either publishing the server or rewriting the workflows.
 8. A maintainer will review within ~5 business days.
 
 ## Reporting issues
