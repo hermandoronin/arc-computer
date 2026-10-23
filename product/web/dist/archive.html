@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#20231e">
+  <title>ARC — исходный корпус и эскизы сборок</title>
+  <meta name="description" content="Полевое руководство ARC: камера, сигнализация, полив и другие полезные сборки из доступных деталей. Инвентарь, список недостающего и устройства-доноры.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<div style="padding:14px 5%;background:#e5e9da;color:#263322;font:14px Arial,sans-serif"><a href="index.html" style="color:inherit;text-decoration:underline">← Новый справочник: платы, чипы и реальные схемы</a> · Здесь сохранён исходный корпус и эскизы первой версии.</div>
+<a class="skip" href="#projects">К проектам</a>
+<header class="header">
+ <a class="brand" href="#" aria-label="ARC — на главную"><span class="brand-mark">A<span>R</span>C</span><span class="brand-caption">COMPUTER<br>FIELD MANUAL / 001</span></a>
+ <nav aria-label="Основная навигация"><a href="#projects">Сборки</a><a href="#salvage">Где взять детали</a><button data-action="archive">Архив знаний <span>↗</span></button></nav>
+ <button class="inventory-trigger" data-action="inventory"><span class="box-icon">⊞</span> Мой запас <b id="inventory-count">0</b></button>
+</header>
+<main>
+<section class="hero">
+ <div class="hero-copy">
+  <div class="eyebrow"><span class="status-dot"></span> ПОЛЕВОЕ РУКОВОДСТВО ПО САМОСТОЯТЕЛЬНОСТИ</div>
+  <h1>СОБЕРИ ТО,<br>ЧТО <em>НУЖНО.</em><br>ИЗ ТОГО,<br>ЧТО ЕСТЬ.</h1>
+  <p>Старая электроника — это новые возможности.<br>Найди полезную сборку, подбери детали<br class="desktop-br"> и верни вещи в дело.</p>
+  <div class="hero-actions"><button class="button primary" data-action="inventory">Что я могу собрать <span>↗</span></button><a class="text-link" href="#projects">Исследовать сборки <span>↓</span></a></div>
+  <div class="hero-foot"><span>СНАЧАЛА РЕСУРСЫ. ПОТОМ ВОЗМОЖНОСТИ.</span><span>ARC / V.0.1</span></div>
+ </div>
+ <div class="hero-art">
+  <img src="assets/workbench.webp" alt="Концепт камеры, собранной из старой электроники на рабочем столе" fetchpriority="high">
+  <div class="art-top"><span>RECLAIM. REBUILD. REPEAT.</span><span>+ 01 / 08</span></div>
+  <div class="crosshair one">+</div><div class="crosshair two">+</div>
+  <div class="art-label"><span>ВТОРАЯ ЖИЗНЬ ВЕЩЕЙ</span><b>ЕЩЁ<br>ПОРАБОТАЕТ.</b><small>Концепт мастерской / иллюстрация</small></div>
+  <div class="art-coordinate">ОТХОДЫ → РЕСУРС → ИНСТРУМЕНТ</div>
+ </div>
+</section>
+<div class="ticker" aria-label="Возможности ARC"><span>↗ КАМЕРА ИЗ МОДУЛЕЙ</span><i>+</i><span>СИГНАЛИЗАЦИЯ НА ДВЕРЬ</span><i>+</i><span>ПОЛИВ БЕЗ СЕТИ</span><i>+</i><span>ЗНАНИЯ ПОД РУКОЙ</span><i>+</i><span>ВЕЩИ ИМЕЮТ ЗНАЧЕНИЕ</span></div>
+<section class="finder wrap" id="workbench">
+ <div><span class="section-code">01 / ТВОЯ ОТПРАВНАЯ ТОЧКА</span><h2>Что лежит без дела?</h2><p>Начни с типового набора или добавь свои детали.</p></div>
+ <div class="kit-options" id="kit-options"></div>
+ <button class="round-arrow" data-action="inventory" aria-label="Добавить свои детали">↗</button>
+</section>
+<section class="projects wrap" id="projects">
+ <div class="section-heading"><div><span class="section-code">02 / СБОРКИ ДЛЯ РЕАЛЬНОЙ ЖИЗНИ</span><h2>Полезное — из доступного.</h2></div><p>Восемь стартовых маршрутов.<br>Детали, доноры, шаги и проверка результата.</p></div>
+ <div class="catalog-tools"><div class="filter-tabs" id="categories" role="group" aria-label="Категория сборок"></div><label class="sort-label"><span class="sr-only">Сортировка</span><select id="sort"><option value="default">По порядку</option><option value="match">По моему запасу</option></select></label></div>
+ <div class="catalog-search"><label><span aria-hidden="true">⌕</span><input id="project-search" type="search" placeholder="Найти сборку: камера, вода, свет…" aria-label="Найти сборку"></label><label class="checkbox-label"><input id="ready-only" type="checkbox"> Только полный комплект</label><span id="results-count" aria-live="polite"></span></div>
+ <div class="project-grid" id="project-grid"></div>
+ <div class="catalog-footer"><span>Планы требуют проверки на твоём оборудовании.</span><button class="text-link" data-action="archive">Ещё 1 225 идей в архиве <span>↗</span></button></div>
+</section>
+<section class="salvage" id="salvage"><div class="wrap salvage-layout">
+ <div class="salvage-intro"><span class="section-code">03 / НИЧЕГО ЛИШНЕГО</span><h2>Это не хлам.<br>Это <em>донор.</em></h2><p>Прежде чем покупать новое, загляни в ящик со старой техникой. Иногда нужная деталь уже рядом.</p><button class="button outline" data-action="archive-devices">Открыть 1 115 разборов <span>↗</span></button></div>
+ <div class="donor-grid">
+  <button class="donor-card" data-donor="webcam"><span class="donor-number">ДОНОР / 01</span><div class="donor-visual" data-art="camera"></div><h3>Старая веб-камера</h3><p>Готовая камера с USB<br>для локального наблюдения</p><span class="donor-cta">Что проверить <b>↗</b></span></button>
+  <button class="donor-card" data-donor="reed"><span class="donor-number">ДОНОР / 02</span><div class="donor-visual" data-art="alarm"></div><h3>Датчик открытия</h3><p>Геркон и магнит<br>для дверной сигнализации</p><span class="donor-cta">Что проверить <b>↗</b></span></button>
+  <button class="donor-card" data-donor="jar"><span class="donor-number">ДОНОР / 03</span><div class="donor-visual" data-art="plant"></div><h3>Банка и старый шнур</h3><p>Ёмкость и фитиль<br>для простого полива</p><span class="donor-cta">Что проверить <b>↗</b></span></button>
+ </div>
+</div></section>
+<section class="method wrap" id="method"><div class="section-heading"><div><span class="section-code">04 / МЕНЬШЕ МАГИИ. БОЛЬШЕ ДЕЛА.</span><h2>От находки — до результата.</h2></div><a class="text-link" href="https://github.com/hermandoronin/arc-computer" target="_blank" rel="noopener">Открытый проект <span>↗</span></a></div><div class="method-grid"><article><span>01</span><h3>Разбери свой запас</h3><p>Отметь рабочие детали и их количество. Предполагаемая находка внутри донора ещё не считается готовой деталью.</p></article><article><span>02</span><h3>Выбери полезную цель</h3><p>Посмотри комплектность, недостающие позиции и требования к совместимости. Список можно сохранить.</p></article><article><span>03</span><h3>Собери. Проверь. Сохрани.</h3><p>Пройди шаги, проверь результат на своём оборудовании. Скачай план — он останется под рукой.</p></article></div></section>
+<section class="archive-banner wrap"><div><span class="section-code">АРХИВ ARC / ВОССТАНОВЛЕН 23.10.2026</span><h2>Знания не должны исчезать<br>вместе с интернетом.</h2><p>1 225 проектов · 1 115 разборов устройств · 55 414 компонентов<br>Исходный корпус доступен для поиска. Записи ещё требуют проверки.</p></div><div class="archive-actions"><button class="button primary" data-action="archive">Исследовать архив <span>↗</span></button><button class="text-link" id="offline-button" data-action="offline">Сохранить сайт для офлайна <span>↓</span></button><small id="offline-status" aria-live="polite">Инвентарь хранится в этом браузере.</small></div></section>
+</main>
+<footer class="footer wrap"><a class="brand" href="#"><span class="brand-mark">ARC</span><span class="brand-caption">COMPUTER<br>BUILT TO REBUILD.</span></a><p>Практическая самостоятельность.<br>Открытый код. Вторая жизнь вещей.</p><div><a href="https://github.com/hermandoronin/arc-computer" target="_blank" rel="noopener">GitHub ↗</a><button data-action="about">О данных и проекте ↗</button></div><span class="footer-version">FIELD EDITION<br>© ARC / 2026</span></footer>
+<dialog id="modal"><div id="modal-content"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><div class="noscript">Для подбора сборок включи JavaScript. Исходный проект доступен по ссылке GitHub внизу страницы.</div></noscript>
+</body></html>

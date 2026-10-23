@@ -1,0 +1,552 @@
+{
+  "task": "ARC appliance proof cases and evidence-first ingestion schema",
+  "retrieved_at": "2026-10-23",
+  "scope_note": "Washers/dryers are proof cases for scalable corpus ingestion, not a narrowed product scope. No ARC hardware bench validation performed.",
+  "sources": [
+    {
+      "id": "electrolux-ewf-parts",
+      "kind": "manufacturer_document",
+      "author": "Electrolux Thailand Co., Ltd.",
+      "title": "EWF12844 / EWF10744 spare parts, publication 180724",
+      "url": "https://procornerpdf.electrolux.com/static/Pictures/Views/P9149/0065604.PDF",
+      "published": "2018-07-24",
+      "locators": {
+        "models": 1,
+        "electrical_components": 11,
+        "pcba_part_numbers": 12,
+        "wiring_diagram": [
+          13,
+          14
+        ]
+      },
+      "fetch_status": "web tool read all 14 pages; direct download returned HTTP 403",
+      "license": "Manufacturer copyright; link to original, no open redistribution license verified"
+    },
+    {
+      "id": "chapman-ewx14",
+      "kind": "original_teardown_repair",
+      "author": "Dr Matthew Chapman",
+      "title": "A washing machine story",
+      "url": "https://zmatt.net/ewx14/",
+      "published": "2026-06-15",
+      "fetch_status": "full HTML fetched via requests/curl; original photos inspected",
+      "license": "Author site says all rights reserved; credit and source link required; no open redistribution license verified"
+    },
+    {
+      "id": "aeg-model",
+      "kind": "manufacturer_model_index",
+      "author": "AEG",
+      "title": "T55640 model and PNC versions",
+      "url": "https://shop.aeg.co.uk/model/m/T55640",
+      "fetch_status": "indexed primary manufacturer page lists PNC variants"
+    },
+    {
+      "id": "hedi-board",
+      "kind": "owner_original_forum_observation",
+      "author": "hedi",
+      "title": "AEG T55640 board marking",
+      "url": "https://www.circuitsonline.net/forum/view/message/1493283",
+      "published": "2013-03-24T13:09:28",
+      "thread": "https://www.circuitsonline.net/forum/view/111566",
+      "license": "No open reuse license verified"
+    },
+    {
+      "id": "hedi-relay",
+      "kind": "owner_original_forum_observation",
+      "author": "hedi",
+      "title": "AEG T55640 observed relay marking",
+      "url": "https://www.circuitsonline.net/forum/view/message/1493889",
+      "published": "2013-03-25T22:00:57",
+      "thread": "https://www.circuitsonline.net/forum/view/111566",
+      "license": "No open reuse license verified"
+    },
+    {
+      "id": "bemmelen-t55640",
+      "kind": "original_repair_with_photos",
+      "author": "Albert van Bemmelen",
+      "publisher": "JestineYong.com",
+      "title": "New Wasmachine and Tumble Dryer Repair",
+      "url": "https://jestineyong.com/new-wasmachine-and-tumble-dryer-repair/",
+      "published": "2017-11-27",
+      "license": "No open reuse license verified; credit original author, not merely publisher"
+    },
+    {
+      "id": "electrolux-env06",
+      "kind": "manufacturer_service_manual",
+      "author": "Electrolux Italia S.p.A.",
+      "title": "ENV06 ventilated tumble dryer, publication 599 72 63-27",
+      "url": "https://shop.electroluxarabia.com/Content/files/OTHERS/599/726/327EN.pdf",
+      "published": "2010-01",
+      "locators": {
+        "board_photos": 6,
+        "control_architecture": 22,
+        "configuration_memory": 23,
+        "conductivity_sensor": 25,
+        "ntc": 26,
+        "wiring_diagram": [
+          30,
+          31
+        ]
+      },
+      "scope": "Family manual; do not label its wiring as the exact T55640 PNC 91609628602 wiring"
+    },
+    {
+      "id": "stm8-datasheet",
+      "kind": "component_manufacturer_datasheet",
+      "author": "STMicroelectronics",
+      "title": "STM8S207xx / STM8S208xx, DS5839 / DocID14733 Rev 13",
+      "url": "https://www.st.com/resource/en/datasheet/stm8s207rb.pdf",
+      "locators": {
+        "features": 1,
+        "block_diagram": 12,
+        "pinouts_start": 23
+      }
+    },
+    {
+      "id": "lnk-xt",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Power Integrations",
+      "title": "LinkSwitch-XT datasheet",
+      "url": "https://www.power.com/design-support/data-sheets/linkswitch-xt-data-sheet"
+    },
+    {
+      "id": "lnk-tn",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Power Integrations",
+      "title": "LinkSwitch-TN datasheet",
+      "url": "https://www.power.com/design-support/data-sheets/linkswitch-tn-data-sheet"
+    },
+    {
+      "id": "g5le",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Omron",
+      "title": "G5LE PCB power relay",
+      "url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf",
+      "locators": {
+        "model_suffix_and_ratings": 1,
+        "dimensions_and_internal_connections": 3
+      },
+      "scope": "Current G5LE family document. Historical -VD suffix should be checked against exact marking before assigning ratings."
+    }
+  ],
+  "records": [
+    {
+      "id": "washer-electrolux-ewf12844",
+      "category": "washing-machine",
+      "display_name": "Electrolux EWF12844 / EWX14",
+      "identity": {
+        "brand": "Electrolux",
+        "model": "EWF12844",
+        "pnc": "914900650",
+        "elc": "05",
+        "platform": "EWX14",
+        "pcba_configured_part": "97391490065005",
+        "pcba_unconfigured_part": "A03533615",
+        "motor_control_pcba": "A03592705 / EMC14 CIM",
+        "ui_pcba": "A02160702 / TC4-EUI14P40",
+        "pcb_silkscreen_revision": null
+      },
+      "claims": [
+        {
+          "subject": "model",
+          "predicate": "uses_board",
+          "object": "EWX14",
+          "status": "manufacturer_documented",
+          "source": "electrolux-ewf-parts",
+          "locator": "p.12"
+        },
+        {
+          "subject": "EWX14 photographed sample",
+          "predicate": "has_chip",
+          "object": "STM8S207RB",
+          "status": "author_observed",
+          "source": "chapman-ewx14",
+          "scope": "EWX14 sample; exact appliance model/PNC omitted by author; not proven for every EWF12844 revision"
+        },
+        {
+          "subject": "EWX14 photographed sample",
+          "predicate": "has_power_ic",
+          "object": "LNK364GN",
+          "status": "author_observed",
+          "source": "chapman-ewx14",
+          "scope": "Same photographed sample only"
+        },
+        {
+          "subject": "model",
+          "predicate": "has_pressure_sensor",
+          "object": "132819502 / ST-545",
+          "status": "manufacturer_documented",
+          "source": "electrolux-ewf-parts",
+          "locator": "p.11"
+        },
+        {
+          "subject": "model",
+          "predicate": "has_motor",
+          "object": "808145001 / CIM-AL STK50-P49",
+          "status": "manufacturer_documented",
+          "source": "electrolux-ewf-parts",
+          "locator": "p.11"
+        }
+      ],
+      "constraint_summary": "EWX14 replacement requires model-specific MCF/CCF configuration. Author reports non-isolated logic supply; visible 5V/12V does not establish SELV. Separate motor inverter and closed appliance firmware prevent treating this as a ready Arduino-compatible controller.",
+      "reuse_candidates": [
+        {
+          "module": "Housing, panel, connectors and mechanically sound parts",
+          "status": "engineering_candidate",
+          "verification_required": "dimensions, condition, fit"
+        },
+        {
+          "module": "Detached sensor or relay",
+          "status": "engineering_candidate",
+          "verification_required": "exact marking, electrical characteristics and independent low-voltage test; not yet validated in ARC"
+        }
+      ],
+      "schematics": [
+        {
+          "title": "Real EWF12844 / EWF10744 wiring",
+          "url": "https://procornerpdf.electrolux.com/static/Pictures/Views/P9149/0065604.PDF#page=13",
+          "pages": [
+            13,
+            14
+          ],
+          "credit": "Electrolux Thailand Co., Ltd.",
+          "scope": "Exact listed PNC/ELC variants"
+        }
+      ],
+      "images": [
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/ewx14-connectors.png",
+          "url": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-connectors.png",
+          "credit": "Matthew Chapman / zmatt.net",
+          "caption": "Original EWX14 board photo with author annotations; not the exact EWF12844 part-number proof"
+        },
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/ewx14-power.png",
+          "url": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-power.png",
+          "credit": "Matthew Chapman / zmatt.net",
+          "caption": "Original EWX14 power-stage photo"
+        }
+      ],
+      "known_gaps": [
+        "Exact photographed PCB revision and appliance PNC absent",
+        "No end-to-end reuse build tested by ARC",
+        "Firmware portability not established"
+      ]
+    },
+    {
+      "id": "dryer-aeg-t55640-hedi",
+      "category": "dryer",
+      "display_name": "AEG T55640: original owner observations",
+      "identity": {
+        "model": "T55640",
+        "type": "P502664",
+        "pnc": "91609628602",
+        "board_marking_verbatim": "EVN SC70600245055",
+        "pcb_revision": null,
+        "configured_spare_part_number": null
+      },
+      "claims": [
+        {
+          "subject": "owner board",
+          "predicate": "marked",
+          "object": "EVN SC70600245055",
+          "status": "author_observed_text",
+          "source": "hedi-board",
+          "photo_verified": false
+        },
+        {
+          "subject": "owner board",
+          "predicate": "has_relay",
+          "object": "Omron G5LE-1-VD 12VDC",
+          "status": "author_observed_text",
+          "source": "hedi-relay",
+          "photo_verified": false
+        },
+        {
+          "subject": "repair case",
+          "predicate": "reported_final_cause",
+          "object": "Door switch not being pressed reliably by door",
+          "status": "author_reported_outcome",
+          "source_url": "https://www.circuitsonline.net/forum/view/111566",
+          "locator": "hedi, 22 May 2013, 13:34:03",
+          "scope": "Reported fault diagnosis, not an ARC verified repair or approved procedure"
+        }
+      ],
+      "constraint_summary": "PCB code is an owner-transcribed marking, not verified spare-part number/revision. Relay coil voltage is not control-pin voltage; a detached relay needs a suitable driver and protection. Do not import forum instructions to defeat the door interlock.",
+      "reuse_candidates": [
+        {
+          "module": "Omron relay removed from board",
+          "status": "engineering_candidate",
+          "verification_required": "marking, coil resistance, contact condition, family datasheet, isolated low-voltage load test with suitable driver"
+        },
+        {
+          "module": "Selector knob, enclosure and passive mechanical parts",
+          "status": "engineering_candidate",
+          "verification_required": "condition and dimensions"
+        }
+      ],
+      "datasheets": [
+        "g5le"
+      ],
+      "known_gaps": [
+        "No board photograph posted in inspected thread",
+        "Main MCU not identified",
+        "No manufacturer circuit diagram tied to this exact PNC obtained",
+        "Not the same proven specimen as the 2017 photo repair below"
+      ]
+    },
+    {
+      "id": "dryer-aeg-t55640-bemmelen",
+      "category": "dryer",
+      "display_name": "AEG T55640: photographed control-board repair",
+      "identity": {
+        "model": "T55640",
+        "power_rating_as_reported": "2500 W",
+        "pnc": "91609628602",
+        "pcb_number": null,
+        "pcb_revision": null,
+        "type": "P502664",
+        "identity_evidence": "Nameplate photo 2-3.jpg inspected: T55640, P502664, Prod.No 916 096 286 02."
+      },
+      "claims": [
+        {
+          "subject": "photographed dryer",
+          "predicate": "has_pnc",
+          "object": "91609628602",
+          "status": "photo_observed",
+          "source": "bemmelen-t55640",
+          "locator": "nameplate photo https://jestineyong.com/wp-content/uploads/2017/11/2-3.jpg",
+          "scope": "Photo ties model to PNC; board revision still unknown"
+        },
+        {
+          "subject": "photographed board sample",
+          "predicate": "has_power_ic",
+          "object": "LNK304",
+          "status": "author_observed_with_photo",
+          "source": "bemmelen-t55640",
+          "locator": "paragraph before first board photo and IC closeup",
+          "scope": "Suffix not safely legible at supplied resolution; do not silently upgrade to GN"
+        },
+        {
+          "subject": "photographed board sample",
+          "predicate": "has_fusible_resistor",
+          "object": "R76 / 47 ohm",
+          "status": "author_observed_with_photo",
+          "source": "bemmelen-t55640",
+          "locator": "resistor closeup",
+          "scope": "Wattage comments in article vary; do not assign a universal replacement rating"
+        }
+      ],
+      "constraint_summary": "LNK304 is a mains offline supply controller, not the logic MCU. The source discusses a non-isolated supply. It is not a donor USB/5V adapter and cannot be presented as a plug-in irrigation controller.",
+      "images": [
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-nameplate.jpg",
+          "url": "https://jestineyong.com/wp-content/uploads/2017/11/2-3.jpg",
+          "credit": "Albert van Bemmelen / JestineYong.com",
+          "caption": "Nameplate confirms T55640, P502664, PNC 91609628602"
+        },
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-top.jpg",
+          "url": "https://jestineyong.com/wp-content/uploads/2017/11/11-2.jpg",
+          "credit": "Albert van Bemmelen / JestineYong.com",
+          "caption": "Control PCB, original repair article; low resolution thumbnail"
+        },
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-pcb.jpg",
+          "url": "https://jestineyong.com/wp-content/uploads/2017/11/4-3.jpg",
+          "credit": "Albert van Bemmelen / JestineYong.com",
+          "caption": "Original PCB underside photo"
+        },
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-lnk.jpg",
+          "url": "https://jestineyong.com/wp-content/uploads/2017/11/5-3.jpg",
+          "credit": "Albert van Bemmelen / JestineYong.com",
+          "caption": "LNK304 closeup"
+        },
+        {
+          "local": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-r76.jpg",
+          "url": "https://jestineyong.com/wp-content/uploads/2017/11/6-3.jpg",
+          "credit": "Albert van Bemmelen / JestineYong.com",
+          "caption": "R76 original repair photo"
+        }
+      ],
+      "datasheets": [
+        "lnk-tn"
+      ],
+      "known_gaps": [
+        "Exact board revision absent",
+        "Main MCU unidentified",
+        "No tested reusable subsystem",
+        "Same PNC as hedi report but board identity not proven; keep specimen-level assertions separate"
+      ]
+    },
+    {
+      "id": "dryer-env06-manufacturer-family",
+      "category": "dryer-family-reference",
+      "display_name": "Electrolux ENV06 platform architecture",
+      "identity": {
+        "platform": "ENV06",
+        "model": null,
+        "pcb_revision": null
+      },
+      "sources": [
+        "electrolux-env06"
+      ],
+      "claims": [
+        {
+          "subject": "platform",
+          "predicate": "contains",
+          "object": [
+            "main board with integrated selector",
+            "NTC temperature probe",
+            "conductivity sensing in equipped versions",
+            "model configuration memory"
+          ],
+          "status": "manufacturer_documented_family",
+          "source": "electrolux-env06"
+        }
+      ],
+      "schematics": [
+        {
+          "title": "ENV06 electronic control blocks",
+          "url": "https://shop.electroluxarabia.com/Content/files/OTHERS/599/726/327EN.pdf#page=22",
+          "pages": [
+            22
+          ],
+          "credit": "Electrolux Italia S.p.A.",
+          "scope": "Platform, not an exact T55640 board schematic"
+        },
+        {
+          "title": "ENV06 wiring alternatives",
+          "url": "https://shop.electroluxarabia.com/Content/files/OTHERS/599/726/327EN.pdf#page=30",
+          "pages": [
+            30,
+            31
+          ],
+          "credit": "Electrolux Italia S.p.A.",
+          "scope": "Platform family, varies with sensor configuration"
+        }
+      ]
+    }
+  ],
+  "schema": {
+    "entities": [
+      "DeviceModel (brand/model/region)",
+      "DeviceVariant (PNC/ELC/serial range)",
+      "Board (silkscreen/assembly_part/revision)",
+      "Component (manufacturer/marking/package)",
+      "Connector",
+      "Module",
+      "Build",
+      "SourceDocument",
+      "SourcePost",
+      "EvidenceAsset",
+      "Claim",
+      "VerificationRun"
+    ],
+    "claim_fields": [
+      "id",
+      "subject_id",
+      "predicate",
+      "object",
+      "device_variant_scope",
+      "board_revision_scope",
+      "source_url",
+      "source_post_id",
+      "author",
+      "published_at",
+      "retrieved_at",
+      "locator(page/post/bounding_box)",
+      "source_excerpt_hash",
+      "asset_sha256",
+      "evidence_kind",
+      "claim_status",
+      "confidence_reason",
+      "contradicts_claim_ids",
+      "supersedes_claim_ids",
+      "reviewer",
+      "tested_by",
+      "test_conditions",
+      "known_gaps"
+    ],
+    "claim_statuses": [
+      "manufacturer_documented",
+      "author_observed_photo",
+      "author_observed_text",
+      "author_measured",
+      "author_hypothesis",
+      "author_reported_outcome",
+      "machine_extracted_unreviewed",
+      "reviewed_extraction",
+      "arc_bench_tested",
+      "contradicted",
+      "unknown"
+    ],
+    "rules": [
+      "Keep null for missing part numbers/revisions; a model-family relationship is not proof of identical chips.",
+      "Store each forum post and edit separately; suggestions, measurements and final outcomes are distinct claims.",
+      "OCR markings generate candidates. A reviewer compares image region against transcript and datasheet package before accepting.",
+      "Datasheet establishes component specifications, never proves that component is on the donor board.",
+      "Compatibility needs variant, voltage, pinout, signal protocol and physical dimensions; no generic has_5V therefore usable edge.",
+      "Attach build readiness only to a BOM+firmware+schematic+test record, not a donor discovery.",
+      "Non-isolated mains modules are expert-only analysis; beginner build routes use independent low-voltage modules.",
+      "Retain original URL, author attribution and rights metadata; cache metadata/short quotations, not whole forums by default.",
+      "Deduplicate exact hashes and board labels first. Never deduplicate only by appliance model.",
+      "Keep failed hypotheses and contradictory observations searchable so a wrong forum answer does not become a recipe."
+    ],
+    "recommended_ui": [
+      "Что можно получить: documented modules + confidence badge",
+      "Что внутри: board photo + component hotspots + exact scope",
+      "Что доказано: official document / original observation / tested build separately",
+      "Что ещё нужно: firmware, driver, isolated power, calibration and test requirements",
+      "Открыть первоисточник: exact post or PDF page"
+    ],
+    "example_searches": [
+      "T55640 → PNC 91609628602 → board marking EVN SC70600245055 → owner-reported Omron relay",
+      "EWX14 → photographed STM8S207RB → datasheet → firmware/configuration constraint",
+      "12 V pump controller → compare complete tested builds; appliance relay is merely a candidate part"
+    ]
+  },
+  "local_assets": [
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-lnk.jpg",
+      "bytes": 61769,
+      "sha256": "c32dcb09c65862fb20e2ea1ae872f9c241461228d94b22100b971bdf763d552a"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-nameplate.jpg",
+      "bytes": 21141,
+      "sha256": "803edca339dbecb75a3a74ae5b55e2142bea7ca971d211597c6dc4c3f59c5361"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-panel.jpg",
+      "bytes": 91941,
+      "sha256": "1880ba2de869053a65386d963877eab5efa417458c369e66b7cdd6d7b6a68257"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-pcb.jpg",
+      "bytes": 96981,
+      "sha256": "84f8587ce38c49886b738022f9588ff06bb751484738a9e9a602fa767b950c50"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-r76.jpg",
+      "bytes": 77333,
+      "sha256": "4a661df4beaa2514c98d619e93ae254768966fdaa120ecd186ad11f9a3a34fec"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/aeg-t55640-top.jpg",
+      "bytes": 16436,
+      "sha256": "588d526a98d5d6f298acaebb04f5921c0cc202fd74c3891ec943458ba175e70e"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/ewx14-connectors.png",
+      "bytes": 900324,
+      "sha256": "2db71cf6e4a13a89e91653508d410b73f47dc1b45a850df1b810ba13d9262159"
+    },
+    {
+      "file": "/home/user/arc-appliance-evidence-20261023/ewx14-power.png",
+      "bytes": 911208,
+      "sha256": "c90f2aeedee49e263b03293505cc81883715a419129b0089f1f904328dbd4175"
+    }
+  ]
+}

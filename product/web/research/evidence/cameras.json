@@ -1,0 +1,523 @@
+{
+  "researched_at": "2026-10-23",
+  "status": "Source-checked documentation; no physical hardware tested",
+  "editorial_rule": "A donor match requires exact model, PCB marking/revision, visible chip markings, connector, power and a startup test. Do not infer an arbitrary webcam or camera module is compatible from its shape.",
+  "recommended_first_route": "ai-thinker-local-camera",
+  "sources": [
+    {
+      "id": "esp-example",
+      "title": "Espressif CameraWebServer, Arduino-ESP32 3.3.12",
+      "url": "https://github.com/espressif/arduino-esp32/tree/3.3.12/libraries/ESP32/examples/Camera/CameraWebServer",
+      "commit": "94afccf35fb1e401facddbcf9e13bcf7c76a31d8",
+      "license": "LGPL-2.1 repository license",
+      "license_url": "https://github.com/espressif/arduino-esp32/blob/3.3.12/LICENSE.md",
+      "verified": "Official files, board model switch, camera pins, Wi-Fi credentials, 115200 baud, HTTP startup"
+    },
+    {
+      "id": "esp-boot",
+      "title": "Espressif esptool boot-mode selection",
+      "url": "https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html",
+      "verified": "GPIO0 low during reset enters bootloader; release GPIO0 for execution"
+    },
+    {
+      "id": "esp-datasheet",
+      "title": "Espressif ESP32 Series Datasheet v5.3",
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf",
+      "verified": "2.4 GHz radio; 3.3 V supply/logic domain, not 5 V GPIO"
+    },
+    {
+      "id": "prusa-board",
+      "title": "Prusa AI Thinker ESP32-CAM hardware documentation",
+      "url": "https://github.com/prusa3d/Prusa-Firmware-ESP32-Cam/blob/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/README.md",
+      "commit": "136c91c574523c0898a7c6fe3e69a72800d8d24c",
+      "license": "GPL-3.0 repository license; schematic is a reproduced third-party board document, individual author/asset license not separately established",
+      "license_url": "https://github.com/prusa3d/Prusa-Firmware-ESP32-Cam/blob/master/LICENSE",
+      "verified": "Physical board photos, GND/R vs GND variants, UART wiring, schematic image"
+    },
+    {
+      "id": "ov2640-datasheet",
+      "title": "OmniVision OV2640 datasheet, manufacturer document hosted by Waveshare",
+      "url": "https://files.waveshare.com/wiki/common/OV2640DS_en.pdf",
+      "license": "Proprietary manufacturer datasheet; link to original, do not relicense"
+    },
+    {
+      "id": "rpi-product",
+      "title": "Raspberry Pi Camera Module 2",
+      "url": "https://www.raspberrypi.com/products/camera-module-v2/",
+      "verified": "Sony IMX219; 8 megapixels; CSI camera module"
+    },
+    {
+      "id": "rpi-hardware",
+      "title": "Raspberry Pi camera hardware documentation",
+      "url": "https://www.raspberrypi.com/documentation/accessories/camera.html",
+      "verified": "15-pin connector pinout, cable installation and Standard-Standard vs Standard-Mini compatibility"
+    },
+    {
+      "id": "rpi-software",
+      "title": "Raspberry Pi camera software",
+      "url": "https://www.raspberrypi.com/documentation/computers/camera_software.html",
+      "verified": "rpicam-hello and rpicam-still test commands"
+    },
+    {
+      "id": "rpi-license",
+      "title": "Raspberry Pi documentation license",
+      "url": "https://github.com/raspberrypi/documentation/blob/master/LICENSE.md",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "linux-ov534",
+      "title": "Linux gspca OV534 camera driver",
+      "url": "https://github.com/torvalds/linux/blob/master/drivers/media/usb/gspca/ov534.c",
+      "license": "GPL-2.0-or-later",
+      "verified": "OV534 bridge / OV772x family and PS3 Eye support"
+    },
+    {
+      "id": "linux-config",
+      "title": "Linux GSPCA Kconfig",
+      "url": "https://github.com/torvalds/linux/blob/master/drivers/media/usb/gspca/Kconfig",
+      "verified": "Sony PlayStation EYE uses gspca_ov534, not generic UVC"
+    },
+    {
+      "id": "linux-cardlist",
+      "title": "Linux GSPCA supported cameras",
+      "url": "https://www.kernel.org/doc/html/latest/admin-guide/media/gspca-cardlist.html",
+      "verified": "USB ID 1415:2000 maps to ov534 / Sony Playstation Eye"
+    },
+    {
+      "id": "psmove",
+      "title": "PS Move API camera integration",
+      "url": "https://psmoveapi.readthedocs.io/en/latest/camera.html",
+      "verified": "Tested SLEH-00448; USB 2.0; no firmware upload; Linux OV534 driver"
+    }
+  ],
+  "assets": [
+    {
+      "id": "esp32-schematic",
+      "type": "schematic",
+      "local": "/home/user/arc-camera-research/esp32-cam-schematic.png",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/ESP32-CAM-AI-Thinker-schematic-diagram.png",
+      "caption": "ESP32_CAM — schematic revision 1.6, dated 2018/1/30. Copy in Prusa documentation.",
+      "credit": "ESP32-CAM / Ai-Thinker hardware; reproduced by Prusa Research",
+      "license_note": "Repository GPL-3.0; individual original schematic rights not separately established. Prefer original link or a clearly attributed reference preview; do not claim ARC authorship.",
+      "visually_verified": true
+    },
+    {
+      "id": "esp32-board-photo",
+      "type": "photo",
+      "local": "/home/user/arc-camera-research/esp32-cam.jpg",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/esp32-cam.jpg",
+      "credit": "Prusa Research, Prusa-Firmware-ESP32-Cam documentation",
+      "license_note": "GPL-3.0 repository; no separate per-photo license located"
+    },
+    {
+      "id": "esp32-parts-photo",
+      "type": "photo",
+      "local": "/home/user/arc-camera-research/esp32-cam_parts.jpg",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/esp32-cam_parts.jpg",
+      "caption": "Annotated board photo: ESP32-S Ai-Thinker module, AMS1117 3.3 regulator, IPS6404LSQ PSRAM; markings refer to this pictured board only.",
+      "credit": "Prusa Research documentation",
+      "visually_verified": true,
+      "license_note": "GPL-3.0 repository; no separate per-photo license located"
+    },
+    {
+      "id": "esp32-variants",
+      "type": "photo",
+      "local": "/home/user/arc-camera-research/cam_versions.jpg",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/cam_versions.jpg",
+      "caption": "GND/R vs GND labels: useful physical compatibility check for programmer boards. This is not a universal numbered PCB revision scheme.",
+      "credit": "Prusa Research documentation",
+      "visually_verified": true,
+      "license_note": "GPL-3.0 repository; no separate per-photo license located"
+    },
+    {
+      "id": "esp32-pinout",
+      "type": "pinout",
+      "local": "/home/user/arc-camera-research/pinout.png",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/pinout.png",
+      "credit": "Prusa Research documentation",
+      "license_note": "GPL-3.0 repository; no separate per-asset license located"
+    },
+    {
+      "id": "esp32-programmer",
+      "type": "wiring",
+      "local": "/home/user/arc-camera-research/ESP32-cam-prog_bb.png",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/ESP32-cam%20prog_bb.png",
+      "credit": "Prusa Research documentation",
+      "license_note": "GPL-3.0 repository; wiring needs 3.3V UART logic regardless of 5V board power"
+    },
+    {
+      "id": "rpi-csi-schematic",
+      "type": "schematic",
+      "local": "/home/user/arc-camera-research/rpi-csi-connector.png",
+      "url": "https://raw.githubusercontent.com/raspberrypi/documentation/41e24fbd459d47e7db979cd084676c790b60a3de/documentation/asciidoc/accessories/camera/images/RPi-S5-conn.png",
+      "caption": "Official 15-pin CSI connector schematic; not a complete Camera Module 2 PCB schematic.",
+      "credit": "Raspberry Pi documentation contributors",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "rpi-camera2-photo",
+      "type": "photo",
+      "url": "https://assets.raspberrypi.com/static/6a75fa481019db1ac6bca74e5192cb5b/3f4ea/ffa68a46-fd44-4995-9ad4-ac846a5563f1_Camera%2BV2%2BHero.jpg",
+      "credit": "Raspberry Pi Ltd, Camera Module 2 product page",
+      "license_note": "Product marketing photo: reuse license not verified. Link to product or obtain licensed photo instead of assuming documentation CC license applies."
+    }
+  ],
+  "donors": [
+    {
+      "id": "ai-thinker-esp32-cam",
+      "title": "AI-Thinker ESP32-CAM + OV2640",
+      "identity": {
+        "board": "ESP32-CAM with ESP32-S module",
+        "schematic_revision": "1.6 (2018-01-30), document revision only",
+        "sensor": "OmniVision OV2640",
+        "sensor_interface": "8-bit DVP data plus SCCB configuration, 24-contact camera connector",
+        "host_interface": "Wi-Fi 2.4 GHz; UART for programming",
+        "physical_revision_rule": "Compare actual PCB and GND/R vs GND markings. Do not assume every ESP32-CAM clone matches schematic 1.6."
+      },
+      "recoverable": [
+        "Keep the complete MCU board, camera flex and lens together",
+        "MicroSD socket and flash LED already on board",
+        "Use external 5V supply through board 5V input"
+      ],
+      "chips_on_reference_schematic": [
+        {
+          "ref": "M1",
+          "part": "ESP-32S module",
+          "role": "MCU + Wi-Fi"
+        },
+        {
+          "ref": "U2",
+          "part": "AMS1117",
+          "role": "5V to 3.3V regulation"
+        },
+        {
+          "ref": "U1",
+          "part": "XC6206-2.8V",
+          "role": "camera supply rail"
+        },
+        {
+          "ref": "U3",
+          "part": "XC6206-1.2V",
+          "role": "camera supply rail"
+        },
+        {
+          "ref": "U5",
+          "part": "PSRAM",
+          "role": "image buffer; exact chip/capacity depends on physical board"
+        }
+      ],
+      "camera_gpio_map": {
+        "PWDN": 32,
+        "RESET": -1,
+        "XCLK": 0,
+        "SIOD": 26,
+        "SIOC": 27,
+        "D0": 5,
+        "D1": 18,
+        "D2": 19,
+        "D3": 21,
+        "D4": 36,
+        "D5": 39,
+        "D6": 34,
+        "D7": 35,
+        "VSYNC": 25,
+        "HREF": 23,
+        "PCLK": 22,
+        "FLASH_LED": 4
+      },
+      "source_ids": [
+        "esp-example",
+        "prusa-board",
+        "ov2640-datasheet"
+      ],
+      "blockers": [
+        "Bare OV2640 flex is not a USB camera. Needs matching controller, supply rails, clock and driver.",
+        "ESP32-S3 camera clones are a different pin map despite a similar shape.",
+        "GPIO0 also carries camera XCLK: release the flashing jumper before running.",
+        "A regulator supplying 5V does not make ESP32 UART pins 5V tolerant.",
+        "Cannot promise outdoor/weatherproof/security-appliance reliability from this devboard."
+      ],
+      "availability": "Candidate from abandoned maker/3D-printer camera projects or used modules; no claim that a random consumer camera contains this board."
+    },
+    {
+      "id": "raspberry-pi-camera2",
+      "title": "Raspberry Pi Camera Module 2 / IMX219",
+      "identity": {
+        "sensor": "Sony IMX219",
+        "pixels": "3280 × 2464 / 8MP",
+        "interface": "MIPI CSI-2, 15-pin camera cable",
+        "pcb_revision": "Not established from manufacturer text; record the actual board silkscreen and do not equate product version 2 with a specific PCB revision"
+      },
+      "recoverable": [
+        "Camera module, lens and intact ribbon cable as a unit"
+      ],
+      "compatibility": "Raspberry Pi board with supported CSI connector. Pi 4 and earlier flagship boards use 15-to-15 cable; Pi 5 and Pi Zero use standard-to-mini 15-to-22 cable.",
+      "csi15_pinout": [
+        [
+          1,
+          "GND"
+        ],
+        [
+          2,
+          "CAM_DN0"
+        ],
+        [
+          3,
+          "CAM_DP0"
+        ],
+        [
+          4,
+          "GND"
+        ],
+        [
+          5,
+          "CAM_DN1"
+        ],
+        [
+          6,
+          "CAM_DP1"
+        ],
+        [
+          7,
+          "GND"
+        ],
+        [
+          8,
+          "CAM_CN"
+        ],
+        [
+          9,
+          "CAM_CP"
+        ],
+        [
+          10,
+          "GND"
+        ],
+        [
+          11,
+          "CAM_IO0"
+        ],
+        [
+          12,
+          "CAM_IO1"
+        ],
+        [
+          13,
+          "SCL"
+        ],
+        [
+          14,
+          "SDA"
+        ],
+        [
+          15,
+          "3V3"
+        ]
+      ],
+      "startup": [
+        "With Pi powered off, seat the correct camera ribbon and latch both ends.",
+        "Boot Raspberry Pi OS with current camera software.",
+        "Run rpicam-hello --list-cameras; require IMX219 to appear.",
+        "Run rpicam-still --output test.jpg; open the actual image."
+      ],
+      "blockers": [
+        "Not USB; passive ribbon-to-USB cables cannot provide the needed CSI receiver/driver.",
+        "A loose sensor from a phone is not automatically Camera Module 2 even when its sensor is IMX219.",
+        "Standard camera filters infrared; NoIR is a distinct variant, and darkness needs appropriate illumination."
+      ],
+      "source_ids": [
+        "rpi-product",
+        "rpi-hardware",
+        "rpi-software"
+      ]
+    },
+    {
+      "id": "sony-ps3-eye",
+      "title": "Sony PlayStation Eye SLEH-00448",
+      "identity": {
+        "exact_tested_model": "SLEH-00448",
+        "usb_id": "1415:2000",
+        "bridge": "OV534",
+        "sensor": "OV772x family per Linux driver; OV7720 exact suffix not independently verified for every PCB",
+        "interface": "USB 2.0",
+        "linux_driver": "gspca_ov534",
+        "not_uvc": true,
+        "pcb_revision": "No trusted per-revision PCB identification or manufacturer schematic found; capture actual board marking if disassembled"
+      },
+      "recoverable": [
+        "Use complete camera with its USB cable, USB bridge and enclosure; desoldering the sensor loses the working USB path."
+      ],
+      "setup": "On Linux with GSPCA OV534 support, connect the complete camera and identify the video device through V4L2. PS Move API reports no firmware upload necessary.",
+      "proposed_startup_test": [
+        "lsusb -d 1415:2000",
+        "v4l2-ctl --list-devices",
+        "v4l2-ctl --device /dev/videoX --list-formats-ext",
+        "Choose an actually reported YUYV mode and capture a frame with a V4L2-capable viewer."
+      ],
+      "test_note": "Commands are an ARC validation procedure, not an executed hardware test. Replace videoX with the device discovered locally.",
+      "blockers": [
+        "Do not label as UVC; it uses the OV534 GSPCA driver.",
+        "Old USB camera works as a complete donor; an extracted sensor needs a new controller and engineering work.",
+        "No verified reusable PCB photo/schematic sourced in this bounded research."
+      ],
+      "source_ids": [
+        "linux-ov534",
+        "linux-config",
+        "linux-cardlist",
+        "psmove"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "ai-thinker-local-camera",
+      "title": "Локальная камера: картинка в браузере",
+      "result": "ESP32-CAM joins the existing local 2.4 GHz Wi-Fi; phone/computer on that LAN opens the local camera page and starts the JPEG stream.",
+      "status": "Documented build path; not physically validated in ARC",
+      "bom": [
+        {
+          "item": "AI-Thinker-compatible ESP32-CAM + supported OV2640",
+          "qty": 1
+        },
+        {
+          "item": "USB-UART adapter with 3.3V logic (or verified matching programmer base)",
+          "qty": 1
+        },
+        {
+          "item": "Regulated 5V source sized for the chosen board",
+          "qty": 1
+        },
+        {
+          "item": "Jumper wires and USB data cable",
+          "qty": 1
+        },
+        {
+          "item": "Computer with Arduino IDE and ESP32 core",
+          "qty": 1
+        },
+        {
+          "item": "Existing 2.4 GHz Wi-Fi network",
+          "qty": 1
+        },
+        {
+          "item": "Insulated nonconductive enclosure and strain relief for final installation",
+          "qty": 1
+        }
+      ],
+      "schematic": "esp32-schematic",
+      "wiring": [
+        {
+          "from": "Regulated source +5V",
+          "to": "ESP32-CAM 5V",
+          "note": "Board supply input, not a GPIO"
+        },
+        {
+          "from": "Source GND + adapter GND",
+          "to": "ESP32-CAM GND",
+          "note": "Common ground"
+        },
+        {
+          "from": "Adapter TX at 3.3V logic",
+          "to": "ESP32-CAM U0R / GPIO3"
+        },
+        {
+          "from": "Adapter RX",
+          "to": "ESP32-CAM U0T / GPIO1"
+        },
+        {
+          "from": "ESP32-CAM GPIO0",
+          "to": "GND",
+          "note": "Only while resetting into upload mode; remove before running"
+        }
+      ],
+      "firmware": {
+        "project": "Espressif CameraWebServer",
+        "release": "Arduino-ESP32 3.3.12",
+        "commit": "94afccf35fb1e401facddbcf9e13bcf7c76a31d8",
+        "source_url": "https://github.com/espressif/arduino-esp32/tree/3.3.12/libraries/ESP32/examples/Camera/CameraWebServer",
+        "files": [
+          "CameraWebServer.ino",
+          "app_httpd.cpp",
+          "board_config.h",
+          "camera_index.h",
+          "camera_pins.h",
+          "partitions.csv"
+        ],
+        "configuration": [
+          "Install/select esp32 by Espressif Systems 3.3.12; open the example supplied by the same installed version.",
+          "Select the AI Thinker ESP32-CAM board definition where available.",
+          "In board_config.h comment out CAMERA_MODEL_ESP_EYE and enable only CAMERA_MODEL_AI_THINKER.",
+          "Set ssid and password in CameraWebServer.ino locally; never publish credentials.",
+          "Provide at least 3MB application partition as required by the example."
+        ],
+        "license": "LGPL-2.1 repository license"
+      },
+      "steps": [
+        {
+          "title": "Identify the board",
+          "action": "Match camera connector, ESP32-S module and actual header labels against the photo. Keep OV2640 seated.",
+          "pass": "The physical board matches AI-Thinker pin map."
+        },
+        {
+          "title": "Connect power and serial",
+          "action": "Power off before wiring. Connect common ground and crossed UART; use 3.3V UART signals and 5V board power.",
+          "pass": "No 5V signal is connected to U0R; camera flex is aligned."
+        },
+        {
+          "title": "Upload",
+          "action": "Hold GPIO0 at GND, reset, upload the correctly configured Espressif example.",
+          "pass": "Upload succeeds; no repeated brownout messages."
+        },
+        {
+          "title": "Start normally",
+          "action": "Remove GPIO0–GND link and reset. Open serial monitor at 115200 baud.",
+          "pass": "Camera initialization succeeds, Wi-Fi connects and a local http:// address is printed."
+        },
+        {
+          "title": "Get a real frame",
+          "action": "Open that address on the same LAN. Start stream and capture a still.",
+          "pass": "Motion updates in the live view; still image is nonblank and correctly oriented."
+        },
+        {
+          "title": "Make it useful",
+          "action": "Put board in an insulated case with cable strain relief and a clear lens. Run a 30-minute local stream, then power-cycle and reconnect.",
+          "pass": "ARC proposed acceptance test: no resets, reconnect succeeds, no exposed live contacts. Not yet a certified unattended alarm."
+        }
+      ],
+      "troubleshoot": [
+        {
+          "symptom": "Upload waits forever",
+          "check": "GPIO0 low during reset; adapter TX→U0R and RX→U0T; actual serial port."
+        },
+        {
+          "symptom": "Camera init failed",
+          "check": "Correct AI_THINKER switch, matching sensor, seated ribbon and stable power."
+        },
+        {
+          "symptom": "Brownout / resets",
+          "check": "Supply and cable voltage drop; do not mask by disabling brownout detection."
+        },
+        {
+          "symptom": "No Wi-Fi",
+          "check": "Correct SSID/password and 2.4 GHz coverage."
+        },
+        {
+          "symptom": "Page opens but camera does not run after flashing",
+          "check": "Remove GPIO0–GND jumper, reset and verify camera log."
+        }
+      ],
+      "limitations": [
+        "Stock example is a local HTTP prototype; no claim of authentication, encrypted remote access, recording or motion alarms.",
+        "Do not expose this unmodified example directly to the internet.",
+        "First qualify camera and power before adding PIR, recording or an alarm output."
+      ],
+      "source_ids": [
+        "esp-example",
+        "esp-boot",
+        "esp-datasheet",
+        "prusa-board"
+      ]
+    }
+  ]
+}

@@ -2,10 +2,12 @@
   "url": "https://arc-field-manual.herherman030303.chatgpt.site",
   "audience": "owner-private",
   "project_id": "appgprj_6adb7e2ac8a881919e4b4b9199bf0045",
-  "deployment_id": "appgdep_6adb868e3390819195f7b90cd013bc52",
+  "deployment_id": "appgdep_6adb8ef7778881918380e001b06633c4",
   "status": "succeeded",
-  "site_source_commit": "c99e7267287a62c8ca511b54d2177975267f74b9",
+  "site_source_commit": "74bd414ca3a633f0d9779b5fbcc84f7e457aaa81",
   "repository_branch": "feat/field-manual-mvp",
-  "repository_commit": "27bdd6a",
-  "browser_qa": "blocked: local browser permission denied"
+  "release": "0.2.0",
+  "saved_version_id": "appgprj_6adb7e2ac8a881919e4b4b9199bf0045~appgver_f93b47bf62908191aec929943b2adbf8",
+  "validation": {"node_tests": 18, "python_tests": 5, "static_and_firmware_integrity": "passed", "hardware_tested": false},
+  "browser_qa": "not performed: browser access to reference and published site declined; DOM unit tests passed"
 }

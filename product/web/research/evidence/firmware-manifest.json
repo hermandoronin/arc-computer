@@ -1,0 +1,45 @@
+{
+  "commit": "94afccf35fb1e401facddbcf9e13bcf7c76a31d8",
+  "release": "3.3.12",
+  "compiled": false,
+  "hardware_tested": false,
+  "files": [
+    {
+      "file": "CameraWebServer.ino",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/CameraWebServer.ino",
+      "upstream_sha256": "9d6d1697360a30f4b297c15b4531a19c97a4c9242771c98456695582c0c6a34f",
+      "packaged_sha256": "41feb8cd181c03fc351b95081e492c42b05ee2bc2ac8a116ba9e2f59f371039a"
+    },
+    {
+      "file": "app_httpd.cpp",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/app_httpd.cpp",
+      "upstream_sha256": "f235a1bbc425fd815ef33f5ceb0927ecde1003514b663fd2fa5f8e07c748a1ba",
+      "packaged_sha256": "f235a1bbc425fd815ef33f5ceb0927ecde1003514b663fd2fa5f8e07c748a1ba"
+    },
+    {
+      "file": "board_config.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/board_config.h",
+      "upstream_sha256": "ff8d24756f7d18a8dd456cb0149fb5949a038a0c72bd232a95496b7976849c7a",
+      "packaged_sha256": "8e0c82dfafa58cb926f0ed38a80308d0e78febf81aa34e79359716436bbf4681"
+    },
+    {
+      "file": "camera_index.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/camera_index.h",
+      "upstream_sha256": "c31bc07d50b88f23eb41378abdb898f84c1caee76bf8b4e28c1404abb2b5055e",
+      "packaged_sha256": "c31bc07d50b88f23eb41378abdb898f84c1caee76bf8b4e28c1404abb2b5055e"
+    },
+    {
+      "file": "camera_pins.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/camera_pins.h",
+      "upstream_sha256": "71de6987ee84a6d119596f3b52c8aead1b4a8e48cf4a7c3e1f39cc050ecf2754",
+      "packaged_sha256": "71de6987ee84a6d119596f3b52c8aead1b4a8e48cf4a7c3e1f39cc050ecf2754"
+    },
+    {
+      "file": "partitions.csv",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/94afccf35fb1e401facddbcf9e13bcf7c76a31d8/libraries/ESP32/examples/Camera/CameraWebServer/partitions.csv",
+      "upstream_sha256": "555f2122d7a0af9067fd6fb1a97a6bb1b59177a53f4d48d44b96ecf320f88c91",
+      "packaged_sha256": "555f2122d7a0af9067fd6fb1a97a6bb1b59177a53f4d48d44b96ecf320f88c91"
+    }
+  ],
+  "archive_sha256": "6992eca5718a96305133a6c0a668adddfa6cb92d3c10f36f03987992d0dc7a1b"
+}

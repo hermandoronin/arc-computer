@@ -1,10 +1,14 @@
 {
   "name": "arc-field-manual",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "python3 -m http.server 3037 --bind 127.0.0.1 --directory dist",
-    "test": "node tests/solver.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "check": "python3 scripts/import_evidence.py && python3 scripts/check_static.py"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.12"
   }
 }

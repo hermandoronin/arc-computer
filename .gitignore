@@ -136,3 +136,6 @@ docs/KB-STRATEGY.md
 /web/
 !product/web/dist/
 !product/web/dist/**
+
+# Reproducible test-only DOM dependency
+!product/web/package-lock.json

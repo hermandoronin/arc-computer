@@ -1,0 +1,22 @@
+ARC evidence illustrations — 2026-10-23
+
+ESP32-CAM photographs, annotated components, variants and pinout:
+Prusa Research / Prusa-Firmware-ESP32-Cam documentation.
+https://github.com/prusa3d/Prusa-Firmware-ESP32-Cam/tree/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam
+Repository license: GPL-3.0, included as PRUSA-GPL-3.0.txt.
+Schematic: ESP32_CAM revision 1.6, 2018-01-30, reproduced in that documentation.
+The original schematic's separate author and individual asset license were not
+established. ARC does not claim authorship or relicense that third-party sheet.
+Images are unmodified; captions are ARC editorial context.
+
+15-pin CSI connector diagram:
+Raspberry Pi documentation contributors, CC BY-SA 4.0.
+https://github.com/raspberrypi/documentation/tree/41e24fbd459d47e7db979cd084676c790b60a3de
+https://creativecommons.org/licenses/by-sa/4.0/
+The diagram is unmodified. Repository license is included as RPI-LICENSE.txt.
+
+EWX14 and AEG photographs remain hosted by their original authors.
+The site links and displays those originals with author attribution;
+no copies of those photographs are included in this distribution or offline cache.
+
+ARC wiring and block illustrations are authored for this project, Apache-2.0.

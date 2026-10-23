@@ -1,0 +1,1406 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-23",
+  "sources": [
+    {
+      "id": "esp-example",
+      "title": "Espressif CameraWebServer, Arduino-ESP32 3.3.12",
+      "url": "https://github.com/espressif/arduino-esp32/tree/3.3.12/libraries/ESP32/examples/Camera/CameraWebServer",
+      "commit": "94afccf35fb1e401facddbcf9e13bcf7c76a31d8",
+      "license": "LGPL-2.1 repository license",
+      "license_url": "https://github.com/espressif/arduino-esp32/blob/3.3.12/LICENSE.md",
+      "verified": "Official files, board model switch, camera pins, Wi-Fi credentials, 115200 baud, HTTP startup",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "esp-boot",
+      "title": "Espressif esptool boot-mode selection",
+      "url": "https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html",
+      "verified": "GPIO0 low during reset enters bootloader; release GPIO0 for execution",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "esp-datasheet",
+      "title": "Espressif ESP32 Series Datasheet v5.3",
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf",
+      "verified": "2.4 GHz radio; 3.3 V supply/logic domain, not 5 V GPIO",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "prusa-board",
+      "title": "Prusa AI Thinker ESP32-CAM hardware documentation",
+      "url": "https://github.com/prusa3d/Prusa-Firmware-ESP32-Cam/blob/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/README.md",
+      "commit": "136c91c574523c0898a7c6fe3e69a72800d8d24c",
+      "license": "GPL-3.0 repository license; schematic is a reproduced third-party board document, individual author/asset license not separately established",
+      "license_url": "https://github.com/prusa3d/Prusa-Firmware-ESP32-Cam/blob/master/LICENSE",
+      "verified": "Physical board photos, GND/R vs GND variants, UART wiring, schematic image",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "ov2640-datasheet",
+      "title": "OmniVision OV2640 datasheet, manufacturer document hosted by Waveshare",
+      "url": "https://files.waveshare.com/wiki/common/OV2640DS_en.pdf",
+      "license": "Proprietary manufacturer datasheet; link to original, do not relicense",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "rpi-product",
+      "title": "Raspberry Pi Camera Module 2",
+      "url": "https://www.raspberrypi.com/products/camera-module-v2/",
+      "verified": "Sony IMX219; 8 megapixels; CSI camera module",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "rpi-hardware",
+      "title": "Raspberry Pi camera hardware documentation",
+      "url": "https://www.raspberrypi.com/documentation/accessories/camera.html",
+      "verified": "15-pin connector pinout, cable installation and Standard-Standard vs Standard-Mini compatibility",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "rpi-software",
+      "title": "Raspberry Pi camera software",
+      "url": "https://www.raspberrypi.com/documentation/computers/camera_software.html",
+      "verified": "rpicam-hello and rpicam-still test commands",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "rpi-license",
+      "title": "Raspberry Pi documentation license",
+      "url": "https://github.com/raspberrypi/documentation/blob/master/LICENSE.md",
+      "license": "CC BY-SA 4.0",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "linux-ov534",
+      "title": "Linux gspca OV534 camera driver",
+      "url": "https://github.com/torvalds/linux/blob/master/drivers/media/usb/gspca/ov534.c",
+      "license": "GPL-2.0-or-later",
+      "verified": "OV534 bridge / OV772x family and PS3 Eye support",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "linux-config",
+      "title": "Linux GSPCA Kconfig",
+      "url": "https://github.com/torvalds/linux/blob/master/drivers/media/usb/gspca/Kconfig",
+      "verified": "Sony PlayStation EYE uses gspca_ov534, not generic UVC",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "linux-cardlist",
+      "title": "Linux GSPCA supported cameras",
+      "url": "https://www.kernel.org/doc/html/latest/admin-guide/media/gspca-cardlist.html",
+      "verified": "USB ID 1415:2000 maps to ov534 / Sony Playstation Eye",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "psmove",
+      "title": "PS Move API camera integration",
+      "url": "https://psmoveapi.readthedocs.io/en/latest/camera.html",
+      "verified": "Tested SLEH-00448; USB 2.0; no firmware upload; Linux OV534 driver",
+      "retrieved_at": "2026-10-23",
+      "kind": "original_documentation"
+    },
+    {
+      "id": "electrolux-ewf-parts",
+      "kind": "manufacturer_document",
+      "author": "Electrolux Thailand Co., Ltd.",
+      "title": "EWF12844 / EWF10744 spare parts, publication 180724",
+      "url": "https://procornerpdf.electrolux.com/static/Pictures/Views/P9149/0065604.PDF",
+      "published": "2018-07-24",
+      "locators": {
+        "models": 1,
+        "electrical_components": 11,
+        "pcba_part_numbers": 12,
+        "wiring_diagram": [
+          13,
+          14
+        ]
+      },
+      "license": "Manufacturer copyright; link to original, no open redistribution license verified",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "chapman-ewx14",
+      "kind": "original_teardown_repair",
+      "author": "Dr Matthew Chapman",
+      "title": "A washing machine story",
+      "url": "https://zmatt.net/ewx14/",
+      "published": "2026-06-15",
+      "license": "Author site says all rights reserved; credit and source link required; no open redistribution license verified",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "aeg-model",
+      "kind": "manufacturer_model_index",
+      "author": "AEG",
+      "title": "T55640 model and PNC versions",
+      "url": "https://shop.aeg.co.uk/model/m/T55640",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "hedi-board",
+      "kind": "owner_original_forum_observation",
+      "author": "hedi",
+      "title": "AEG T55640 board marking",
+      "url": "https://www.circuitsonline.net/forum/view/message/1493283",
+      "published": "2013-03-24T13:09:28",
+      "thread": "https://www.circuitsonline.net/forum/view/111566",
+      "license": "No open reuse license verified",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "hedi-relay",
+      "kind": "owner_original_forum_observation",
+      "author": "hedi",
+      "title": "AEG T55640 observed relay marking",
+      "url": "https://www.circuitsonline.net/forum/view/message/1493889",
+      "published": "2013-03-25T22:00:57",
+      "thread": "https://www.circuitsonline.net/forum/view/111566",
+      "license": "No open reuse license verified",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "bemmelen-t55640",
+      "kind": "original_repair_with_photos",
+      "author": "Albert van Bemmelen",
+      "publisher": "JestineYong.com",
+      "title": "New Wasmachine and Tumble Dryer Repair",
+      "url": "https://jestineyong.com/new-wasmachine-and-tumble-dryer-repair/",
+      "published": "2017-11-27",
+      "license": "No open reuse license verified; credit original author, not merely publisher",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "electrolux-env06",
+      "kind": "manufacturer_service_manual",
+      "author": "Electrolux Italia S.p.A.",
+      "title": "ENV06 ventilated tumble dryer, publication 599 72 63-27",
+      "url": "https://shop.electroluxarabia.com/Content/files/OTHERS/599/726/327EN.pdf",
+      "published": "2010-01",
+      "locators": {
+        "board_photos": 6,
+        "control_architecture": 22,
+        "configuration_memory": 23,
+        "conductivity_sensor": 25,
+        "ntc": 26,
+        "wiring_diagram": [
+          30,
+          31
+        ]
+      },
+      "scope": "Family manual; do not label its wiring as the exact T55640 PNC 91609628602 wiring",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "stm8-datasheet",
+      "kind": "component_manufacturer_datasheet",
+      "author": "STMicroelectronics",
+      "title": "STM8S207xx / STM8S208xx, DS5839 / DocID14733 Rev 13",
+      "url": "https://www.st.com/resource/en/datasheet/stm8s207rb.pdf",
+      "locators": {
+        "features": 1,
+        "block_diagram": 12,
+        "pinouts_start": 23
+      },
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "lnk-xt",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Power Integrations",
+      "title": "LinkSwitch-XT datasheet",
+      "url": "https://www.power.com/design-support/data-sheets/linkswitch-xt-data-sheet",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "lnk-tn",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Power Integrations",
+      "title": "LinkSwitch-TN datasheet",
+      "url": "https://www.power.com/design-support/data-sheets/linkswitch-tn-data-sheet",
+      "retrieved_at": "2026-10-23"
+    },
+    {
+      "id": "g5le",
+      "kind": "component_manufacturer_datasheet",
+      "author": "Omron",
+      "title": "G5LE PCB power relay",
+      "url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf",
+      "locators": {
+        "model_suffix_and_ratings": 1,
+        "dimensions_and_internal_connections": 3
+      },
+      "scope": "Current G5LE family document. Historical -VD suffix should be checked against exact marking before assigning ratings.",
+      "retrieved_at": "2026-10-23"
+    }
+  ],
+  "assets": [
+    {
+      "id": "esp32-schematic",
+      "type": "schematic",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/ESP32-CAM-AI-Thinker-schematic-diagram.png",
+      "caption": "ESP32_CAM — schematic revision 1.6, dated 2018/1/30. Copy in Prusa documentation.",
+      "credit": "ESP32-CAM / Ai-Thinker hardware; reproduced by Prusa Research",
+      "license_note": "Repository GPL-3.0; individual original schematic rights not separately established. Prefer original link or a clearly attributed reference preview; do not claim ARC authorship.",
+      "visually_verified": true,
+      "src": "assets/evidence/esp32-cam-schematic.png",
+      "source_ids": [
+        "prusa-board"
+      ]
+    },
+    {
+      "id": "esp32-board-photo",
+      "type": "photo",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/esp32-cam.jpg",
+      "credit": "Prusa Research, Prusa-Firmware-ESP32-Cam documentation",
+      "license_note": "GPL-3.0 repository; no separate per-photo license located",
+      "src": "assets/evidence/esp32-cam.jpg",
+      "source_ids": [
+        "prusa-board"
+      ]
+    },
+    {
+      "id": "esp32-parts-photo",
+      "type": "photo",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/esp32-cam_parts.jpg",
+      "caption": "Annotated board photo: ESP32-S Ai-Thinker module, AMS1117 3.3 regulator, IPS6404LSQ PSRAM; markings refer to this pictured board only.",
+      "credit": "Prusa Research documentation",
+      "visually_verified": true,
+      "license_note": "GPL-3.0 repository; no separate per-photo license located",
+      "src": "assets/evidence/esp32-cam_parts.jpg",
+      "source_ids": [
+        "prusa-board"
+      ]
+    },
+    {
+      "id": "esp32-variants",
+      "type": "photo",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/cam_versions.jpg",
+      "caption": "GND/R vs GND labels: useful physical compatibility check for programmer boards. This is not a universal numbered PCB revision scheme.",
+      "credit": "Prusa Research documentation",
+      "visually_verified": true,
+      "license_note": "GPL-3.0 repository; no separate per-photo license located",
+      "src": "assets/evidence/cam_versions.jpg",
+      "source_ids": [
+        "prusa-board"
+      ]
+    },
+    {
+      "id": "esp32-pinout",
+      "type": "pinout",
+      "url": "https://raw.githubusercontent.com/prusa3d/Prusa-Firmware-ESP32-Cam/136c91c574523c0898a7c6fe3e69a72800d8d24c/doc/AI_Thinker-ESP32-cam/pinout.png",
+      "credit": "Prusa Research documentation",
+      "license_note": "GPL-3.0 repository; no separate per-asset license located",
+      "src": "assets/evidence/pinout.png",
+      "source_ids": [
+        "prusa-board"
+      ]
+    },
+    {
+      "id": "rpi-csi-schematic",
+      "type": "schematic",
+      "url": "https://raw.githubusercontent.com/raspberrypi/documentation/41e24fbd459d47e7db979cd084676c790b60a3de/documentation/asciidoc/accessories/camera/images/RPi-S5-conn.png",
+      "caption": "Official 15-pin CSI connector schematic; not a complete Camera Module 2 PCB schematic.",
+      "credit": "Raspberry Pi documentation contributors",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "src": "assets/evidence/rpi-csi-connector.png",
+      "source_ids": [
+        "rpi-hardware"
+      ]
+    },
+    {
+      "url": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-connectors.png",
+      "credit": "Matthew Chapman / zmatt.net",
+      "caption": "Original EWX14 board photo with author annotations; not the exact EWF12844 part-number proof",
+      "id": "washer-electrolux-ewf12844-0",
+      "src": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-connectors.png",
+      "type": "photo",
+      "source_ids": [
+        "chapman-ewx14"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-power.png",
+      "credit": "Matthew Chapman / zmatt.net",
+      "caption": "Original EWX14 power-stage photo",
+      "id": "washer-electrolux-ewf12844-1",
+      "src": "https://zmatt.net/wp-content/uploads/2026/06/ewx14-power.png",
+      "type": "photo",
+      "source_ids": [
+        "chapman-ewx14"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://jestineyong.com/wp-content/uploads/2017/11/2-3.jpg",
+      "credit": "Albert van Bemmelen / JestineYong.com",
+      "caption": "Nameplate confirms T55640, P502664, PNC 91609628602",
+      "id": "dryer-aeg-t55640-bemmelen-0",
+      "src": "https://jestineyong.com/wp-content/uploads/2017/11/2-3.jpg",
+      "type": "photo",
+      "source_ids": [
+        "bemmelen-t55640"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://jestineyong.com/wp-content/uploads/2017/11/11-2.jpg",
+      "credit": "Albert van Bemmelen / JestineYong.com",
+      "caption": "Control PCB, original repair article; low resolution thumbnail",
+      "id": "dryer-aeg-t55640-bemmelen-1",
+      "src": "https://jestineyong.com/wp-content/uploads/2017/11/11-2.jpg",
+      "type": "photo",
+      "source_ids": [
+        "bemmelen-t55640"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://jestineyong.com/wp-content/uploads/2017/11/4-3.jpg",
+      "credit": "Albert van Bemmelen / JestineYong.com",
+      "caption": "Original PCB underside photo",
+      "id": "dryer-aeg-t55640-bemmelen-2",
+      "src": "https://jestineyong.com/wp-content/uploads/2017/11/4-3.jpg",
+      "type": "photo",
+      "source_ids": [
+        "bemmelen-t55640"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://jestineyong.com/wp-content/uploads/2017/11/5-3.jpg",
+      "credit": "Albert van Bemmelen / JestineYong.com",
+      "caption": "LNK304 closeup",
+      "id": "dryer-aeg-t55640-bemmelen-3",
+      "src": "https://jestineyong.com/wp-content/uploads/2017/11/5-3.jpg",
+      "type": "photo",
+      "source_ids": [
+        "bemmelen-t55640"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    },
+    {
+      "url": "https://jestineyong.com/wp-content/uploads/2017/11/6-3.jpg",
+      "credit": "Albert van Bemmelen / JestineYong.com",
+      "caption": "R76 original repair photo",
+      "id": "dryer-aeg-t55640-bemmelen-4",
+      "src": "https://jestineyong.com/wp-content/uploads/2017/11/6-3.jpg",
+      "type": "photo",
+      "source_ids": [
+        "bemmelen-t55640"
+      ],
+      "license_note": "Оригинал на сайте автора; в офлайн-пакет ARC не включён."
+    }
+  ],
+  "devices": [
+    {
+      "id": "esp32-cam",
+      "title": "AI-Thinker ESP32-CAM",
+      "subtitle": "Камера + Wi-Fi на одной плате",
+      "category": "camera",
+      "tags": [
+        "OV2640",
+        "ESP32-S",
+        "DVP",
+        "камера",
+        "Wi-Fi"
+      ],
+      "image": "esp32-board-photo",
+      "identity": [
+        [
+          "Модуль",
+          "ESP32-S / AI-Thinker"
+        ],
+        [
+          "Сенсор",
+          "OV2640, интерфейс DVP"
+        ],
+        [
+          "Питание платы",
+          "5 V через вход 5V; UART — логика 3,3 V"
+        ],
+        [
+          "Ревизия",
+          "Схема v1.6 от 30.01.2018; сверять с реальной платой"
+        ]
+      ],
+      "summary": "Сохрани плату, объектив и шлейф вместе. Получишь локальную камеру, которая показывает изображение в браузере.",
+      "chips": [
+        {
+          "name": "ESP32-S",
+          "role": "Микроконтроллер и Wi-Fi",
+          "scope": "Плата на фото Prusa",
+          "source_ids": [
+            "prusa-board"
+          ]
+        },
+        {
+          "name": "OV2640",
+          "role": "Сенсор изображения, 8-битный DVP",
+          "scope": "Совместимый модуль камеры",
+          "source_ids": [
+            "ov2640-datasheet",
+            "esp-example"
+          ]
+        },
+        {
+          "name": "AMS1117 3.3",
+          "role": "Стабилизатор 5 → 3,3 V",
+          "scope": "Маркировка на фото",
+          "source_ids": [
+            "prusa-board"
+          ]
+        },
+        {
+          "name": "IPS6404LSQ",
+          "role": "PSRAM для кадров",
+          "scope": "Только образец на фото; у клонов может отличаться",
+          "source_ids": [
+            "prusa-board"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "У платы есть готовый тракт: сенсор → ESP32 → Wi-Fi.",
+          "scope": "AI-Thinker GPIO map",
+          "source_ids": [
+            "esp-example"
+          ],
+          "locator": "camera_pins.h / CAMERA_MODEL_AI_THINKER",
+          "status": "documented",
+          "id": "esp32-cam-claim-1"
+        },
+        {
+          "text": "На схеме есть дополнительные линии питания камеры 2,8 V и 1,2 V.",
+          "scope": "Документ ESP32_CAM v1.6",
+          "source_ids": [
+            "prusa-board"
+          ],
+          "locator": "U1 / U3",
+          "status": "documented",
+          "id": "esp32-cam-claim-2"
+        }
+      ],
+      "gallery": [
+        "esp32-parts-photo",
+        "esp32-variants"
+      ],
+      "diagrams": [
+        "esp32-schematic",
+        "esp32-pinout"
+      ],
+      "source_ids": [
+        "prusa-board",
+        "esp-example",
+        "esp-datasheet",
+        "ov2640-datasheet"
+      ],
+      "reuse": [
+        "Целый модуль с камерой — основной вариант повторного использования.",
+        "Корпус и крепление можно подобрать от старого устройства после проверки размеров."
+      ],
+      "where": "Ищи среди заброшенных Arduino-проектов, камер 3D-принтеров и бывших в употреблении ESP32-CAM. Обычная бытовая камера не обязана содержать ESP32.",
+      "unknown": [
+        "Номер ревизии конкретного экземпляра.",
+        "Реальный объём PSRAM и исправность питания."
+      ],
+      "limits": [
+        "ESP32-S3 — другая плата и другая распиновка.",
+        "Голый OV2640 не подключается к USB пассивным кабелем.",
+        "5 V — питание платы. На выводы UART подаются только сигналы 3,3 V."
+      ],
+      "routes": [
+        "wifi-camera"
+      ],
+      "bench_tested": false
+    },
+    {
+      "id": "pi-camera2",
+      "title": "Raspberry Pi Camera Module 2",
+      "subtitle": "Модуль с Sony IMX219",
+      "category": "camera",
+      "tags": [
+        "IMX219",
+        "CSI",
+        "Raspberry Pi",
+        "камера"
+      ],
+      "image": "rpi-csi-schematic",
+      "identity": [
+        [
+          "Сенсор",
+          "Sony IMX219, 8 Мп"
+        ],
+        [
+          "Интерфейс",
+          "MIPI CSI-2, 15 контактов на модуле"
+        ],
+        [
+          "Шлейф",
+          "Pi 4: 15→15; Pi 5 / Zero: 15→22"
+        ],
+        [
+          "Ревизия",
+          "Версия продукта 2 не равна номеру PCB"
+        ]
+      ],
+      "summary": "Готовый сенсорный модуль для Raspberry Pi. Чтобы получить фотографию, сохрани объектив и подбери правильный CSI-шлейф.",
+      "chips": [
+        {
+          "name": "Sony IMX219",
+          "role": "Сенсор 3280 × 2464",
+          "scope": "Официальный Camera Module 2",
+          "source_ids": [
+            "rpi-product"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "15-контактный разъём передаёт CSI-данные, тактирование и управление.",
+          "scope": "Стандартный разъём Raspberry Pi",
+          "source_ids": [
+            "rpi-hardware"
+          ],
+          "locator": "Camera pinout",
+          "status": "documented",
+          "id": "pi-camera2-claim-1"
+        }
+      ],
+      "gallery": [],
+      "diagrams": [
+        "rpi-csi-schematic"
+      ],
+      "source_ids": [
+        "rpi-product",
+        "rpi-hardware",
+        "rpi-software"
+      ],
+      "reuse": [
+        "Модуль с объективом и целым шлейфом."
+      ],
+      "where": "Старые проекты на Raspberry Pi, наборы робототехники и камеры для 3D-принтеров. Проверяй название модуля и маркировку сенсора.",
+      "unknown": [
+        "PCB revision конкретного экземпляра.",
+        "Состояние объектива и шлейфа."
+      ],
+      "limits": [
+        "Это CSI, а не USB.",
+        "Сенсор IMX219 из телефона не становится Camera Module 2: нужна совместимая плата и драйвер.",
+        "NoIR — отдельный вариант; ночью нужно освещение."
+      ],
+      "routes": [
+        "pi-photo"
+      ],
+      "bench_tested": false
+    },
+    {
+      "id": "ps3-eye",
+      "title": "Sony PlayStation Eye",
+      "subtitle": "Старая USB-камера → камера для Linux",
+      "category": "camera",
+      "tags": [
+        "SLEH-00448",
+        "OV534",
+        "OV772x",
+        "USB",
+        "камера"
+      ],
+      "image": null,
+      "identity": [
+        [
+          "Модель из документации",
+          "SLEH-00448"
+        ],
+        [
+          "USB ID",
+          "1415:2000"
+        ],
+        [
+          "Интерфейс",
+          "USB 2.0"
+        ],
+        [
+          "Драйвер Linux",
+          "gspca_ov534"
+        ]
+      ],
+      "summary": "Полезнее сохранить камеру целиком: USB-мост уже соединяет сенсор с компьютером. Выпаивать матрицу для первого запуска не нужно.",
+      "chips": [
+        {
+          "name": "OV534",
+          "role": "Мост сенсор → USB",
+          "scope": "Поддержка в Linux",
+          "source_ids": [
+            "linux-ov534",
+            "linux-cardlist"
+          ]
+        },
+        {
+          "name": "OV772x",
+          "role": "Семейство сенсора",
+          "scope": "По драйверу; точный суффикс каждого экземпляра не установлен",
+          "source_ids": [
+            "linux-ov534"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "Камера использует gspca_ov534, а не универсальный UVC.",
+          "scope": "USB 1415:2000",
+          "source_ids": [
+            "linux-config",
+            "linux-cardlist"
+          ],
+          "locator": "VIDEO_USB_GSPCA_OV534",
+          "status": "documented",
+          "id": "ps3-eye-claim-1"
+        }
+      ],
+      "gallery": [],
+      "diagrams": [],
+      "source_ids": [
+        "linux-ov534",
+        "linux-config",
+        "linux-cardlist",
+        "psmove"
+      ],
+      "reuse": [
+        "Камера в корпусе с родным USB-кабелем."
+      ],
+      "where": "Комплекты PlayStation 3, объявления о старых игровых аксессуарах. Проверяй модель и USB ID до покупки.",
+      "unknown": [
+        "Фото и номер PCB revision в этой подборке не найдены.",
+        "Принципиальная схема производителя не найдена."
+      ],
+      "limits": [
+        "USB-камера не обязательно UVC: нужен драйвер именно этой модели.",
+        "Нельзя назначить /dev/video0 заранее: выбирай устройство из локального списка."
+      ],
+      "routes": [
+        "usb-camera"
+      ],
+      "bench_tested": false
+    },
+    {
+      "id": "ewf12844",
+      "title": "Electrolux EWF12844",
+      "subtitle": "Какие платы стоят в стиральной машине",
+      "category": "washer",
+      "tags": [
+        "стиральная машина",
+        "EWX14",
+        "EMC14",
+        "A03533615",
+        "914900650"
+      ],
+      "image": null,
+      "identity": [
+        [
+          "Модификация",
+          "PNC 914900650 / ELC 05"
+        ],
+        [
+          "Главная плата",
+          "EWX14: A03533615 без конфигурации"
+        ],
+        [
+          "Настроенная PCBA",
+          "97391490065005"
+        ],
+        [
+          "Инвертор двигателя",
+          "A03592705 / EMC14 CIM"
+        ],
+        [
+          "Панель управления",
+          "A02160702 / TC4-EUI14P40"
+        ]
+      ],
+      "summary": "Здесь три разных электронных узла: управление, инвертор двигателя и панель. Каталог производителя связывает их с точной модификацией машины.",
+      "chips": [
+        {
+          "name": "ST-545 / 132819502",
+          "role": "Датчик давления (узел, не чип)",
+          "scope": "Каталог EWF12844, p.11",
+          "source_ids": [
+            "electrolux-ewf-parts"
+          ]
+        },
+        {
+          "name": "CIM-AL STK50-P49",
+          "role": "Двигатель / 808145001",
+          "scope": "Каталог EWF12844, p.11",
+          "source_ids": [
+            "electrolux-ewf-parts"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "EWX14 — главная плата этой модификации.",
+          "scope": "PNC 914900650 / ELC 05",
+          "source_ids": [
+            "electrolux-ewf-parts"
+          ],
+          "locator": "p.12",
+          "status": "documented",
+          "id": "ewf12844-claim-1"
+        },
+        {
+          "text": "Номера MCU и контроллера питания для этой PCBA каталог не раскрывает.",
+          "scope": "Каталог деталей, а не BOM электронных компонентов",
+          "source_ids": [
+            "electrolux-ewf-parts"
+          ],
+          "locator": "p.11–12",
+          "status": "unknown",
+          "id": "ewf12844-claim-2"
+        }
+      ],
+      "gallery": [],
+      "diagrams": [],
+      "documents": [
+        {
+          "title": "Схема соединений EWF12844 / EWF10744",
+          "source_id": "electrolux-ewf-parts",
+          "url": "https://procornerpdf.electrolux.com/static/Pictures/Views/P9149/0065604.PDF#page=13",
+          "pages": "13–14",
+          "scope": "Электрическая схема перечисленных PNC/ELC, не принципиальная схема самой PCBA."
+        }
+      ],
+      "source_ids": [
+        "electrolux-ewf-parts"
+      ],
+      "reuse": [
+        "Корпус, разъёмы, крепёж — после проверки состояния.",
+        "Отдельный датчик — кандидат после идентификации и проверки интерфейса."
+      ],
+      "where": "Ремонтные мастерские, машины-доноры с механическими дефектами, площадки повторного использования. Записывай PNC и ELC: одного имени модели мало.",
+      "unknown": [
+        "Маркировка MCU именно этой PCBA.",
+        "PCB revision и пригодность датчиков для самостоятельного подключения."
+      ],
+      "limits": [
+        "Похожая плата EWX14 не доказывает одинаковый состав чипов.",
+        "Инвертор и силовая плата не являются готовым контроллером полива."
+      ],
+      "related": [
+        "ewx14-sample"
+      ],
+      "routes": [],
+      "bench_tested": false
+    },
+    {
+      "id": "ewx14-sample",
+      "title": "Плата Electrolux EWX14",
+      "subtitle": "Оригинальный разбор с фотографиями",
+      "category": "washer",
+      "tags": [
+        "стиральная машина",
+        "STM8S207RB",
+        "LNK364GN",
+        "EWX14"
+      ],
+      "image": "washer-electrolux-ewf12844-0",
+      "identity": [
+        [
+          "Семейство",
+          "EWX14"
+        ],
+        [
+          "Образец",
+          "Плата из разбора Matthew Chapman"
+        ],
+        [
+          "Модель / PNC машины",
+          "В источнике не указаны"
+        ],
+        [
+          "PCB revision",
+          "Не установлена"
+        ]
+      ],
+      "summary": "В разборе видны чипы, разъёмы и питание. Эти наблюдения относятся к сфотографированному образцу; состав других EWX14 нужно проверять.",
+      "chips": [
+        {
+          "name": "STM8S207RB",
+          "role": "Микроконтроллер",
+          "scope": "Образец Matthew Chapman",
+          "source_ids": [
+            "chapman-ewx14",
+            "stm8-datasheet"
+          ]
+        },
+        {
+          "name": "LNK364GN",
+          "role": "Контроллер сетевого источника питания",
+          "scope": "Тот же образец",
+          "source_ids": [
+            "chapman-ewx14",
+            "lnk-xt"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "Прошивке нужны конфигурационные данные конкретной модели.",
+          "scope": "Рассмотренный EWX14",
+          "source_ids": [
+            "chapman-ewx14"
+          ],
+          "locator": "MCF / CCF",
+          "status": "author_observed",
+          "id": "ewx14-sample-claim-1"
+        },
+        {
+          "text": "Логическая часть связана с неизолированным питанием.",
+          "scope": "Схема питания образца",
+          "source_ids": [
+            "chapman-ewx14"
+          ],
+          "locator": "Power supply",
+          "status": "author_observed",
+          "id": "ewx14-sample-claim-2"
+        }
+      ],
+      "gallery": [
+        "washer-electrolux-ewf12844-0",
+        "washer-electrolux-ewf12844-1"
+      ],
+      "diagrams": [],
+      "source_ids": [
+        "chapman-ewx14",
+        "stm8-datasheet",
+        "lnk-xt"
+      ],
+      "reuse": [
+        "Корпус и механические элементы.",
+        "Отдельный датчик или реле — только как ещё не испытанный кандидат."
+      ],
+      "where": "Платы-доноры семейства EWX14. Сначала фото обеих сторон и маркировка: название семейства недостаточно.",
+      "unknown": [
+        "Модель и PNC исходной машины.",
+        "Возможность запуска платы вне штатной машины."
+      ],
+      "limits": [
+        "Наличие 5 V и 12 V не означает безопасный изолированный источник.",
+        "Штатная прошивка не превращает плату в Arduino."
+      ],
+      "related": [
+        "ewf12844"
+      ],
+      "routes": [],
+      "bench_tested": false
+    },
+    {
+      "id": "aeg-t55640",
+      "title": "AEG T55640",
+      "subtitle": "Сушилка: два независимых разбора",
+      "category": "dryer",
+      "tags": [
+        "сушилка",
+        "LNK304",
+        "G5LE",
+        "EVN SC70600245055",
+        "91609628602"
+      ],
+      "image": "dryer-aeg-t55640-bemmelen-1",
+      "identity": [
+        [
+          "Модель / тип",
+          "T55640 / P502664"
+        ],
+        [
+          "PNC",
+          "91609628602"
+        ],
+        [
+          "Плата из сообщения владельца",
+          "EVN SC70600245055 — текстовая маркировка"
+        ],
+        [
+          "Ревизии двух плат",
+          "Совпадение не подтверждено"
+        ]
+      ],
+      "summary": "Фоторемонт показывает блок питания. В отдельной форумной ветке владелец записал маркировку платы и реле. Это два экземпляра, даже при одинаковом PNC.",
+      "chips": [
+        {
+          "name": "LNK304",
+          "role": "Контроллер сетевого источника питания; не MCU",
+          "scope": "Фоторемонт Albert van Bemmelen",
+          "source_ids": [
+            "bemmelen-t55640",
+            "lnk-tn"
+          ]
+        },
+        {
+          "name": "R76 / 47 Ω",
+          "role": "Резистор; мощность однозначно не установлена",
+          "scope": "Тот же фоторемонт",
+          "source_ids": [
+            "bemmelen-t55640"
+          ]
+        },
+        {
+          "name": "Omron G5LE-1-VD 12VDC",
+          "role": "Реле; 12 V относится к катушке",
+          "scope": "Другой экземпляр, сообщение hedi",
+          "source_ids": [
+            "hedi-relay",
+            "g5le"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "text": "PNC читается на шильдике сфотографированной машины.",
+          "scope": "Экземпляр из ремонта 2017 года",
+          "source_ids": [
+            "bemmelen-t55640"
+          ],
+          "locator": "Фото шильдика",
+          "status": "photo_observed",
+          "id": "aeg-t55640-claim-1"
+        },
+        {
+          "text": "Владелец записал маркировку EVN SC70600245055.",
+          "scope": "Экземпляр hedi, 2013",
+          "source_ids": [
+            "hedi-board"
+          ],
+          "locator": "24.03.2013, 13:09:28",
+          "status": "author_observed",
+          "id": "aeg-t55640-claim-2"
+        },
+        {
+          "text": "В финальном сообщении владелец связывает проблему с дверным выключателем.",
+          "scope": "Итог именно этой форумной ветки",
+          "source_ids": [
+            "hedi-board"
+          ],
+          "locator": "hedi, 22.05.2013, 13:34:03",
+          "status": "author_reported_outcome",
+          "id": "aeg-t55640-claim-3"
+        }
+      ],
+      "gallery": [
+        "dryer-aeg-t55640-bemmelen-0",
+        "dryer-aeg-t55640-bemmelen-1",
+        "dryer-aeg-t55640-bemmelen-2",
+        "dryer-aeg-t55640-bemmelen-3"
+      ],
+      "diagrams": [],
+      "documents": [
+        {
+          "title": "ENV06: устройство семейства сушилок",
+          "source_id": "electrolux-env06",
+          "url": "https://shop.electroluxarabia.com/Content/files/OTHERS/599/726/327EN.pdf#page=30",
+          "pages": "22, 25–26, 30–31",
+          "scope": "Справочник семейства: NTC, измерение проводимости, варианты проводки. Не подтверждённая схема этой T55640."
+        }
+      ],
+      "source_ids": [
+        "hedi-board",
+        "hedi-relay",
+        "bemmelen-t55640",
+        "lnk-tn",
+        "g5le",
+        "electrolux-env06"
+      ],
+      "reuse": [
+        "Реле — кандидат: нужны точная маркировка, драйвер катушки и проверка контактов.",
+        "Ручка выбора, корпус и крепёж."
+      ],
+      "where": "Сушилки-доноры и ремонтные платы. Сохраняй шильдик машины и фото платы вместе.",
+      "unknown": [
+        "Основной MCU.",
+        "Номер платы на фото 2017 года.",
+        "Принципиальная схема именно PNC 91609628602."
+      ],
+      "limits": [
+        "LNK304 не является логическим процессором или готовым USB-блоком питания.",
+        "Участники форума выдвигали разные гипотезы: они не равны итоговому диагнозу.",
+        "Реле нельзя подключать прямо к GPIO только потому, что известна катушка 12 V."
+      ],
+      "routes": [],
+      "bench_tested": false
+    }
+  ],
+  "routes": [
+    {
+      "id": "wifi-camera",
+      "title": "Камера с просмотром по Wi-Fi",
+      "subtitle": "ESP32-CAM → браузер телефона",
+      "category": "camera",
+      "device_id": "esp32-cam",
+      "result": "Изображение и JPEG-поток на телефоне в той же локальной сети.",
+      "image": "esp32-board-photo",
+      "time": "Первый запуск: 1–2 часа · оценка",
+      "requirements": [
+        {
+          "id": "esp32-module",
+          "name": "ESP32-CAM AI-Thinker + OV2640",
+          "qty": 1,
+          "where": "Бывший проект с ESP32-CAM или подходящий б/у модуль.",
+          "check": "ESP32-S, правильный разъём и распиновка; модуль камеры установлен."
+        },
+        {
+          "id": "uart",
+          "name": "USB–UART с логикой 3,3 V",
+          "qty": 1,
+          "where": "Набор Arduino или адаптер для прошивки.",
+          "check": "Уровень TX — 3,3 V. Выход питания 5 V не доказывает уровень сигналов."
+        },
+        {
+          "id": "power5",
+          "name": "Стабилизированный источник 5 V",
+          "qty": 1,
+          "where": "Исправный изолированный USB-блок питания с известной маркировкой.",
+          "check": "Питание через вход 5V платы; достаточный ток по документации экземпляра."
+        },
+        {
+          "id": "wires",
+          "name": "Провода + USB-кабель с данными",
+          "qty": 1,
+          "where": "Набор электроники, исправные кабели.",
+          "check": "Общая земля и отсутствие повреждений."
+        },
+        {
+          "id": "host",
+          "name": "Компьютер + сеть Wi-Fi 2,4 ГГц",
+          "qty": 1,
+          "where": "Ноутбук и имеющийся роутер.",
+          "check": "Arduino IDE, ESP32 core 3.3.12; телефон в той же сети."
+        },
+        {
+          "id": "case",
+          "name": "Непроводящий корпус и крепление",
+          "qty": 1,
+          "where": "Подходящий пластиковый корпус от старого прибора.",
+          "check": "Нет натяжения кабеля, объектив открыт, плата закреплена."
+        }
+      ],
+      "diagrams": [
+        "esp32-schematic",
+        "esp32-pinout"
+      ],
+      "wiring": [
+        [
+          "Источник +5 V",
+          "5V платы",
+          "Питание платы"
+        ],
+        [
+          "GND источника и адаптера",
+          "GND платы",
+          "Общая земля"
+        ],
+        [
+          "TX адаптера, логика 3,3 V",
+          "U0R / GPIO3",
+          "Передача → приём"
+        ],
+        [
+          "RX адаптера",
+          "U0T / GPIO1",
+          "Приём ← передача"
+        ],
+        [
+          "GPIO0",
+          "GND",
+          "Перемычка только для входа в загрузчик"
+        ]
+      ],
+      "firmware": {
+        "title": "CameraWebServer · ESP32 core 3.3.12",
+        "source": "esp-example",
+        "download": "assets/firmware/esp32-camera-3.3.12.zip",
+        "config": "В board_config.h оставь только CAMERA_MODEL_AI_THINKER. В CameraWebServer.ino впиши локально SSID и пароль. Выбери AI Thinker ESP32-CAM и раздел приложения не меньше 3 MB. В скачанном примере модель уже выбрана; сетевые данные — пустые."
+      },
+      "steps": [
+        [
+          "Опознай плату",
+          "Сверь модуль и выводы с фотографией. Проверь, что OV2640 установлен без перекоса.",
+          "Плата соответствует распиновке AI-Thinker."
+        ],
+        [
+          "Подключи питание и UART",
+          "При отключённом питании соедини выводы по таблице. Сигналы UART — 3,3 V, питание платы — 5 V.",
+          "TX и RX перекрещены; земля общая."
+        ],
+        [
+          "Запиши пример",
+          "Открой подготовленный пример целиком. Настрой Wi-Fi, соедини GPIO0 с GND, нажми Reset и загрузи скетч.",
+          "IDE сообщает об успешной записи."
+        ],
+        [
+          "Запусти камеру",
+          "Убери перемычку GPIO0–GND, нажми Reset. Открой Serial Monitor на 115200 бод.",
+          "Инициализация успешна, появился локальный HTTP-адрес."
+        ],
+        [
+          "Получи изображение",
+          "Открой адрес на телефоне в той же сети. Нажми Start Stream, проверь движение в кадре и снимок.",
+          "Есть обновляемый поток и непустой кадр."
+        ],
+        [
+          "Проверь перед установкой",
+          "Закрепи плату в корпусе. Проведи 30-минутный просмотр, затем отключи и восстанови питание.",
+          "Нет перезапусков; повторное подключение работает. Это предлагаемый тест ARC."
+        ]
+      ],
+      "tests": [
+        "Камера инициализируется без ошибки.",
+        "Кадр меняется при движении объекта.",
+        "Поток идёт 30 минут без сбросов.",
+        "После выключения питания камера снова доступна."
+      ],
+      "troubleshoot": [
+        [
+          "Загрузка не начинается",
+          "GPIO0 на GND во время Reset, правильный порт и перекрёстные TX/RX."
+        ],
+        [
+          "Camera init failed",
+          "Проверь модель в board_config.h, шлейф, сенсор и питание."
+        ],
+        [
+          "Brownout / перезапуски",
+          "Проверь источник и падение напряжения на кабеле; защиту не отключай."
+        ],
+        [
+          "Нет Wi-Fi",
+          "Проверь SSID, пароль и диапазон 2,4 ГГц."
+        ]
+      ],
+      "limits": [
+        "Этот пример даёт локальный просмотр. Запись, распознавание движения и оповещения в него не входят.",
+        "В примере нет готовой защиты удалённого доступа: напрямую в интернет его не выставляй.",
+        "Наружный корпус, автономное питание и длительная надёжность требуют отдельных испытаний."
+      ],
+      "source_ids": [
+        "esp-example",
+        "esp-boot",
+        "esp-datasheet",
+        "prusa-board"
+      ],
+      "bench_tested": false,
+      "status": "documented"
+    },
+    {
+      "id": "usb-camera",
+      "title": "Вернуть старую USB-камеру в работу",
+      "subtitle": "Sony PS3 Eye → компьютер Linux",
+      "category": "camera",
+      "device_id": "ps3-eye",
+      "result": "Видеопоток от целой PlayStation Eye на Linux-компьютере.",
+      "image": null,
+      "time": "Первый запуск: 30–60 минут · оценка",
+      "requirements": [
+        {
+          "id": "ps3-camera",
+          "name": "Sony Eye SLEH-00448 с USB-кабелем",
+          "qty": 1,
+          "where": "Старый комплект PS3, б/у аксессуары.",
+          "check": "USB ID 1415:2000; целый кабель."
+        },
+        {
+          "id": "linux-pc",
+          "name": "Компьютер Linux с USB 2.0",
+          "qty": 1,
+          "where": "Старый ноутбук или компьютер.",
+          "check": "В ядре включён gspca_ov534; нужны v4l-utils и просмотрщик V4L2, например qv4l2."
+        },
+        {
+          "id": "mount",
+          "name": "Место установки и крепление",
+          "qty": 1,
+          "where": "Родная подставка или подходящий кронштейн.",
+          "check": "Кабель не натянут; камера неподвижна."
+        }
+      ],
+      "diagrams": [],
+      "wiring": [
+        [
+          "Целая камера с USB-кабелем",
+          "USB компьютера",
+          "Сенсор и USB-мост оставляем на родной плате"
+        ]
+      ],
+      "steps": [
+        [
+          "Проверь идентификатор",
+          "Подключи камеру и выполни lsusb -d 1415:2000.",
+          "В списке есть 1415:2000."
+        ],
+        [
+          "Найди видеоузел",
+          "Выполни v4l2-ctl --list-devices. Найди видеоузел именно Eye; затем v4l2-ctl --device /dev/videoX --list-formats-ext.",
+          "Есть поддерживаемые форматы и разрешения; videoX заменён реальным номером."
+        ],
+        [
+          "Открой поток",
+          "Запусти qv4l2 -d /dev/videoX. Выбери реально перечисленный YUYV-режим и начни захват.",
+          "В окне есть изображение и движение."
+        ],
+        [
+          "Проверь повторный запуск",
+          "Останови захват, отсоедини и подключи камеру, снова найди её видеоузел и открой поток.",
+          "Камера снова определяется и выдаёт изображение."
+        ]
+      ],
+      "commands": "lsusb -d 1415:2000\nv4l2-ctl --list-devices\n# Замени videoX номером найденного устройства\nv4l2-ctl --device /dev/videoX --list-formats-ext\nqv4l2 -d /dev/videoX",
+      "tests": [
+        "USB ID совпадает.",
+        "V4L2 перечисляет форматы камеры.",
+        "В просмотрщике есть живое изображение.",
+        "Повторное подключение работает."
+      ],
+      "troubleshoot": [
+        [
+          "Нет видеоузла",
+          "Проверь наличие поддержки gspca_ov534 в ядре и системные сообщения USB."
+        ],
+        [
+          "Команда не найдена",
+          "Установи v4l-utils / qv4l2 средствами своего дистрибутива."
+        ],
+        [
+          "Пустой кадр",
+          "Закрой другие приложения камеры и выбери формат из --list-formats-ext."
+        ]
+      ],
+      "limits": [
+        "Это маршрут восстановления камеры. Автоматическая запись и тревоги — следующий отдельный этап.",
+        "Драйвер gspca_ov534 обязателен: общий фильтр «любая UVC» эту модель исключает."
+      ],
+      "source_ids": [
+        "linux-cardlist",
+        "linux-config",
+        "linux-ov534",
+        "psmove"
+      ],
+      "bench_tested": false,
+      "status": "documented"
+    },
+    {
+      "id": "pi-photo",
+      "title": "Сделать снимок с CSI-модуля",
+      "subtitle": "Camera Module 2 → Raspberry Pi → JPEG",
+      "category": "camera",
+      "device_id": "pi-camera2",
+      "result": "Файл test.jpg с Sony IMX219 на Raspberry Pi.",
+      "image": "rpi-csi-schematic",
+      "time": "Первый запуск: 30–60 минут · оценка",
+      "requirements": [
+        {
+          "id": "pi-cam2",
+          "name": "Raspberry Pi Camera Module 2",
+          "qty": 1,
+          "where": "Старый проект с Raspberry Pi.",
+          "check": "Именно модуль Camera Module 2 с IMX219; целый объектив."
+        },
+        {
+          "id": "pi-host",
+          "name": "Raspberry Pi + ОС + штатное питание",
+          "qty": 1,
+          "where": "Существующий комплект Pi.",
+          "check": "Работающий Raspberry Pi OS с rpicam-apps."
+        },
+        {
+          "id": "csi-cable",
+          "name": "Совместимый CSI-шлейф",
+          "qty": 1,
+          "where": "Комплект модуля или отдельный кабель.",
+          "check": "Pi 4: 15→15; Pi 5 / Zero: 15→22. Нужен кабель камеры."
+        },
+        {
+          "id": "pi-case",
+          "name": "Крепление и корпус",
+          "qty": 1,
+          "where": "Старый подходящий корпус.",
+          "check": "Шлейф не пережат, объектив открыт."
+        }
+      ],
+      "diagrams": [
+        "rpi-csi-schematic"
+      ],
+      "wiring": [
+        [
+          "Camera Module 2",
+          "Разъём CAMERA / CAM Raspberry Pi",
+          "Правильный CSI-шлейф; подключать при снятом питании"
+        ]
+      ],
+      "steps": [
+        [
+          "Соедини модуль и Pi",
+          "Отключи питание. Установи шлейф по инструкции для своей модели Pi и закрой защёлки.",
+          "Кабель стоит ровно, контакты ориентированы по инструкции."
+        ],
+        [
+          "Найди сенсор",
+          "Загрузи ОС и выполни rpicam-hello --list-cameras.",
+          "В выводе есть IMX219."
+        ],
+        [
+          "Сними кадр",
+          "Выполни rpicam-still --nopreview --output test.jpg. Открой полученный файл.",
+          "Файл содержит резкое изображение сцены."
+        ],
+        [
+          "Проверь после сборки",
+          "Закрепи модуль и шлейф в корпусе, повтори снимок после перезапуска Pi.",
+          "Изображение воспроизводится после перезапуска."
+        ]
+      ],
+      "commands": "rpicam-hello --list-cameras\nrpicam-still --nopreview --output test.jpg",
+      "tests": [
+        "Определился IMX219.",
+        "Файл test.jpg создан и открывается.",
+        "Изображение резкое, без обрыва кадра.",
+        "После перезапуска снимок снова получается."
+      ],
+      "troubleshoot": [
+        [
+          "No cameras available",
+          "Отключи питание и проверь разъём камеры, ориентацию шлейфа и модель кабеля."
+        ],
+        [
+          "rpicam-still не найден",
+          "Проверь установку rpicam-apps и версию Raspberry Pi OS."
+        ]
+      ],
+      "limits": [
+        "В этом маршруте получается фотография. Непрерывная запись и оповещения ещё не настроены.",
+        "Официальная картинка показывает разъём CSI, а не полную принципиальную схему модуля."
+      ],
+      "source_ids": [
+        "rpi-product",
+        "rpi-hardware",
+        "rpi-software"
+      ],
+      "bench_tested": false,
+      "status": "documented"
+    }
+  ]
+}

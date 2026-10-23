@@ -26,10 +26,12 @@
 
 **This repository contains the extraction pipeline and a browser MVP in [`product/web/`](product/web/README.md).**
 
-The Field Manual MVP provides eight starter build plans, quantity-aware inventory,
-exact-ID BOM matching, missing-parts lists, donor suggestions, downloads and offline
-caching. It searches a recovered snapshot of 1,225 projects, 1,115 teardown records
-(400 unique device IDs) and 55,414 catalogue components. No API keys are needed.
+Field Notes 0.2 adds six source-backed device/board records and three documented
+camera routes, with real diagrams, chip markings, scoped claims, 24 primary
+sources, a prepared pinned Espressif example, checklists and exports. The original
+eight starter sketches and recovered corpus remain in the archive. No API keys
+are needed. See [the product README](product/web/README.md) for the evidence model,
+import pipeline, licensing, and criteria for a physically validated product.
 
 The ARC application described further down — a FastAPI service with an htmx UI,
 a reverse-BOM solver and a vision inventory client — **is not published here.**
@@ -46,7 +48,7 @@ What you actually get:
 | `scripts/bootstrap-kb.sh` | Bulk corpus fetch (Kiwix ZIMs, KiCad libraries, archive.org, Appropedia, Wikidata, OpenRepair) | runnable |
 | `docs/` | Deployment and firmware-validation notes | reference only |
 
-The MVP includes seven logic/data tests and static asset checks. The obsolete
+The MVP includes 18 Node tests (including DOM unit tests), five Python evidence-import tests, and static/firmware integrity checks. The obsolete
 workflows referencing the missing server were removed before this work.
 
 ## The problem it addresses
@@ -126,7 +128,9 @@ Start the browser MVP:
 cd product/web
 npm run dev
 # http://127.0.0.1:3037
+npm ci  # test-only dependencies
 npm test
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/check_static.py
 ```
 
