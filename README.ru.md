@@ -10,7 +10,7 @@
 [![License: CC-BY 4.0](https://img.shields.io/badge/KB-CC--BY--4.0-green.svg)](LICENSE-KB)
 [![License: MIT](https://img.shields.io/badge/Adapters-MIT-orange.svg)](LICENSE-ADAPTERS)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/)
-[![Status: pipeline only](https://img.shields.io/badge/status-pipeline%20only-orange.svg)]()
+[![Status: browser MVP](https://img.shields.io/badge/status-browser%20MVP-orange.svg)](product/web/README.md)
 
 </div>
 
@@ -18,7 +18,12 @@
 
 ## Что лежит в этом репозитории
 
-**Только пайплайн извлечения базы знаний.**
+**Пайплайн базы знаний и браузерный MVP в [`product/web/`](product/web/README.md).**
+
+Новый Field Manual: восемь стартовых сборок, инвентарь с количеством, подбор по
+точным ID, списки недостающего, доноры, экспорт и офлайн-кэш. Поиск охватывает
+1 225 проектов, 1 115 разборов (400 уникальных ID устройств) и 55 414 компонентов.
+API-ключи для работы сайта не нужны.
 
 Приложение ARC — FastAPI-сервис с htmx-интерфейсом, reverse-BOM solver и
 vision-клиентом — **в этом репозитории не опубликовано**. Его нет ни в рабочем
@@ -33,10 +38,8 @@ vision-клиентом — **в этом репозитории не опубл
 | `scripts/bootstrap-kb.sh` | Массовая загрузка корпусов (Kiwix ZIM, KiCad, archive.org, Appropedia, Wikidata, OpenRepair) | запускается |
 | `docs/` | Заметки по деплою и валидации прошивок | справочно |
 
-Тестов в репозитории нет. Оба workflow GitHub Actions падают на каждом запуске:
-они ставят `product/server/requirements.txt`, которого здесь никогда не было.
-`kb/pipeline/scripts/validate_schema.py` по той же причине не запускается — он
-импортирует `product/server/kb/index.py`.
+В MVP есть семь тестов логики и целостности корпуса, а также проверка статических
+ресурсов. Старые workflow, ссылавшиеся на отсутствующий сервер, удалены ранее.
 
 ## Задача
 
@@ -54,29 +57,33 @@ vision-клиентом — **в этом репозитории не опубл
 2. **Forward-BOM** — «хочу собрать Y» → BOM + где такие компоненты обычно найти
 3. **Discovery** — «у меня X» → проекты, которые из этого собираются
 
-Ни один из режимов в этом репозитории не реализован.
+В браузерном MVP реализован ограниченный подбор по явному составу и точным ID.
+Общий движок совместимости, локальная LLM и распознавание по фото пока отсутствуют.
 
 ## База знаний
 
-KB собирается пайплайном из `kb/pipeline/`. **Она не опубликована**: ассетов у
-релиза нет, `kb/output/` в свежем клоне пуст. Цифры ниже — из локальной сборки
-автора, по этому репозиторию их проверить нельзя.
+KB собирается пайплайном из `kb/pipeline/`. Компактный браузерный снимок теперь
+находится в `product/web/dist/data/`. Корпус восстановлен 23.10.2026 из
+`/run/media/user/External/ark/`. Контрольная сумма финального архива совпала с
+файлом SHA-256. [Отчёт восстановления](product/web/research/data-audit.json).
 
 | Категория | Записей (локальная сборка) |
 |---|--:|
 | **Components** (canonical) | 55,414 |
-| **Substitutions** (chains) | 10,000 |
-| **Devices** (teardown patterns) | 5,000+ |
+| **Devices** (разборы / уникальные ID) | 1,115 / 400 |
 | **Materials** (DIY recipes) | 1,242 |
-| **Projects** (recipes) | 1,225+ |
+| **Projects** (recipes) | 1,225 |
 | **Tools** (with build-from-junk paths) | 716 |
-| **Safety** (hazard profiles) | 500 |
 | **Phenomena** (physics for solver) | 301 |
 | **Skills** (with prerequisites) | 203 |
 | **Goals** (top-level) | 50 |
 | **Regional profiles** (mains/radio/etc) | 50 |
-| **Firmware genome** (configurable templates) | 40 |
-| **Total** | **~78,869** |
+
+В финальном пакете каталоги проектов и устройств пустые; они восстановлены из
+`extracted-bulk/`. Прежние количества замен, профилей безопасности и прошивок этой
+проверкой не подтверждены. Ссылки проектов восстановлены из сырого архива, но
+содержание всего корпуса не проверено. Непроверенные инструкции сборки исключены
+из веб-снимка. Пространства ID `comp:` и `cmp:` не приравниваются автоматически.
 
 `kb/pipeline/scripts/package.sh` называет пакет `ark-kb-v0.1.tar.zst`. Старый
 README предлагал скачать `releases/latest/download/arc-kb.tar.zst` (в русской
@@ -101,7 +108,20 @@ bash scripts/bootstrap-kb.sh
 python kb/pipeline/extractors/run_device_extractor.py --help
 ```
 
-Сервера, который можно запустить, и интерфейса, который можно открыть, здесь нет.
+Запуск браузерного MVP:
+
+```bash
+cd product/web
+npm run dev
+# http://127.0.0.1:3037
+npm test
+python3 scripts/check_static.py
+```
+
+Нужен Python 3; для тестов — Node.js 20+. Установка npm-зависимостей не требуется.
+Предпросмотр Chrome был отклонён инструментом доступа, поэтому визуальная проверка
+компьютера/телефона, реальные клики и офлайн-перезагрузка не подтверждены.
+Физические сборки не проходили стендовые испытания. [Документация MVP](product/web/README.md).
 
 ## Stack
 
@@ -129,6 +149,8 @@ arc-computer/
 ```
 
 ## Roadmap
+
+- [x] **Браузерный Field Manual MVP** — инвентарь, сборки, восстановленный корпус, экспорт и офлайн-кэш
 
 - [x] **Модель данных CDPO** — Pydantic-схемы, включая firmware genome
 - [x] **Пайплайн извлечения** — скрейперы, LLM-экстракторы, валидаторы, упаковщик

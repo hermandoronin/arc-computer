@@ -131,3 +131,8 @@ kb/output/REPORT.md
 # === Backward-compat symlink to KB final (lives elsewhere) ===
 kb-final
 docs/KB-STRATEGY.md
+
+# Field Manual MVP (standalone Sites checkout stays local)
+/web/
+!product/web/dist/
+!product/web/dist/**

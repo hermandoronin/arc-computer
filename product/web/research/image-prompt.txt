@@ -1,0 +1,4 @@
+Use case: product-mockup. Asset: landscape 3:2 website hero photograph for an electronics repair and reuse project. Top-down editorial still life on a dark charcoal scratched workbench: a small DIY digital camera in an open olive metal box, one visible camera lens, a green circuit board, tidy red and black wires, a screwdriver, an old radio, loose screws and an analog multimeter. Main camera sits center right. Warm side lighting, dusty olive and aged steel palette, realistic tactile surfaces, subtle film grain. Professional industrial photography, simple composition, dark margins. No people, no text, no logos, no watermark. This is a creative illustration, not an engineering diagram.
+
+Generated with the built-in ImageGen tool. Final web asset: dist/assets/workbench.webp.
+Original: /home/user/.codex/generated_images/01a16961-0d82-7a62-9cd7-13f71b5edfc7/exec-303c9579-76dd-4ad6-9249-15c61156df27.png
