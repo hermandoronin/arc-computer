@@ -1,0 +1,11 @@
+{
+  "url": "https://arc-field-manual.herherman030303.chatgpt.site",
+  "audience": "owner-private",
+  "project_id": "appgprj_6adb7e2ac8a881919e4b4b9199bf0045",
+  "deployment_id": "appgdep_6adb868e3390819195f7b90cd013bc52",
+  "status": "succeeded",
+  "site_source_commit": "c99e7267287a62c8ca511b54d2177975267f74b9",
+  "repository_branch": "feat/field-manual-mvp",
+  "repository_commit": "27bdd6a",
+  "browser_qa": "blocked: local browser permission denied"
+}
